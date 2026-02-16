@@ -56,7 +56,8 @@ const opportunities = [
 <template>
   <div class="volunteer-page">
     <!-- Banner -->
-    <div class="banner">
+    <div class="banner" style="background-image: url('/images/banner-volunteer.svg')">
+      <div class="banner-overlay"></div>
       <div class="banner-content">
         <h1>Become a Volunteer</h1>
         <p>Make a difference with your time and talents</p>
@@ -166,9 +167,28 @@ const opportunities = [
 
 .banner {
   background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+  background-size: cover;
+  background-position: center;
   color: white;
   padding: 80px 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(111, 45, 168, 0.7);
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
 }
 
 .banner-content h1 {

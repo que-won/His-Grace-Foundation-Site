@@ -8,6 +8,7 @@ const mobileMenuOpen = ref(false)
   <header class="header">
     <div class="container header-container">
       <RouterLink to="/" class="logo">
+        <img src="/images/logo.svg" alt="His Grace Foundation Logo" class="logo-img">
         <h3 style="margin: 0; color: var(--accent)">His Grace Foundation</h3>
       </RouterLink>
 
@@ -67,6 +68,13 @@ const mobileMenuOpen = ref(false)
   text-decoration: none;
   display: flex;
   align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 50px;
+  width: 50px;
+  object-fit: contain;
 }
 
 .logo h3 {

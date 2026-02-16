@@ -56,7 +56,8 @@ const donations = [
 <template>
   <div class="donations-page">
     <!-- Banner -->
-    <div class="banner">
+    <div class="banner" style="background-image: url('/images/banner-donations.svg')">
+      <div class="banner-overlay"></div>
       <div class="banner-content">
         <h1>Make a Donation</h1>
         <p>Your generosity creates lasting change</p>
@@ -121,9 +122,28 @@ const donations = [
 
 .banner {
   background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  background-size: cover;
+  background-position: center;
   color: white;
   padding: 80px 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(111, 45, 168, 0.7);
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
 }
 
 .banner-content h1 {

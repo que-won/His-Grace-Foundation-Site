@@ -56,7 +56,8 @@ const giveaways = [
 <template>
   <div class="giveaway-page">
     <!-- Banner -->
-    <div class="banner">
+    <div class="banner" style="background-image: url('/images/banner-giveaway.svg')">
+      <div class="banner-overlay"></div>
       <div class="banner-content">
         <h1>Give Away & Donate Items</h1>
         <p>Share what you have, change what you can</p>
@@ -153,9 +154,28 @@ const giveaways = [
 
 .banner {
   background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+  background-size: cover;
+  background-position: center;
   color: white;
   padding: 80px 20px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(111, 45, 168, 0.7);
+  z-index: 1;
+}
+
+.banner-content {
+  position: relative;
+  z-index: 2;
 }
 
 .banner-content h1 {

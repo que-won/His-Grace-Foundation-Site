@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:hsla(270, 71%, 52%, 1);stop-opacity:1" />
+      <stop offset="100%" style="stop-color:hsla(270, 71%, 42%, 1);stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <!-- Circle background -->
+  <circle cx="100" cy="100" r="95" fill="url(#grad1)" opacity="0.1" stroke="url(#grad1)" stroke-width="2"/>
+  <!-- Heart shape -->
+  <path d="M100,165 C100,165 40,120 40,85 C40,65 55,50 70,50 C80,50 90,57 100,65 C110,57 120,50 130,50 C145,50 160,65 160,85 C160,120 100,165 100,165 Z" fill="hsla(270, 71%, 52%, 1)"/>
+  <!-- Hands around -->
+  <circle cx="50" cy="100" r="8" fill="hsla(270, 71%, 52%, 1)" opacity="0.7"/>
+  <circle cx="150" cy="100" r="8" fill="hsla(270, 71%, 52%, 1)" opacity="0.7"/>
+  <!-- Text -->
+  <text x="100" y="190" font-family="Arial, sans-serif" font-size="14" font-weight="bold" text-anchor="middle" fill="hsla(270, 71%, 52%, 1)">HGF</text>
+</svg>

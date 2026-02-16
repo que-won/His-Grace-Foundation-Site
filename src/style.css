@@ -3,10 +3,10 @@
   line-height: 1.6;
   font-weight: 400;
 
-  --primary: #1e3a5f;
-  --primary-light: #2d5a8c;
-  --accent: #0ea5a5;
-  --accent-light: #14b8a6;
+  --primary: hsla(270, 71%, 52%, 1);
+  --primary-light: hsla(270, 71%, 62%, 1);
+  --accent: hsla(270, 71%, 52%, 1);
+  --accent-light: hsla(270, 71%, 62%, 1);
   --text-dark: #1f2937;
   --text-light: #6b7280;
   --bg-light: #f9fafb;
