@@ -3,7 +3,7 @@
     <div class="footer__inner">
       <div class="footer__top">
         <section class="footer__brand">
-          <div class="footer__mark" aria-hidden="true">H</div>
+          <div class="footer__mark" aria-hidden="true"><img src="/images/logo-copy.png" alt="His Grace Foundation Logo"></div>
           <div>
             <h2>His Grace Foundation</h2>
             <p>
@@ -60,6 +60,11 @@
 </template>
 
 <style scoped>
+.footer__mark img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 .footer {
   background: #101010;
   color: #f3f4f6;
