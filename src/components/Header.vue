@@ -2,7 +2,7 @@
   <header class="site-header">
     <div class="site-header__inner">
       <RouterLink class="site-header__brand" to="/" aria-label="His Grace Foundation home">
-        <span class="site-header__logo" aria-hidden="true">H</span>
+        <span class="site-header__logo" aria-hidden="true"><img src="/images/logo.jpeg" alt="His Grace Foundation Logo"></span>
         <span class="site-header__name">His Grace Foundation</span>
       </RouterLink>
 
@@ -36,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+
 import { ref } from 'vue';
 
 const mobileMenuOpen = ref(false);
@@ -84,6 +85,13 @@ const closeMobileMenu = () => {
   background: #7d2be0;
   color: #fff;
   font-size: 1rem;
+  overflow: hidden;
+}
+
+.site-header__logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .site-header__name {
@@ -184,7 +192,11 @@ const closeMobileMenu = () => {
 /* Tablet: 768px and below */
 @media (max-width: 768px) {
   .site-header__inner {
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto auto;
+  }
+
+  .site-header__nav {
+    display: none;
   }
 
   .site-header__phone {
@@ -198,14 +210,18 @@ const closeMobileMenu = () => {
 
 /* Mobile: 640px and below */
 @media (max-width: 640px) {
+  .site-header {
+    position: relative;
+  }
+
   .site-header__inner {
     padding: 0.9rem 1rem;
-    grid-template-columns: auto 1fr auto;
+    grid-template-columns: auto auto auto;
   }
 
   .site-header__nav {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: var(--header-height, 60px);
     left: 0;
     right: 0;
     background: rgba(255, 255, 255, 0.98);
@@ -217,10 +233,13 @@ const closeMobileMenu = () => {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
+    z-index: 19;
+    display: none;
   }
 
   .site-header__nav.is-open {
-    max-height: 500px;
+    display: flex;
+    max-height: 100vh;
   }
 
   .site-header__nav a {
@@ -234,9 +253,7 @@ const closeMobileMenu = () => {
   }
 
   .site-header__actions {
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.5rem;
+    display: none;
   }
 
   .site-header__cta {
