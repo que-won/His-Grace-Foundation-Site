@@ -1,45 +1,31 @@
-<script setup lang="ts">
-</script>
-
 <template>
-  <section id="mission" class="mission-section">
-    <div class="container">
-      <div class="mission-content">
-        <div class="mission-text">
-          <h2>Every Action Matters</h2>
-          <p>At His Grace Foundation, we believe that meaningful change comes through dedicated action and community empowerment. Our mission is to provide essential resources and educational opportunities to underserved communities across Africa.</p>
-
-          <div class="mission-highlights">
-            <div class="highlight">
-              <span class="highlight-icon">🎓</span>
-              <div>
-                <h4>Quality Education</h4>
-                <p>Ensuring access to quality education for children in remote areas</p>
-              </div>
-            </div>
-
-            <div class="highlight">
-              <span class="highlight-icon">🏥</span>
-              <div>
-                <h4>Healthcare Access</h4>
-                <p>Providing medical facilities and health resources to communities</p>
-              </div>
-            </div>
-
-            <div class="highlight">
-              <span class="highlight-icon">💧</span>
-              <div>
-                <h4>Clean Water</h4>
-                <p>Bringing clean, safe water to villages and communities</p>
-              </div>
-            </div>
-          </div>
-
-          <button class="mission-btn">Join Our Mission</button>
+  <section id="about" class="about-section">
+    <div class="about-section__inner">
+      <div id="mission" class="about-section__anchor" aria-hidden="true"></div>
+      <div class="about-card">
+        <div class="about-card__media">
+          <img
+            src="../../public/images/real1.jpeg"
+            alt="Volunteer team supporting a charity initiative"
+          />
+          <div class="about-card__badge" aria-hidden="true">❤</div>
         </div>
 
-        <div class="mission-image">
-          <img src="https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Community impact" />
+        <div class="about-card__content">
+          <p class="about-card__eyebrow">About Us</p>
+          <h2>We&apos;re Non-Profit Charity &amp; NGO Organization</h2>
+          <ul class="about-card__list">
+            <li>Support people in extreme need</li>
+            <li>Largest global environmental community</li>
+            <li>Make the world a better place</li>
+            <li>Share your love for humanity</li>
+          </ul>
+          <p class="about-card__text">
+            We work with communities that need consistent care, practical
+            support, and a reliable partner that shows up for education,
+            wellbeing, and opportunity.
+          </p>
+          <a class="about-card__button" href="#why-us">Why Choose Us</a>
         </div>
       </div>
     </div>
@@ -47,153 +33,156 @@
 </template>
 
 <style scoped>
-.mission-section {
-  padding: 4rem 0;
-  background: white;
+.about-section {
+  padding: 4.5rem 1.5rem;
+  background: #fff;
+  scroll-margin-top: 6rem;
 }
 
-.mission-content {
+.about-section__inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.about-section__anchor {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 0;
+  height: 0;
+}
+
+.about-card {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  grid-template-columns: minmax(280px, 1.05fr) minmax(300px, 0.95fr);
   align-items: center;
+  gap: 2.5rem;
 }
 
-.mission-text h2 {
-  margin-bottom: 1.5rem;
-  font-size: 2.5rem;
+.about-card__media {
+  position: relative;
+  min-height: 24rem;
 }
 
-.mission-text p {
-  font-size: 1.1rem;
-  color: var(--text-light);
-  margin-bottom: 2rem;
-  line-height: 1.8;
-}
-
-.mission-highlights {
-  margin-bottom: 2.5rem;
-}
-
-.highlight {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: var(--bg-light);
-  border-radius: 10px;
-  transition: all 0.3s ease;
-}
-
-.highlight:hover {
-  background: white;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateX(5px);
-}
-
-.highlight-icon {
-  font-size: 2.5rem;
-  min-width: 60px;
-  text-align: center;
-}
-
-.highlight h4 {
-  margin-bottom: 0.5rem;
-  color: var(--primary);
-}
-
-.highlight p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: var(--text-light);
-}
-
-.mission-btn {
-  background: var(--accent);
-  color: white;
-  padding: 1rem 2.5rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: 700;
-  transition: all 0.3s ease;
-}
-
-.mission-btn:hover {
-  background: var(--accent-light);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(14, 165, 165, 0.3);
-}
-
-.mission-image {
-  width: 100%;
-  height: 400px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.mission-image img {
+.about-card__media img {
+  display: block;
   width: 100%;
   height: 100%;
+  min-height: 24rem;
   object-fit: cover;
-  transition: transform 0.3s ease;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(21, 33, 31, 0.16);
 }
 
-.mission-image:hover img {
-  transform: scale(1.05);
+.about-card__badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: grid;
+  place-items: center;
+  width: 3.25rem;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: #8e0ac6;
+  color: #fff;
+  font-size: 1.4rem;
+  box-shadow: 0 10px 20px rgba(142, 10, 198, 0.25);
 }
 
-@media (max-width: 1024px) {
-  .mission-content {
-    gap: 2rem;
-  }
-
-  .mission-image {
-    height: 300px;
-  }
+.about-card__content {
+  padding: 0.5rem 0;
 }
 
-@media (max-width: 768px) {
-  .mission-content {
+.about-card__eyebrow {
+  margin: 0 0 0.5rem;
+  color: #8e0ac6;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.about-card__content h2 {
+  margin: 0;
+  max-width: 14ch;
+  color: #17352d;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.about-card__list {
+  margin: 1.35rem 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.about-card__list li {
+  position: relative;
+  padding-left: 1.35rem;
+  color: #35564c;
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
+.about-card__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: #8e0ac6;
+}
+
+.about-card__text {
+  margin: 1rem 0 0;
+  max-width: 44ch;
+  color: #6a7f76;
+  font-size: 0.94rem;
+  line-height: 1.65;
+}
+
+.about-card__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1.4rem;
+  min-width: 8.5rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 8px;
+  background: #8e0ac6;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 18px rgba(142, 10, 198, 0.22);
+}
+
+@media (max-width: 900px) {
+  .about-card {
     grid-template-columns: 1fr;
   }
 
-  .mission-text h2 {
-    font-size: 2rem;
-  }
-
-  .mission-image {
-    height: 300px;
-  }
-
-  .highlight {
-    gap: 1rem;
-    padding: 1rem;
-  }
-
-  .highlight-icon {
-    font-size: 2rem;
-    min-width: 50px;
+  .about-card__content h2 {
+    max-width: 100%;
   }
 }
 
-@media (max-width: 480px) {
-  .mission-section {
-    padding: 2rem 0;
+@media (max-width: 640px) {
+  .about-section {
+    padding: 3rem 1rem;
   }
 
-  .mission-text p {
-    font-size: 1rem;
+  .about-card__media,
+  .about-card__media img {
+    min-height: 18rem;
   }
 
-  .highlight {
-    margin-bottom: 1.5rem;
-  }
-
-  .mission-image {
-    height: 250px;
+  .about-card {
+    gap: 1.5rem;
   }
 }
 </style>

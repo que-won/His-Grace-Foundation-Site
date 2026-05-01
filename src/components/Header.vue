@@ -1,219 +1,268 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-const mobileMenuOpen = ref(false)
-</script>
-
 <template>
-  <header class="header">
-    <div class="container header-container">
-      <RouterLink to="/" class="logo">
-        <img src="/images/logo.svg" alt="His Grace Foundation Logo" class="logo-img">
-        <h3 style="margin: 0; color: var(--accent)">His Grace Foundation</h3>
+  <header class="site-header">
+    <div class="site-header__inner">
+      <RouterLink class="site-header__brand" to="/" aria-label="His Grace Foundation home">
+        <span class="site-header__logo" aria-hidden="true">H</span>
+        <span class="site-header__name">His Grace Foundation</span>
       </RouterLink>
 
-      <nav class="nav">
-        <RouterLink to="/" class="nav-link">Home</RouterLink>
-        <RouterLink to="/projects" class="nav-link">Projects</RouterLink>
-        <RouterLink to="/donations" class="nav-link">Donations</RouterLink>
-        <RouterLink to="/help" class="nav-link">Help</RouterLink>
-        <RouterLink to="/give-away" class="nav-link">Give Away</RouterLink>
-        <RouterLink to="/volunteer" class="nav-link">Volunteer</RouterLink>
+      <nav class="site-header__nav" :class="{ 'is-open': mobileMenuOpen }" aria-label="Primary navigation">
+        <RouterLink to="/" @click="closeMobileMenu">Home</RouterLink>
+        <RouterLink to="/about" @click="closeMobileMenu">About</RouterLink>
+        <RouterLink to="/projects" @click="closeMobileMenu">Projects</RouterLink>
+        <RouterLink to="/donations" @click="closeMobileMenu">Donations</RouterLink>
+        <RouterLink to="/help" @click="closeMobileMenu">Help</RouterLink>
+        <RouterLink to="/give-away" @click="closeMobileMenu">Give Away</RouterLink>
+        <RouterLink to="/volunteer" @click="closeMobileMenu">Volunteer</RouterLink>
       </nav>
 
-      <div class="header-actions">
-        <a href="tel:+12673850667" class="donate-btn">
-          📞 +1 (267) 385-0667
-        </a>
+      <div class="site-header__actions">
+        <a class="site-header__phone" href="tel:+12673850667">+1 (267) 385-0667</a>
+        <RouterLink class="site-header__cta" to="/contact">Contact</RouterLink>
       </div>
 
-      <button class="mobile-menu-btn" @click="mobileMenuOpen = !mobileMenuOpen">
+      <button 
+        class="site-header__menu-toggle"
+        @click="mobileMenuOpen = !mobileMenuOpen"
+        :aria-expanded="mobileMenuOpen"
+        aria-label="Toggle navigation menu"
+      >
         <span></span>
         <span></span>
         <span></span>
       </button>
     </div>
-
-    <div v-if="mobileMenuOpen" class="mobile-nav">
-      <RouterLink to="/" class="mobile-nav-link" @click="mobileMenuOpen = false">Home</RouterLink>
-      <RouterLink to="/projects" class="mobile-nav-link" @click="mobileMenuOpen = false">Projects</RouterLink>
-      <RouterLink to="/donations" class="mobile-nav-link" @click="mobileMenuOpen = false">Donations</RouterLink>
-      <RouterLink to="/help" class="mobile-nav-link" @click="mobileMenuOpen = false">Help</RouterLink>
-      <RouterLink to="/give-away" class="mobile-nav-link" @click="mobileMenuOpen = false">Give Away</RouterLink>
-      <RouterLink to="/volunteer" class="mobile-nav-link" @click="mobileMenuOpen = false">Volunteer</RouterLink>
-      <a href="tel:+12673850667" class="mobile-nav-link donate">📞 Donate</a>
-    </div>
   </header>
 </template>
 
+<script setup lang="ts">
+import { ref } from 'vue';
+
+const mobileMenuOpen = ref(false);
+
+const closeMobileMenu = () => {
+  mobileMenuOpen.value = false;
+};
+</script>
+
 <style scoped>
-.header {
-  background: white;
-  border-bottom: 1px solid var(--border);
+.site-header {
   position: sticky;
   top: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #ececec;
 }
 
-.header-container {
-  display: flex;
+.site-header__inner {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  justify-content: space-between;
-  padding: 1rem 0;
-  height: 70px;
+  gap: 1.5rem;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  position: relative;
 }
 
-.logo {
+.site-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  color: #1f2428;
   text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  font-weight: 800;
 }
 
-.logo-img {
-  height: 50px;
-  width: 50px;
-  object-fit: contain;
+.site-header__logo {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  background: #7d2be0;
+  color: #fff;
+  font-size: 1rem;
 }
 
-.logo h3 {
-  font-size: 1.5rem;
+.site-header__name {
+  font-size: 1rem;
   white-space: nowrap;
 }
 
-.nav {
+.site-header__nav {
   display: flex;
-  gap: 2rem;
-  align-items: center;
+  justify-content: center;
+  gap: 1.1rem;
+  flex-wrap: wrap;
 }
 
-.nav-link {
-  color: var(--text-dark);
-  font-weight: 500;
-  font-size: 0.95rem;
-  position: relative;
-  transition: color 0.3s ease;
+.site-header__nav a {
+  color: #27303a;
   text-decoration: none;
-}
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.3s ease;
-}
-
-.nav-link:hover {
-  color: var(--accent);
-}
-
-.nav-link:hover::after {
-  width: 100%;
-}
-
-.nav-link.router-link-active {
-  color: var(--accent);
-}
-
-.nav-link.router-link-active::after {
-  width: 100%;
-}
-
-.donate-btn {
-  background: var(--accent);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 8px;
+  font-size: 0.93rem;
   font-weight: 600;
-  display: inline-block;
-  transition: all 0.3s ease;
+  transition: color 0.2s ease;
+}
+
+.site-header__nav a:hover,
+.site-header__nav a.router-link-active,
+.site-header__nav a.router-link-exact-active {
+  color: #7d2be0;
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-header__phone,
+.site-header__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 700;
   text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.donate-btn:hover {
-  background: var(--accent-light);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(14, 165, 165, 0.3);
+.site-header__phone {
+  background: #7d2be0;
+  color: #fff;
 }
 
-.mobile-menu-btn {
+.site-header__phone:hover {
+  background: #6a1fb8;
+}
+
+.site-header__cta {
+  border: 1px solid #e4d5fb;
+  color: #7d2be0;
+}
+
+.site-header__cta:hover {
+  background: #f8f3ff;
+}
+
+.site-header__menu-toggle {
   display: none;
   flex-direction: column;
+  gap: 0.4rem;
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0;
-  gap: 5px;
-  margin-right: 1rem;
+  padding: 0.5rem;
+  margin-right: -0.5rem;
 }
 
-.mobile-menu-btn span {
-  width: 25px;
-  height: 3px;
-  background: var(--primary);
-  border-radius: 2px;
+.site-header__menu-toggle span {
+  width: 1.5rem;
+  height: 0.2rem;
+  background: #27303a;
+  border-radius: 999px;
   transition: all 0.3s ease;
 }
 
-.mobile-nav {
-  display: none;
-  flex-direction: column;
-  padding: 1rem 0;
-  border-top: 1px solid var(--border);
-  background: var(--bg-light);
+.site-header__menu-toggle[aria-expanded="true"] span:nth-child(1) {
+  transform: rotate(45deg) translate(0.5rem, 0.6rem);
 }
 
-.mobile-nav-link {
-  padding: 0.75rem 1.5rem;
-  color: var(--text-dark);
-  font-weight: 500;
-  transition: background 0.3s ease;
-  text-decoration: none;
-  display: block;
+.site-header__menu-toggle[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
 }
 
-.mobile-nav-link:hover {
-  background: white;
+.site-header__menu-toggle[aria-expanded="true"] span:nth-child(3) {
+  transform: rotate(-45deg) translate(0.5rem, -0.6rem);
 }
 
-.mobile-nav-link.router-link-active {
-  background: rgba(14, 165, 165, 0.1);
-  color: var(--accent);
-}
-
-.mobile-nav-link.donate {
-  background: var(--accent);
-  color: white;
-  margin: 0.5rem;
-  border-radius: 8px;
-  text-align: center;
-}
-
+/* Tablet: 768px and below */
 @media (max-width: 768px) {
-  .nav {
+  .site-header__inner {
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .site-header__phone {
     display: none;
   }
 
-  .donate-btn {
-    display: none;
-  }
-
-  .mobile-menu-btn {
+  .site-header__menu-toggle {
     display: flex;
   }
+}
 
-  .mobile-nav {
-    display: flex;
+/* Mobile: 640px and below */
+@media (max-width: 640px) {
+  .site-header__inner {
+    padding: 0.9rem 1rem;
+    grid-template-columns: auto 1fr auto;
   }
 
-  .header-container {
-    height: auto;
+  .site-header__nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(255, 255, 255, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #ececec;
+    flex-direction: column;
+    gap: 0;
     padding: 1rem 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .site-header__nav.is-open {
+    max-height: 500px;
+  }
+
+  .site-header__nav a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .site-header__nav a:hover {
+    background: #f8f3ff;
+  }
+
+  .site-header__actions {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .site-header__cta {
+    padding: 0.7rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Small devices: 480px and below */
+@media (max-width: 480px) {
+  .site-header__inner {
+    padding: 0.75rem 0.875rem;
+  }
+
+  .site-header__name {
+    display: none;
+  }
+
+  .site-header__cta {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .site-header__nav a {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
   }
 }
 </style>

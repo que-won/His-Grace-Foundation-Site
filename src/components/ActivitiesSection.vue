@@ -10,26 +10,26 @@ const activities: Activity[] = [
   {
     title: 'Healthy Food Programs',
     description: 'Providing nutritious meals to children in schools and communities, ensuring proper nutrition for healthy development.',
-    icon: '🍎',
-    image: 'https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=600'
+    icon: '',
+    image: '../../public/images/real1.jpeg'
   },
   {
     title: 'Pure Water Access',
     description: 'Installing and maintaining water systems to provide clean, safe drinking water to remote villages.',
-    icon: '💧',
-    image: 'https://images.pexels.com/photos/3962285/pexels-photo-3962285.jpeg?auto=compress&cs=tinysrgb&w=600'
+    icon: '',
+    image: '../../public/images/real1.jpeg'
   },
   {
     title: 'Medical Facilities',
     description: 'Building and supporting healthcare centers to provide medical care and emergency services to underserved communities.',
-    icon: '🏥',
-    image: 'https://images.pexels.com/photos/5632399/pexels-photo-5632399.jpeg?auto=compress&cs=tinysrgb&w=600'
+    icon: '',
+    image: '../../public/images/real1.jpeg'
   },
   {
     title: 'Educational Support',
     description: 'Supporting schools with resources, scholarships, and programs to empower children through quality education.',
-    icon: '📚',
-    image: 'https://images.pexels.com/photos/3807517/pexels-photo-3807517.jpeg?auto=compress&cs=tinysrgb&w=600'
+    icon: '',
+    image: '../../public/images/real1.jpeg'
   }
 ]
 </script>
