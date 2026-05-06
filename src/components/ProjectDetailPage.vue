@@ -278,7 +278,7 @@ const relatedProjects = computed(() =>
   grid-template-columns: minmax(0, 0.92fr) minmax(320px, 0.78fr);
   gap: 1.2rem;
   align-items: stretch;
-  padding: 4.5rem 1.5rem 1.5rem;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 1.5rem 1.5rem;
 }
 
 .project-detail__hero-copy {
@@ -636,61 +636,334 @@ const relatedProjects = computed(() =>
   font-weight: 900;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .project-detail__hero,
   .project-detail__content,
-  .project-detail__objectives,
-  .project-detail__related-grid {
+  .project-detail__objectives {
     grid-template-columns: 1fr;
+    padding: 2.5rem 1.5rem 0;
   }
 
   .project-detail__stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+    padding: 0 1.5rem 1.5rem;
   }
 
   .project-detail__hero-media {
     min-height: 24rem;
   }
 
+  .project-detail__related-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .project-detail__gallery {
     grid-template-columns: 1fr;
     grid-auto-rows: 16rem;
   }
+}
 
-  .project-detail__gallery img:first-child {
-    grid-row: span 1;
+@media (max-width: 768px) {
+  .project-detail {
+    background: linear-gradient(180deg, #fff 0%, #fff8ef 100%);
+  }
+
+  .project-detail__hero {
+    padding: 2rem 1.25rem 1.25rem;
+    gap: 1rem;
+  }
+
+  .project-detail__hero-copy {
+    padding: 1.35rem;
+    border-radius: 0.4rem;
+  }
+
+  .project-detail h1 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    max-width: 100%;
+  }
+
+  .project-detail__hero-copy > p:last-of-type {
+    font-size: 0.98rem;
+    margin-top: 1rem;
+  }
+
+  .project-detail__back {
+    margin-bottom: 1rem;
+    padding: 0.55rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .project-detail__actions {
+    gap: 0.65rem;
+    margin-top: 1.25rem;
+  }
+
+  .project-detail__actions a {
+    padding: 0.7rem 0.95rem;
+    font-size: 0.88rem;
+    min-height: 2.65rem;
+  }
+
+  .project-detail__hero-media {
+    min-height: 22rem;
+    border-radius: 0.4rem;
+  }
+
+  .project-detail__hero-media span {
+    right: 0.85rem;
+    bottom: 0.85rem;
+    font-size: 0.72rem;
+  }
+
+  .project-detail__stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    padding: 0 1.25rem 1.25rem;
+  }
+
+  .project-detail__stats article {
+    padding: 1.1rem;
+  }
+
+  .project-detail__stats strong {
+    font-size: 1.8rem;
+  }
+
+  .project-detail__content,
+  .project-detail__objectives {
+    padding: 2rem 1.25rem 0;
+  }
+
+  .project-detail__story,
+  .project-detail__progress {
+    padding: 1.35rem;
+  }
+
+  .project-detail__story h2,
+  .project-detail__objectives h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+  }
+
+  .project-detail__gallery {
+    padding: 1.25rem;
+    grid-auto-rows: 15rem;
+  }
+
+  .project-detail__related {
+    padding: 2rem 1.25rem;
+  }
+
+  .project-detail__related-grid {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .project-detail__related img {
+    height: 12rem;
   }
 }
 
 @media (max-width: 640px) {
   .project-detail__hero {
-    padding: 3rem 1rem 1rem;
-  }
-
-  .project-detail__stats,
-  .project-detail__content,
-  .project-detail__objectives,
-  .project-detail__gallery,
-  .project-detail__related {
-    padding-right: 1rem;
-    padding-left: 1rem;
-  }
-
-  .project-detail h1 {
-    max-width: 100%;
-    font-size: 2.7rem;
+    padding: 1.75rem 1rem 1rem;
   }
 
   .project-detail__hero-copy {
-    padding: 1.35rem;
+    padding: 1.2rem;
+  }
+
+  .project-detail h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+  }
+
+  .project-detail__eyebrow {
+    font-size: 0.75rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .project-detail__hero-copy > p:last-of-type {
+    font-size: 0.92rem;
+    margin-top: 0.9rem;
+  }
+
+  .project-detail__back {
+    margin-bottom: 0.9rem;
+    padding: 0.5rem 0.95rem;
+    font-size: 0.8rem;
+  }
+
+  .project-detail__actions {
+    gap: 0.6rem;
+    margin-top: 1.1rem;
+  }
+
+  .project-detail__actions a {
+    padding: 0.65rem 0.9rem;
+    font-size: 0.85rem;
+    min-height: 2.5rem;
+  }
+
+  .project-detail__hero-media {
+    min-height: 20rem;
+  }
+
+  .project-detail__hero-media span {
+    right: 0.75rem;
+    bottom: 0.75rem;
+    font-size: 0.68rem;
+    padding: 0.45rem 0.7rem;
   }
 
   .project-detail__stats {
     grid-template-columns: 1fr;
+    gap: 0.7rem;
+    padding: 0 1rem 1rem;
+  }
+
+  .project-detail__stats article {
+    padding: 1rem;
+  }
+
+  .project-detail__stats strong {
+    font-size: 1.6rem;
+  }
+
+  .project-detail__stats span {
+    font-size: 0.78rem;
+  }
+
+  .project-detail__content,
+  .project-detail__objectives {
+    padding: 1.75rem 1rem 0;
+  }
+
+  .project-detail__story,
+  .project-detail__progress {
+    padding: 1.2rem;
+  }
+
+  .project-detail__story h2,
+  .project-detail__objectives h2 {
+    font-size: 1.6rem;
   }
 
   .project-detail__objective-list article {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .project-detail__objective-list article span {
+    font-size: 1.2rem;
+  }
+
+  .project-detail__gallery {
+    padding: 1rem;
+    grid-auto-rows: 13rem;
+    gap: 0.8rem;
+  }
+
+  .project-detail__related {
+    padding: 1.75rem 1rem;
+  }
+
+  .project-detail__related-header {
+    margin-bottom: 1.2rem;
+  }
+
+  .project-detail__related-grid {
+    gap: 0.8rem;
+  }
+
+  .project-detail__related img {
+    height: 11rem;
+  }
+
+  .project-detail__related h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .project-detail__hero {
+    padding: 1.5rem 0.9rem 0.9rem;
+    gap: 0.9rem;
+  }
+
+  .project-detail__hero-copy {
+    padding: 1.1rem;
+  }
+
+  .project-detail h1 {
+    font-size: 1.75rem;
+  }
+
+  .project-detail__back {
+    margin-bottom: 0.8rem;
+    padding: 0.45rem 0.85rem;
+    font-size: 0.75rem;
+  }
+
+  .project-detail__actions {
+    gap: 0.55rem;
+    margin-top: 0.95rem;
+  }
+
+  .project-detail__actions a {
+    padding: 0.6rem 0.85rem;
+    font-size: 0.8rem;
+    min-height: 2.4rem;
+  }
+
+  .project-detail__hero-media {
+    min-height: 18rem;
+  }
+
+  .project-detail__stats {
+    padding: 0 0.9rem 0.95rem;
+  }
+
+  .project-detail__stats article {
+    padding: 0.95rem;
+  }
+
+  .project-detail__stats strong {
+    font-size: 1.45rem;
+  }
+
+  .project-detail__content,
+  .project-detail__objectives {
+    padding: 1.5rem 0.9rem 0;
+  }
+
+  .project-detail__story,
+  .project-detail__progress {
+    padding: 1.1rem;
+  }
+
+  .project-detail__story h2,
+  .project-detail__objectives h2 {
+    font-size: 1.5rem;
+  }
+
+  .project-detail__gallery {
+    padding: 0.9rem;
+    grid-auto-rows: 12rem;
+    gap: 0.7rem;
+  }
+
+  .project-detail__related {
+    padding: 1.5rem 0.9rem;
+  }
+
+  .project-detail__related img {
+    height: 10rem;
+  }
+
+  .project-detail__related h3 {
+    font-size: 1rem;
   }
 }
 </style>

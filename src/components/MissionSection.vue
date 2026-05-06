@@ -34,7 +34,7 @@
 
 <style scoped>
 .about-section {
-  padding: 4.5rem 1.5rem;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 1.5rem;
   background: #fff;
   scroll-margin-top: 6rem;
 }
@@ -161,19 +161,29 @@
   box-shadow: 0 10px 18px rgba(142, 10, 198, 0.22);
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .about-card {
     grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .about-card__media {
+    min-height: 20rem;
+  }
+
+  .about-card__media img {
+    min-height: 20rem;
   }
 
   .about-card__content h2 {
     max-width: 100%;
+    font-size: 2.2rem;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .about-section {
-    padding: 3rem 1rem;
+    padding: 2.5rem 1.25rem;
   }
 
   .about-card__media,
@@ -182,7 +192,127 @@
   }
 
   .about-card {
-    gap: 1.5rem;
+    gap: 1.35rem;
+  }
+
+  .about-card__badge {
+    top: 0.85rem;
+    left: 0.85rem;
+    width: 2.85rem;
+    font-size: 1.2rem;
+  }
+
+  .about-card__content h2 {
+    font-size: 1.85rem;
+    line-height: 1.15;
+  }
+
+  .about-card__list li {
+    padding-left: 1.2rem;
+    font-size: 0.9rem;
+  }
+
+  .about-card__text {
+    max-width: 100%;
+    font-size: 0.9rem;
+  }
+
+  .about-card__button {
+    padding: 0.8rem 1.1rem;
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .about-section {
+    padding: 2rem 1rem;
+  }
+
+  .about-card__media,
+  .about-card__media img {
+    min-height: 16rem;
+  }
+
+  .about-card {
+    gap: 1.15rem;
+  }
+
+  .about-card__badge {
+    top: 0.75rem;
+    left: 0.75rem;
+    width: 2.6rem;
+    font-size: 1.1rem;
+  }
+
+  .about-card__eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .about-card__content h2 {
+    font-size: 1.65rem;
+    line-height: 1.1;
+  }
+
+  .about-card__list {
+    gap: 0.55rem;
+    margin-top: 1rem;
+  }
+
+  .about-card__list li {
+    padding-left: 1.1rem;
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .about-card__text {
+    font-size: 0.85rem;
+    margin-top: 0.75rem;
+  }
+
+  .about-card__button {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    margin-top: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-section {
+    padding: 1.75rem 0.9rem;
+  }
+
+  .about-card__media,
+  .about-card__media img {
+    min-height: 14rem;
+  }
+
+  .about-card {
+    gap: 1rem;
+  }
+
+  .about-card__badge {
+    top: 0.65rem;
+    left: 0.65rem;
+    width: 2.4rem;
+    font-size: 1rem;
+  }
+
+  .about-card__content h2 {
+    font-size: 1.5rem;
+  }
+
+  .about-card__list li {
+    padding-left: 1rem;
+    font-size: 0.82rem;
+  }
+
+  .about-card__text {
+    font-size: 0.82rem;
+  }
+
+  .about-card__button {
+    padding: 0.7rem 0.95rem;
+    font-size: 0.8rem;
   }
 }
 </style>

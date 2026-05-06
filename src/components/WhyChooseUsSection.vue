@@ -54,7 +54,7 @@
 
 <style scoped>
 .why-us {
-  padding: 4.5rem 1.5rem 0;
+  padding: clamp(2.5rem, 5vw, 4.5rem) 1.5rem 0;
   background: #fff;
 }
 
@@ -160,28 +160,194 @@
   background: linear-gradient(90deg, #2d6fb7 0%, #0f5fb1 70%, #c7d7ea 70%, #c7d7ea 100%);
 }
 
-@media (max-width: 980px) {
+@media (max-width: 1024px) {
   .why-us__inner {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .why-us__copy {
+    padding: 2.5rem 2rem 1.75rem;
+  }
+
+  .why-us__copy h2 {
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+  }
+
+  .why-us__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem 1rem;
   }
 
   .why-us__media {
     min-height: 22rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-us {
+    padding: 2.5rem 1.25rem 0;
+  }
+
+  .why-us__inner {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    border-radius: 10px;
+  }
+
+  .why-us__copy {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+
+  .why-us__eyebrow {
+    font-size: 0.92rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .why-us__copy h2 {
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    max-width: 100%;
+  }
+
+  .why-us__grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.75rem;
+  }
+
+  .why-us__item {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 0.85rem;
+  }
+
+  .why-us__icon {
+    width: 2.8rem;
+    font-size: 1.2rem;
+  }
+
+  .why-us__item h3 {
+    font-size: 0.8rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .why-us__item p {
+    font-size: 0.88rem;
+  }
+
+  .why-us__media {
+    min-height: 20rem;
     order: -1;
   }
 }
 
 @media (max-width: 640px) {
   .why-us {
-    padding: 3rem 1rem 0;
+    padding: 2rem 1rem 0;
+  }
+
+  .why-us__inner {
+    gap: 1.2rem;
+    border-radius: 8px;
   }
 
   .why-us__copy {
-    padding: 2rem 1.25rem 1.5rem;
+    padding: 1.75rem 1.25rem 1.25rem;
+  }
+
+  .why-us__eyebrow {
+    font-size: 0.88rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .why-us__copy h2 {
+    font-size: 1.6rem;
+    line-height: 1.1;
   }
 
   .why-us__grid {
     grid-template-columns: 1fr;
+    gap: 0.9rem;
+    margin-top: 1.5rem;
+  }
+
+  .why-us__item {
+    gap: 0.8rem;
+  }
+
+  .why-us__icon {
+    width: 2.6rem;
+    font-size: 1.1rem;
+    min-width: 2.6rem;
+  }
+
+  .why-us__item h3 {
+    font-size: 0.78rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .why-us__item p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .why-us__media {
+    min-height: 18rem;
+  }
+
+  .why-us__bar {
+    height: 0.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-us {
+    padding: 1.75rem 0.9rem 0;
+  }
+
+  .why-us__inner {
+    gap: 1.1rem;
+    border-radius: 6px;
+  }
+
+  .why-us__copy {
+    padding: 1.5rem 1.1rem 1.1rem;
+  }
+
+  .why-us__eyebrow {
+    font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .why-us__copy h2 {
+    font-size: 1.5rem;
+  }
+
+  .why-us__grid {
+    gap: 0.85rem;
+    margin-top: 1.3rem;
+  }
+
+  .why-us__item {
+    gap: 0.75rem;
+  }
+
+  .why-us__icon {
+    width: 2.4rem;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .why-us__item h3 {
+    font-size: 0.75rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .why-us__item p {
+    font-size: 0.82rem;
+  }
+
+  .why-us__media {
+    min-height: 16rem;
   }
 }
 </style>

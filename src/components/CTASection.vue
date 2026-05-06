@@ -46,7 +46,7 @@
 
 <style scoped>
 .cta-section {
-  padding: 5rem 1.5rem;
+  padding: clamp(3rem, 5vw, 5rem) 1.5rem;
   background: linear-gradient(135deg, #7d2be0 0%, #8e0ac7 100%);
   position: relative;
   overflow: hidden;
@@ -272,34 +272,166 @@
   }
 }
 
-@media (max-width: 768px) {
-  .cta-section {
-    padding: 3rem 1rem;
-  }
-
+@media (max-width: 1024px) {
   .cta-container {
     grid-template-columns: 1fr;
+    gap: 2rem;
   }
 
   .cta-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
-  .cta-actions {
-    flex-direction: column;
-  }
-
-  .cta-btn {
-    width: 100%;
+  .cta-description {
+    font-size: 1rem;
   }
 
   .cta-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
   }
 
   .cta-visual {
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .cta-container {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cta-content {
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: clamp(1.75rem, 4vw, 2.1rem);
+    margin-bottom: 1.2rem;
+  }
+
+  .cta-description {
+    font-size: 0.95rem;
+    margin-bottom: 1.8rem;
+    max-width: 100%;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+    margin-bottom: 2rem;
+    gap: 1rem;
+  }
+
+  .cta-btn {
+    width: 100%;
+    padding: 0.95rem 1.8rem;
+    font-size: 0.95rem;
+  }
+
+  .cta-stats {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .cta-stat-number {
+    font-size: 1.6rem;
+  }
+
+  .cta-stat-label {
+    font-size: 0.88rem;
+  }
+
+  .cta-visual {
     display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .cta-section {
+    padding: 2rem 1rem;
+  }
+
+  .cta-title {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .cta-description {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-actions {
+    margin-bottom: 1.8rem;
+    gap: 0.9rem;
+  }
+
+  .cta-btn {
+    padding: 0.9rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+
+  .cta-stats {
+    gap: 1rem;
+  }
+
+  .cta-stat-item {
+    gap: 0.4rem;
+  }
+
+  .cta-stat-number {
+    font-size: 1.45rem;
+  }
+
+  .cta-stat-label {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .cta-section {
+    padding: 1.75rem 0.9rem;
+  }
+
+  .cta-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .cta-description {
+    font-size: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .cta-actions {
+    margin-bottom: 1.5rem;
+    gap: 0.8rem;
+  }
+
+  .cta-btn {
+    padding: 0.85rem 1.3rem;
+    font-size: 0.85rem;
+  }
+
+  .cta-stats {
+    gap: 0.9rem;
+  }
+
+  .cta-stat-number {
+    font-size: 1.35rem;
+  }
+
+  .cta-stat-label {
+    font-size: 0.8rem;
   }
 }
 </style>

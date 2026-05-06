@@ -111,7 +111,7 @@
 
 <style scoped>
 .help-section {
-  padding: 4rem 1.5rem 0;
+  padding: clamp(2.5rem, 5vw, 4rem) 1.5rem 0;
   background: #fff;
 }
 
@@ -359,15 +359,28 @@
   outline-offset: 2px;
 }
 
-@media (max-width: 980px) {
-  .help-hero,
-  .newsletter {
+@media (max-width: 1024px) {
+  .help-hero {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2rem;
   }
 
-  .help-actions,
+  .help-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .help-hero__media {
+    min-height: 16rem;
+  }
+
   .recent-updates__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .newsletter {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .newsletter__fields {
@@ -375,18 +388,336 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .help-section {
-    padding: 3rem 1rem 0;
+    padding: 2.5rem 1.25rem 0;
   }
 
   .help-hero {
-    padding: 1.4rem 1rem;
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+    padding: 1.5rem;
   }
 
-  .help-actions,
+  .help-hero h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .help-hero__text {
+    font-size: 0.93rem;
+    max-width: 100%;
+  }
+
+  .help-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.65rem;
+    margin-top: 1.2rem;
+  }
+
+  .help-action {
+    min-height: 4.5rem;
+    gap: 0.35rem;
+  }
+
+  .help-action span {
+    font-size: 1.25rem;
+  }
+
+  .help-action strong {
+    font-size: 0.68rem;
+  }
+
+  .help-hero__media {
+    min-height: 15rem;
+  }
+
+  .recent-updates h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .recent-updates__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+  }
+
+  .update-card img {
+    height: 8rem;
+  }
+
+  .update-card__body {
+    padding: 0.8rem 0.75rem 0.9rem;
+  }
+
+  .update-card__body p {
+    font-size: 0.78rem;
+  }
+
+  .update-card__body span {
+    font-size: 0.72rem;
+  }
+
+  .newsletter {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
+    padding: 1rem;
+  }
+
+  .newsletter__fields {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+
+  .newsletter__fields input,
+  .newsletter__fields button {
+    font-size: 0.88rem;
+    padding: 0.75rem 0.85rem;
+  }
+
+  .newsletter__fields button {
+    padding: 0.75rem 1.6rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .help-section {
+    padding: 2rem 1rem 0;
+  }
+
+  .help-hero {
+    padding: 1.3rem;
+    gap: 1.15rem;
+  }
+
+  .help-hero h2 {
+    font-size: 1.75rem;
+    line-height: 1.1;
+  }
+
+  .help-hero__eyebrow {
+    font-size: 0.78rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .help-hero__text {
+    font-size: 0.9rem;
+    max-width: 100%;
+    margin-top: 0.85rem;
+  }
+
+  .help-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-top: 1.1rem;
+  }
+
+  .help-action {
+    min-height: 4.2rem;
+    gap: 0.3rem;
+  }
+
+  .help-action span {
+    font-size: 1.1rem;
+  }
+
+  .help-action strong {
+    font-size: 0.65rem;
+  }
+
+  .help-hero__media {
+    min-height: 13rem;
+  }
+
+  .help-hero__play {
+    width: 3.5rem;
+  }
+
+  .help-hero__play::before {
+    border-top: 0.4rem solid transparent;
+    border-bottom: 0.4rem solid transparent;
+    border-left: 0.7rem solid #fff;
+  }
+
+  .recent-updates {
+    padding: 1.75rem 0 1.5rem;
+  }
+
+  .recent-updates h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .recent-updates__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+
+  .update-card img {
+    height: 7.5rem;
+  }
+
+  .update-card__body {
+    padding: 0.75rem 0.7rem 0.85rem;
+  }
+
+  .update-card__body p {
+    font-size: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .update-card__body span {
+    font-size: 0.7rem;
+  }
+
+  .newsletter {
+    padding: 0.95rem;
+    gap: 1rem;
+  }
+
+  .newsletter__icon {
+    width: 2.5rem;
+    font-size: 1rem;
+  }
+
+  .newsletter__brand {
+    gap: 0.75rem;
+  }
+
+  .newsletter__brand p {
+    font-size: 0.75rem;
+  }
+
+  .newsletter__brand span {
+    font-size: 0.72rem;
+    margin-top: 0.1rem;
+  }
+
+  .newsletter__fields {
+    gap: 0.6rem;
+  }
+
+  .newsletter__fields input,
+  .newsletter__fields button {
+    font-size: 0.85rem;
+    padding: 0.7rem 0.8rem;
+  }
+
+  .newsletter__fields button {
+    padding: 0.7rem 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-section {
+    padding: 1.75rem 0.9rem 0;
+  }
+
+  .help-hero {
+    padding: 1.15rem;
+    gap: 1rem;
+  }
+
+  .help-hero h2 {
+    font-size: 1.6rem;
+  }
+
+  .help-hero__eyebrow {
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .help-hero__text {
+    font-size: 0.87rem;
+    margin-top: 0.75rem;
+  }
+
+  .help-actions {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-top: 0.95rem;
+  }
+
+  .help-action {
+    min-height: 3.9rem;
+    gap: 0.25rem;
+  }
+
+  .help-action span {
+    font-size: 1rem;
+  }
+
+  .help-action strong {
+    font-size: 0.62rem;
+  }
+
+  .help-hero__media {
+    min-height: 12rem;
+  }
+
+  .recent-updates {
+    padding: 1.5rem 0 1.25rem;
+  }
+
+  .recent-updates h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+
   .recent-updates__grid {
     grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+
+  .update-card img {
+    height: 7rem;
+  }
+
+  .update-card__body {
+    padding: 0.7rem 0.65rem 0.8rem;
+  }
+
+  .update-card__body p {
+    font-size: 0.73rem;
+  }
+
+  .update-card__body span {
+    font-size: 0.68rem;
+  }
+
+  .newsletter {
+    flex-direction: column;
+    padding: 0.9rem;
+    gap: 0.9rem;
+  }
+
+  .newsletter__brand {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.65rem;
+  }
+
+  .newsletter__icon {
+    width: 2.3rem;
+    font-size: 0.95rem;
+  }
+
+  .newsletter__brand p {
+    font-size: 0.73rem;
+  }
+
+  .newsletter__brand span {
+    font-size: 0.68rem;
+  }
+
+  .newsletter__fields {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+  }
+
+  .newsletter__fields input,
+  .newsletter__fields button {
+    font-size: 0.82rem;
+    padding: 0.65rem 0.75rem;
   }
 }
 </style>

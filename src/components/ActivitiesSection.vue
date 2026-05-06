@@ -152,7 +152,7 @@ const activities = [
 
 <style scoped>
 .activities-section {
-  padding: 5rem 1.5rem;
+  padding: clamp(3rem, 5vw, 5rem) 1.5rem;
   background: #fff;
 }
 
@@ -417,6 +417,19 @@ const activities = [
   .activities-section__header,
   .activities-section__feature {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .activities-section__header {
+    margin-bottom: 1.2rem;
+  }
+
+  .activities-section__feature-media {
+    min-height: 22rem;
+  }
+
+  .activities-section__feature-copy {
+    padding: 2rem;
   }
 
   .activities-section__grid {
@@ -424,32 +437,198 @@ const activities = [
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .activities-section {
-    padding: 3.5rem 1rem;
+    padding: 2.5rem 1.25rem;
   }
 
   .activities-section__header {
-    gap: 1rem;
-    margin-bottom: 1.35rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 1.5rem;
   }
 
   .activities-section__header h2 {
-    font-size: 2.1rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .activities-section__header p {
+    font-size: 0.95rem;
+  }
+
+  .activities-section__feature {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
   }
 
   .activities-section__feature-media {
-    min-height: 17rem;
+    min-height: 20rem;
   }
 
   .activities-section__feature-badge {
-    right: 0.9rem;
-    bottom: 0.9rem;
-    max-width: 11rem;
+    right: 1rem;
+    bottom: 1rem;
+    max-width: 12rem;
+    padding: 0.9rem;
+  }
+
+  .activities-section__feature-copy {
+    padding: 1.5rem;
+  }
+
+  .activities-section__feature-copy h3 {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+  }
+
+  .activities-section__feature-copy p:last-of-type {
+    font-size: 0.95rem;
+    margin-top: 0.85rem;
+  }
+
+  .activities-section__feature-copy a {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
   }
 
   .activities-section__grid {
     grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .activity-card__copy {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .activities-section {
+    padding: 2rem 1rem;
+  }
+
+  .activities-section__header {
+    margin-bottom: 1.25rem;
+  }
+
+  .activities-section__header h2 {
+    font-size: 1.75rem;
+    line-height: 1.1;
+  }
+
+  .activities-section__header p {
+    font-size: 0.9rem;
+  }
+
+  .activities-section__feature-media {
+    min-height: 18rem;
+  }
+
+  .activities-section__feature-badge {
+    right: 0.85rem;
+    bottom: 0.85rem;
+    max-width: 11rem;
+  }
+
+  .activities-section__feature-badge strong {
+    font-size: 0.95rem;
+  }
+
+  .activities-section__feature-badge span {
+    font-size: 0.78rem;
+  }
+
+  .activities-section__feature-copy {
+    padding: 1.25rem;
+  }
+
+  .activities-section__feature-copy h3 {
+    font-size: 1.5rem;
+  }
+
+  .activity-card__media {
+    height: 10rem;
+  }
+
+  .activity-card__icon {
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-top: -2.3rem;
+  }
+
+  .activity-card h3 {
+    font-size: 1.05rem;
+  }
+
+  .activity-card p {
+    font-size: 0.88rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .activities-section {
+    padding: 1.75rem 0.9rem;
+  }
+
+  .activities-section__eyebrow {
+    font-size: 0.75rem;
+  }
+
+  .activities-section__header h2 {
+    font-size: 1.6rem;
+  }
+
+  .activities-section__feature-media {
+    min-height: 15rem;
+  }
+
+  .activities-section__feature-copy {
+    padding: 1.1rem;
+  }
+
+  .activities-section__feature-copy h3 {
+    font-size: 1.35rem;
+  }
+
+  .activities-section__feature-copy p:last-of-type {
+    font-size: 0.9rem;
+  }
+
+  .activities-section__feature-copy a {
+    font-size: 0.88rem;
+    padding: 0.75rem 0.95rem;
+  }
+
+  .activity-card {
+    border-radius: 0.35rem;
+  }
+
+  .activity-card__media {
+    height: 9rem;
+  }
+
+  .activity-card__icon {
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-top: -2.1rem;
+  }
+
+  .activity-card__icon svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
+  .activity-card h3 {
+    font-size: 1rem;
+  }
+
+  .activity-card p {
+    font-size: 0.85rem;
+  }
+
+  .activity-card__copy {
+    padding: 0.9rem;
+    gap: 0.65rem;
   }
 }
 </style>

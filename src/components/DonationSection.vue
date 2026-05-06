@@ -157,7 +157,7 @@ const chooseAmount = (amount) => {
 
 <style scoped>
 .donation-section {
-  padding: 5rem 1.5rem;
+  padding: clamp(3rem, 5vw, 5rem) 1.5rem;
   background: linear-gradient(180deg, #fff8ef 0%, #fff 100%);
 }
 
@@ -483,37 +483,315 @@ const chooseAmount = (amount) => {
   .donation-section__banner,
   .donation-section__content {
     grid-template-columns: 1fr;
+    gap: 1.35rem;
   }
 
   .donation-section__banner-copy h2 {
     max-width: 14ch;
-  }
-}
-
-@media (max-width: 700px) {
-  .donation-section {
-    padding: 3.5rem 1rem;
-  }
-
-  .donation-section__banner-copy {
-    padding: 1.5rem;
-  }
-
-  .donation-section__banner-copy h2 {
-    max-width: 100%;
-    font-size: 2.45rem;
+    font-size: 3.5rem;
   }
 
   .donation-section__banner-media {
-    min-height: 17rem;
+    min-height: 25rem;
+  }
+
+  .donation-section__banner-card {
+    right: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .donation-section__amounts {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .donation-section {
+    padding: 2.5rem 1.25rem;
+  }
+
+  .donation-section__banner {
+    grid-template-columns: 1fr;
+    margin-bottom: 1.2rem;
+  }
+
+  .donation-section__banner-copy {
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  .donation-section__banner-copy h2 {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    max-width: 100%;
+  }
+
+  .donation-section__banner-copy p:last-child {
+    font-size: 0.98rem;
+  }
+
+  .donation-section__banner-media {
+    min-height: 22rem;
+  }
+
+  .donation-section__banner-card {
+    right: 1.25rem;
+    bottom: 1.25rem;
+  }
+
+  .donation-section__banner-card strong {
+    font-size: 2rem;
+  }
+
+  .donation-section__panel,
+  .donation-section__impact {
+    padding: 1.2rem;
+  }
+
+  .donation-section__panel-header h3,
+  .donation-section__impact h3 {
+    font-size: clamp(1.35rem, 3vw, 1.95rem);
   }
 
   .donation-section__amounts {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .donation-section__amount {
+    min-height: 6rem;
+    padding: 0.95rem;
+  }
+
+  .donation-section__amount strong {
+    font-size: 1.35rem;
+  }
+
+  .donation-section__amount span {
+    font-size: 0.78rem;
+  }
+
+  .donation-section__custom input {
+    min-height: 2.75rem;
+    padding: 0.75rem 0.9rem;
+  }
+
+  .donation-section__methods {
+    gap: 0.55rem;
+  }
+
+  .donation-section__method {
+    min-height: 2.4rem;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .donation-section__cta {
+    min-height: 2.75rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.88rem;
+    margin-top: 1.1rem;
+  }
+
+  .donation-section__impact-list {
+    gap: 0.7rem;
+    margin-top: 1.1rem;
+  }
+
+  .donation-section__impact-item {
+    gap: 0.9rem;
+    padding: 0.95rem;
+  }
+
+  .donation-section__impact-item > span {
+    width: 3.2rem;
+    height: 3.2rem;
+    font-size: 0.85rem;
+  }
+
+  .donation-section__impact-item h4 {
+    font-size: 0.95rem;
+  }
+
+  .donation-section__impact-item p {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .donation-section {
+    padding: 2rem 1rem;
+  }
+
+  .donation-section__banner-copy {
+    padding: 1.35rem;
+  }
+
+  .donation-section__banner-copy h2 {
+    font-size: 2rem;
+    line-height: 1.05;
+  }
+
+  .donation-section__banner-copy p:last-child {
+    font-size: 0.92rem;
+    max-width: 100%;
+  }
+
+  .donation-section__banner-media {
+    min-height: 20rem;
+  }
+
+  .donation-section__banner-card {
+    right: 1rem;
+    bottom: 1rem;
+    min-width: 8.5rem;
+    padding: 0.9rem;
+  }
+
+  .donation-section__banner-card strong {
+    font-size: 1.85rem;
+  }
+
+  .donation-section__banner-card span {
+    font-size: 0.78rem;
+  }
+
+  .donation-section__amounts {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+  }
+
+  .donation-section__amount {
+    min-height: 5.5rem;
+    padding: 0.85rem;
+  }
+
+  .donation-section__amount strong {
+    font-size: 1.25rem;
+  }
+
+  .donation-section__amount span {
+    font-size: 0.75rem;
+  }
+
+  .donation-section__custom {
+    margin-top: 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  .donation-section__custom input {
+    min-height: 2.6rem;
+    padding: 0.7rem 0.85rem;
+  }
+
+  .donation-section__methods {
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+  }
+
+  .donation-section__method {
+    min-height: 2.35rem;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.78rem;
+  }
+
+  .donation-section__cta {
+    min-height: 2.6rem;
+    padding: 0.7rem 0.95rem;
+    font-size: 0.85rem;
   }
 
   .donation-section__impact-item {
     grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 0.9rem;
+  }
+
+  .donation-section__impact-item > span {
+    width: 3rem;
+    height: 3rem;
+    font-size: 0.8rem;
+  }
+
+  .donation-section__impact-item h4 {
+    font-size: 0.92rem;
+  }
+
+  .donation-section__impact-item p {
+    font-size: 0.82rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .donation-section {
+    padding: 1.75rem 0.9rem;
+  }
+
+  .donation-section__inner {
+    padding: 0;
+  }
+
+  .donation-section__banner-copy {
+    padding: 1.15rem;
+  }
+
+  .donation-section__banner-copy h2 {
+    font-size: 1.8rem;
+  }
+
+  .donation-section__banner-copy p:last-child {
+    font-size: 0.88rem;
+  }
+
+  .donation-section__banner-media {
+    min-height: 18rem;
+  }
+
+  .donation-section__banner-card {
+    right: 0.8rem;
+    bottom: 0.8rem;
+    min-width: 8rem;
+    padding: 0.8rem;
+  }
+
+  .donation-section__banner-card strong {
+    font-size: 1.65rem;
+  }
+
+  .donation-section__panel,
+  .donation-section__impact {
+    padding: 1.05rem;
+  }
+
+  .donation-section__panel-header h3,
+  .donation-section__impact h3 {
+    font-size: 1.4rem;
+  }
+
+  .donation-section__amounts {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .donation-section__amount {
+    min-height: 5.2rem;
+    padding: 0.8rem;
+  }
+
+  .donation-section__amount strong {
+    font-size: 1.15rem;
+  }
+
+  .donation-section__amount span {
+    font-size: 0.72rem;
+  }
+
+  .donation-section__impact-item {
+    gap: 0.7rem;
+  }
+
+  .donation-section__impact-item > span {
+    width: 2.8rem;
+    height: 2.8rem;
+    font-size: 0.75rem;
   }
 }
 </style>

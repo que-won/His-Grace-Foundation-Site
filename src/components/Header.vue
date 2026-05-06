@@ -414,10 +414,32 @@ const toggleDropdown = (dropdown: string) => {
   transform: rotate(-45deg) translate(0.5rem, -0.6rem);
 }
 
-/* Tablet: 768px and below */
+/* Tablet landscape and down */
+@media (max-width: 1024px) {
+  .site-header__inner {
+    padding: 0.75rem 1.2rem;
+    gap: 1rem;
+  }
+
+  .site-header__name {
+    font-size: 1rem;
+  }
+
+  .site-header__nav-link {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.88rem;
+  }
+
+  .site-header__donate-btn {
+    padding: 0.7rem 1.3rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablet portrait */
 @media (max-width: 768px) {
   .site-header__inner {
-    padding: 0.8rem 1rem;
+    padding: 0.7rem 1rem;
   }
 
   .site-header__nav {
@@ -426,12 +448,12 @@ const toggleDropdown = (dropdown: string) => {
     top: var(--header-height, 60px);
     left: 0;
     right: 0;
-    background: rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.99);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid #ececec;
     flex-direction: column;
     gap: 0;
-    padding: 1rem 0;
+    padding: 0;
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease;
@@ -446,13 +468,14 @@ const toggleDropdown = (dropdown: string) => {
 
   .site-header__nav-item {
     width: 100%;
+    border-bottom: 1px solid #f0f0f0;
   }
 
   .site-header__nav-link {
     display: block;
     width: 100%;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.95rem;
+    padding: 0.8rem 1.25rem;
+    font-size: 0.9rem;
     text-align: left;
   }
 
@@ -473,8 +496,10 @@ const toggleDropdown = (dropdown: string) => {
   }
 
   .site-header__dropdown-link {
-    padding-left: 3rem;
-    font-size: 0.9rem;
+    padding-left: 3.5rem;
+    font-size: 0.88rem;
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
   }
 
   .site-header__language-selector {
@@ -483,6 +508,103 @@ const toggleDropdown = (dropdown: string) => {
 
   .site-header__menu-toggle {
     display: flex;
+  }
+
+  .site-header__donate-btn {
+    padding: 0.65rem 1.1rem;
+    font-size: 0.78rem;
+  }
+}
+
+/* Mobile large */
+@media (max-width: 640px) {
+  .site-header__inner {
+    padding: 0.65rem 0.9rem;
+    gap: 0.75rem;
+  }
+
+  .site-header__brand {
+    gap: 0.65rem;
+  }
+
+  .site-header__logo {
+    width: 2.3rem;
+    font-size: 0.9rem;
+  }
+
+  .site-header__name {
+    font-size: 0.95rem;
+  }
+
+  .site-header__nav-link {
+    padding: 0.75rem 1.15rem;
+    font-size: 0.87rem;
+  }
+
+  .site-header__dropdown-link {
+    padding-left: 3.25rem;
+    padding: 0.65rem 1.15rem 0.65rem 3.25rem;
+    font-size: 0.85rem;
+  }
+
+  .site-header__donate-btn {
+    padding: 0.6rem 1rem;
+    font-size: 0.75rem;
+    border-radius: 8px;
+  }
+
+  .site-header__menu-toggle {
+    padding: 0.4rem;
+  }
+
+  .site-header__menu-toggle span {
+    width: 1.3rem;
+    height: 0.18rem;
+  }
+}
+
+/* Mobile small */
+@media (max-width: 480px) {
+  .site-header__inner {
+    padding: 0.6rem 0.75rem;
+    gap: 0.6rem;
+  }
+
+  .site-header__brand {
+    gap: 0.55rem;
+  }
+
+  .site-header__logo {
+    width: 2rem;
+    font-size: 0.8rem;
+  }
+
+  .site-header__name {
+    font-size: 0.88rem;
+  }
+
+  .site-header__actions {
+    gap: 0.6rem;
+  }
+
+  .site-header__donate-btn {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.7rem;
+  }
+
+  .site-header__nav-link {
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .site-header__dropdown-link {
+    padding: 0.6rem 1rem 0.6rem 3rem;
+    font-size: 0.82rem;
+  }
+
+  .site-header__menu-toggle span {
+    width: 1.2rem;
+    height: 0.16rem;
   }
 }
 </style>
