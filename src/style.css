@@ -75,39 +75,155 @@ h4 {
   font-size: 1.25rem;
 }
 
-button {
-  border-radius: 8px;
-  border: none;
+/* Base Button Styles */
+button,
+a.button,
+a.btn,
+a.cta-btn {
+  border-radius: 10px;
+  border: 2px solid transparent;
   padding: 0.875rem 2rem;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   font-family: inherit;
-  background-color: var(--accent);
+  background: linear-gradient(135deg, var(--accent) 0%, #6a1fb8 100%);
   color: white;
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: inline-block;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  box-shadow: 0 6px 16px rgba(125, 43, 224, 0.3);
 }
 
-button:hover {
-  background-color: var(--accent-light);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(14, 165, 165, 0.3);
+button:hover,
+a.button:hover,
+a.btn:hover,
+a.cta-btn:hover {
+  background: linear-gradient(135deg, var(--accent-light) 0%, #5a0fa0 100%);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(125, 43, 224, 0.4);
 }
 
-button:active {
-  transform: translateY(0);
+button:active,
+a.button:active,
+a.btn:active,
+a.cta-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(125, 43, 224, 0.35);
 }
 
-button.secondary {
-  background-color: var(--primary);
+button:focus-visible,
+a.button:focus-visible,
+a.btn:focus-visible,
+a.cta-btn:focus-visible {
+  outline-color: var(--accent);
+  outline-width: 2px;
+  outline-offset: 3px;
+}
+
+/* Secondary Button Variant */
+button.secondary,
+a.button.secondary,
+a.btn.secondary,
+a.cta-btn.secondary {
+  background: linear-gradient(135deg, var(--primary) 0%, #6a1fb8 100%);
   color: white;
+  box-shadow: 0 6px 16px rgba(125, 43, 224, 0.3);
 }
 
-button.secondary:hover {
-  background-color: var(--primary-light);
-  box-shadow: 0 4px 12px rgba(30, 58, 95, 0.3);
+button.secondary:hover,
+a.button.secondary:hover,
+a.btn.secondary:hover,
+a.cta-btn.secondary:hover {
+  background: linear-gradient(135deg, var(--primary-light) 0%, #5a0fa0 100%);
+  box-shadow: 0 12px 28px rgba(125, 43, 224, 0.4);
+  transform: translateY(-4px);
+}
+
+/* Outline Button Variant */
+button.outline,
+a.button.outline,
+a.btn.outline {
+  background-color: transparent;
+  color: var(--accent);
+  border-color: var(--accent);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(125, 43, 224, 0.15);
+}
+
+button.outline:hover,
+a.button.outline:hover,
+a.btn.outline:hover {
+  background: linear-gradient(135deg, rgba(125, 43, 224, 0.1) 0%, rgba(125, 43, 224, 0.05) 100%);
+  border-color: var(--accent-light);
+  color: var(--accent-light);
+  box-shadow: 0 6px 16px rgba(125, 43, 224, 0.25);
+  transform: translateY(-3px);
+}
+
+/* Ghost Button Variant */
+button.ghost,
+a.button.ghost,
+a.btn.ghost {
+  background-color: rgba(125, 43, 224, 0.08);
+  color: var(--accent);
+  border-color: rgba(125, 43, 224, 0.4);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(125, 43, 224, 0.1);
+}
+
+button.ghost:hover,
+a.button.ghost:hover,
+a.btn.ghost:hover {
+  background: linear-gradient(135deg, rgba(125, 43, 224, 0.15) 0%, rgba(125, 43, 224, 0.1) 100%);
+  border-color: var(--accent);
+  color: var(--accent-light);
+  box-shadow: 0 6px 16px rgba(125, 43, 224, 0.25);
+  transform: translateY(-3px);
+}
+
+/* Small Button Variant */
+button.sm,
+a.button.sm,
+a.btn.sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* Large Button Variant */
+button.lg,
+a.button.lg,
+a.btn.lg {
+  padding: 1.25rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+/* Disabled State */
+button:disabled,
+button[disabled],
+a.button[disabled],
+a.btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+button:disabled:hover,
+button[disabled]:hover,
+a.button[disabled]:hover,
+a.btn[disabled]:hover {
+  background-color: var(--accent);
+  transform: none;
+  box-shadow: none;
 }
 
 .container {

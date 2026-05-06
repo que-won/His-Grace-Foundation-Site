@@ -104,7 +104,7 @@
 
 .about-card__content h2 {
   margin: 0;
-  max-width: 14ch;
+  max-width: 30ch;
   color: #17352d;
   font-size: clamp(2rem, 3vw, 2.8rem);
   line-height: 1.05;

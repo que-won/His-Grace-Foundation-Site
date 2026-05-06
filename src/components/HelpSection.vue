@@ -46,7 +46,7 @@
         <div class="recent-updates__grid">
           <article class="update-card">
             <img
-              src="../../public/images/real1.jpeg"
+              src="/images/real1.jpeg"
               alt="Care for children"
             />
             <div class="update-card__body">
@@ -57,7 +57,7 @@
 
           <article class="update-card">
             <img
-              src="../../public/images/real1.jpeg"
+              src="/images/real1.jpeg"
               alt="Our children matter"
             />
             <div class="update-card__body">
@@ -68,7 +68,8 @@
 
           <article class="update-card">
             <img
-              src="../../public/images/real1.jpeg"              alt="A standard post format"
+              src="/images/real1.jpeg"
+              alt="A standard post format"
             />
             <div class="update-card__body">
               <p>A Standard Post Format</p>
@@ -78,7 +79,7 @@
 
           <article class="update-card">
             <img
-              src="../../public/images/real1.jpeg""
+              src="/images/real1.jpeg"
               alt="An another one"
             />
             <div class="update-card__body">
@@ -328,13 +329,34 @@
 }
 
 .newsletter__fields button {
-  border: 0;
-  padding: 0.8rem 1.1rem;
+  border: 2px solid transparent;
+  padding: 0.8rem 1.8rem;
   background: #1d1f22;
   color: #fff;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.newsletter__fields button:hover {
+  background: #8e0ac6;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(125, 43, 224, 0.25);
+}
+
+.newsletter__fields button:active {
+  transform: translateY(0);
+}
+
+.newsletter__fields button:focus-visible {
+  outline: 2px solid #1d1f22;
+  outline-offset: 2px;
 }
 
 @media (max-width: 980px) {

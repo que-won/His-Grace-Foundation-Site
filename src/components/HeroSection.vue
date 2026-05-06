@@ -2,16 +2,19 @@
   <section id="home" class="hero-section">
     <div class="hero-stage">
       <div class="hero-copy">
-        <p class="hero-eyebrow">Lorem ipsum dolor sit amet</p>
-        <h1>Only by Helping Each Other We Can Make World Better</h1>
+        <h1 class="hero-copy__title">Only by Helping Each Other We Can Make World Better</h1>
         <p class="hero-description">
           Sed ullamcorper nibh in nunc eleifend, non semper magna egestas purus
           viverra. Curabitur congue dolor sit amet id interdum et.
         </p>
 
         <div class="hero-actions">
-          <button class="hero-btn hero-btn--primary" type="button">Donate</button>
-          <button class="hero-btn hero-btn--ghost" type="button">Read More</button>
+          <router-link class="hero-btn hero-btn--primary" to="/donations" aria-label="Navigate to donations page">
+            <span class="btn-text">Donate Now</span>
+          </router-link>
+          <router-link class="hero-btn hero-btn--ghost" to="/about" aria-label="Read more about His Grace Foundation">
+            <span class="btn-text">Read More</span>
+          </router-link>
         </div>
       </div>
 
@@ -26,7 +29,7 @@
         <div class="hero-progress">
           <div class="hero-progress__head">
             <span>65% Funded</span>
-            <span>$330,000 raised</span>
+            <span>$30,000 raised</span>
           </div>
           <div class="hero-progress__track" aria-hidden="true">
             <div class="hero-progress__fill"></div>
@@ -34,8 +37,8 @@
         </div>
 
         <div class="hero-payment">
-          <button type="button">Pay</button>
-          <button type="button">Pay</button>
+          <router-link class="hero-payment__btn" to="/donations" aria-label="Donate to education support">Donate</router-link>
+          <router-link class="hero-payment__btn" to="/donations" aria-label="Make a custom donation">Contribute</router-link>
         </div>
       </aside>
     </div>
@@ -55,7 +58,7 @@
       </div>
       <div class="hero-mission">
         <p>Our Goal is to Help Poor People</p>
-        <button type="button">Become Volunteer</button>
+        <router-link class="hero-mission__btn" to="/volunteer" aria-label="Become a volunteer with His Grace Foundation">Become Volunteer</router-link>
       </div>
     </div>
   </section>
@@ -101,80 +104,157 @@
 
 .hero-copy {
   max-width: 38rem;
+  animation: slideInLeft 0.8s ease-out;
 }
 
-.hero-eyebrow {
-  margin: 0 0 0.85rem;
-  color: #8e0ac7;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
-.hero-copy h1 {
+.hero-copy__title {
   margin: 0;
-  max-width: 11ch;
+  padding-top: 2.5rem;
+  padding-left: 2.25rem;
+  max-width: 111ch;
   font-size: clamp(2.7rem, 4.8vw, 4.35rem);
   line-height: 0.96;
   letter-spacing: 0;
   font-weight: 800;
+  animation: slideInLeft 0.8s ease-out 0.1s backwards;
 }
 
 .hero-description {
   max-width: 42ch;
   margin: 1rem 0 0;
+  padding-left: 2.25rem;
   font-size: 0.96rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.82);
 }
 
 .hero-actions {
+  padding-left: 30rem;
   display: flex;
   gap: 0.9rem;
   margin-top: 1.5rem;
+  animation: slideInLeft 0.8s ease-out 0.2s backwards;
 }
 
 .hero-btn {
   border: 0;
-  border-radius: 8px;
-  padding: 0.95rem 1.35rem;
+  border-radius: 10px;
+  padding: 0.95rem 1.8rem;
   min-width: 7.5rem;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+  overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btn-text {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.2);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 1;
+}
+
+.hero-btn:hover::before {
+  transform: scaleX(1);
 }
 
 .hero-btn--primary {
-  background: #8e0ac7;
+  background: linear-gradient(135deg, #8e0ac7 0%, #7d2be0 100%);
   color: #fff;
-  box-shadow: 0 12px 20px rgba(22, 168, 95, 0.24);
+  box-shadow: 0 12px 24px rgba(142, 10, 199, 0.3);
+}
+
+.hero-btn--primary:hover {
+  background: linear-gradient(135deg, #7d2be0 0%, #6a1fb8 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(142, 10, 199, 0.4);
 }
 
 .hero-btn--ghost {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.15);
   color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero-btn--ghost:hover {
+  background: linear-gradient(135deg, #8e0ac7 0%, #7d2be0 100%);
+  border-color: transparent;
+  color: #fff;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(125, 43, 224, 0.4);
 }
 
 .hero-card {
   justify-self: end;
   width: min(100%, 25.5rem);
   padding: 1.45rem 1.45rem 1.25rem;
-  border-radius: 8px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.98);
   color: #183128;
-  box-shadow: 0 18px 34px rgba(15, 29, 27, 0.24);
+  box-shadow: 0 18px 40px rgba(15, 29, 27, 0.24);
+  animation: slideInRight 0.8s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(10px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.hero-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(142, 10, 199, 0.2);
 }
 
 .hero-card__tag {
   display: inline-flex;
-  padding: 0.4rem 0.6rem;
-  border-radius: 4px;
-  background: #8e0ac7;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #8e0ac7 0%, #7d2be0 100%);
   color: #fff;
   font-size: 0.75rem;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .hero-card h2 {
@@ -210,13 +290,25 @@
   border-radius: 999px;
   background: #e1ece5;
   overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .hero-progress__fill {
   width: 65%;
   height: 100%;
   border-radius: inherit;
-  background: linear-gradient(90deg, #8e0ac7, #8e0ac7);
+  background: linear-gradient(90deg, #8e0ac7, #7d2be0);
+  animation: progressFill 1.5s ease-out;
+  box-shadow: 0 0 10px rgba(142, 10, 199, 0.4);
+}
+
+@keyframes progressFill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 65%;
+  }
 }
 
 .hero-payment {
@@ -226,34 +318,66 @@
   margin-top: 1rem;
 }
 
-.hero-payment button {
+.hero-payment__btn {
   padding: 0.82rem 0.9rem;
-  border-radius: 8px;
-  border: 1px solid #d8e3dd;
+  border-radius: 10px;
+  border: 2px solid #d8e3dd;
   background: #fff;
   color: #17352d;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hero-payment__btn:hover {
+  background: linear-gradient(135deg, #8e0ac7 0%, #7d2be0 100%);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(142, 10, 199, 0.4);
 }
 
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(12rem, 0.9fr);
   margin: -1.75rem 10.75rem 0;
-  background: #fff;
-  box-shadow: 0 16px 30px rgba(15, 31, 29, 0.12);
+  background: linear-gradient(135deg, #fff 0%, #f8f3ff 100%);
+  box-shadow: 0 16px 40px rgba(15, 31, 29, 0.12);
   position: relative;
   z-index: 2;
+  animation: slideUp 0.8s ease-out 0.3s backwards;
+  border-radius: 0 0 12px 12px;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-stat,
 .hero-mission {
   padding: 1.15rem 1.25rem;
+  transition: all 0.3s ease;
 }
 
 .hero-stat {
   border-right: 1px solid #e8ece8;
+}
+
+.hero-stat:hover {
+  background: rgba(142, 10, 199, 0.05);
 }
 
 .hero-stat strong {
@@ -262,6 +386,18 @@
   color: #8e0ac7;
   font-size: 1.95rem;
   line-height: 1;
+  animation: countUp 1.5s ease-out 0.3s;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-stat span {
@@ -273,8 +409,14 @@
   display: grid;
   align-content: center;
   gap: 0.55rem;
-  background: #8e0ac7;
+  background: linear-gradient(135deg, #8e0ac7 0%, #7d2be0 100%);
   color: #fff;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hero-mission:hover {
+  transform: translateY(-3px);
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.15);
 }
 
 .hero-mission p {
@@ -284,15 +426,29 @@
   line-height: 1.2;
 }
 
-.hero-mission button {
+.hero-mission__btn {
   justify-self: start;
-  padding: 0;
-  border: 0;
-  background: transparent;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
   font: inherit;
   font-weight: 700;
   cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-mission__btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 255, 255, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
 @media (max-width: 1024px) {

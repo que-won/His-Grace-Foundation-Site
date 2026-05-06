@@ -92,7 +92,7 @@
 
 .why-us__copy h2 {
   margin: 0;
-  max-width: 15ch;
+  max-width: 30ch;
   font-size: clamp(2rem, 2.8vw, 2.9rem);
   line-height: 1.05;
   letter-spacing: 0;
