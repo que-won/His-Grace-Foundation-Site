@@ -27,7 +27,7 @@
             About Us
             <span class="site-header__dropdown-arrow">▼</span>
           </button>
-          <div class="site-header__dropdown-menu" v-if="openDropdown === 'about'">
+          <div class="site-header__dropdown-menu" :data-show="openDropdown === 'about'">
             <RouterLink to="/about" @click="closeMobileMenu" class="site-header__dropdown-link">About Us</RouterLink>
             <RouterLink to="/why-choose" @click="closeMobileMenu" class="site-header__dropdown-link">Why Choose Us</RouterLink>
             <RouterLink to="/values" @click="closeMobileMenu" class="site-header__dropdown-link">Our Values</RouterLink>
@@ -50,7 +50,7 @@
             What We Do
             <span class="site-header__dropdown-arrow">▼</span>
           </button>
-          <div class="site-header__dropdown-menu" v-if="openDropdown === 'services'">
+          <div class="site-header__dropdown-menu" :data-show="openDropdown === 'services'">
             <RouterLink to="/projects" @click="closeMobileMenu" class="site-header__dropdown-link">Projects</RouterLink>
             <RouterLink to="/donations" @click="closeMobileMenu" class="site-header__dropdown-link">Donations</RouterLink>
             <RouterLink to="/help" @click="closeMobileMenu" class="site-header__dropdown-link">Help Others</RouterLink>
@@ -80,7 +80,7 @@
             Get Involved
             <span class="site-header__dropdown-arrow">▼</span>
           </button>
-          <div class="site-header__dropdown-menu" v-if="openDropdown === 'involved'">
+          <div class="site-header__dropdown-menu" :data-show="openDropdown === 'involved'">
             <RouterLink to="/contact" @click="closeMobileMenu" class="site-header__dropdown-link">Contact Us</RouterLink>
             <RouterLink to="/volunteer" @click="closeMobileMenu" class="site-header__dropdown-link">Become a Volunteer</RouterLink>
             <RouterLink to="/partnerships" @click="closeMobileMenu" class="site-header__dropdown-link">Partnerships</RouterLink>
@@ -218,18 +218,19 @@ const toggleDropdown = (dropdown: string) => {
   color: #7d2be0;
   background: rgba(125, 43, 224, 0.06);
   border-radius: 6px;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header__nav-item:hover .site-header__nav-link--dropdown {
   background: rgba(125, 43, 224, 0.06);
   border-radius: 6px;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header__dropdown-arrow {
   font-size: 0.6rem;
-  transition: transform 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-block;
 }
 
 .site-header__nav-link--dropdown.is-active .site-header__dropdown-arrow {
@@ -252,15 +253,24 @@ const toggleDropdown = (dropdown: string) => {
   margin-top: 0.5rem;
   box-shadow: 0 12px 48px rgba(125, 43, 224, 0.15), 0 2px 8px rgba(0, 0, 0, 0.06);
   z-index: 100;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0;
   visibility: hidden;
+  pointer-events: none;
 }
 
 .site-header__nav-item:hover .site-header__dropdown-menu {
   transform: scaleY(1);
   opacity: 1;
   visibility: visible;
+  pointer-events: auto;
+}
+
+.site-header__dropdown-menu[data-show="true"] {
+  transform: scaleY(1);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 @keyframes slideDown {
@@ -282,7 +292,7 @@ const toggleDropdown = (dropdown: string) => {
   text-decoration: none;
   font-size: 0.88rem;
   font-weight: 500;
-  transition: all 0.25s ease;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
 }
 
@@ -295,7 +305,7 @@ const toggleDropdown = (dropdown: string) => {
   width: 4px;
   background: linear-gradient(180deg, #7d2be0, #b565ff);
   transform: scaleY(0);
-  transition: transform 0.25s ease;
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header__dropdown-link:hover,
@@ -399,7 +409,7 @@ const toggleDropdown = (dropdown: string) => {
   height: 0.2rem;
   background: #27303a;
   border-radius: 999px;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .site-header__menu-toggle[aria-expanded="true"] span:nth-child(1) {
@@ -408,6 +418,7 @@ const toggleDropdown = (dropdown: string) => {
 
 .site-header__menu-toggle[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
+  transform: translateX(-8px);
 }
 
 .site-header__menu-toggle[aria-expanded="true"] span:nth-child(3) {
@@ -454,16 +465,21 @@ const toggleDropdown = (dropdown: string) => {
     flex-direction: column;
     gap: 0;
     padding: 0;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.3s ease;
+    opacity: 0;
+    transform: translateY(-20px);
+    visibility: hidden;
+    overflow-y: auto;
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: 19;
     justify-content: flex-start;
+    max-height: 80vh;
   }
 
   .site-header__nav.is-open {
     display: flex;
-    max-height: 100vh;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
   }
 
   .site-header__nav-item {
@@ -492,7 +508,15 @@ const toggleDropdown = (dropdown: string) => {
     padding: 0;
     margin: 0;
     min-width: auto;
-    transition: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: auto;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .site-header__dropdown-menu[data-show="true"] {
+    max-height: 500px;
+    overflow: visible;
   }
 
   .site-header__dropdown-link {
