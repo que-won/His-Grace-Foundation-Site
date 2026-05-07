@@ -76,12 +76,25 @@
   padding: 3rem 1.5rem 1.2rem;
 }
 
+@media (max-width: 768px) {
+  .footer__inner {
+    padding: 2rem 1rem 1rem;
+  }
+}
+
 .footer__top {
   display: grid;
   grid-template-columns: minmax(280px, 1.15fr) minmax(0, 1.25fr);
   gap: 2.5rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 1024px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 .footer__brand {
@@ -122,9 +135,22 @@
   gap: 1.5rem;
 }
 
+@media (max-width: 768px) {
+  .footer__nav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.2rem;
+  }
+}
+
 .footer__column {
   padding-left: 1.5rem;
   border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+  .footer__column {
+    padding-left: 1rem;
+  }
 }
 
 .footer__column h3 {

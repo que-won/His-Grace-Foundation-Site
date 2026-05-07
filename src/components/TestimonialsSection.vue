@@ -115,6 +115,12 @@ const activeTestimonial = ref(0);
   background: linear-gradient(135deg, #f5f7fa 0%, #e8f0ff 100%);
 }
 
+@media (max-width: 768px) {
+  .testimonials-section {
+    padding: 3rem 1rem;
+  }
+}
+
 .testimonials-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -125,11 +131,23 @@ const activeTestimonial = ref(0);
   margin-bottom: 3.5rem;
 }
 
+@media (max-width: 768px) {
+  .testimonials-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
 .testimonials-title {
   font-size: 2.5rem;
   font-weight: 800;
   color: #1f2428;
   margin: 0 0 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .testimonials-title {
+    font-size: clamp(1.75rem, 5vw, 2rem);
+  }
 }
 
 .testimonials-subtitle {
@@ -145,6 +163,14 @@ const activeTestimonial = ref(0);
   margin-bottom: 2.5rem;
 }
 
+@media (max-width: 768px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+}
+
 .testimonial-card {
   background: #fff;
   border-radius: 12px;
@@ -155,6 +181,13 @@ const activeTestimonial = ref(0);
   border-left: 4px solid transparent;
   animation: cardIn 0.6s ease backwards;
   animation-delay: calc(var(--card-index) * 0.1s);
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
 }
 
 @keyframes cardIn {

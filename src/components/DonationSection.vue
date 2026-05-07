@@ -161,6 +161,12 @@ const chooseAmount = (amount) => {
   background: linear-gradient(180deg, #fff8ef 0%, #fff 100%);
 }
 
+@media (max-width: 768px) {
+  .donation-section {
+    padding: clamp(2rem, 4vw, 3rem) 1rem;
+  }
+}
+
 .donation-section__inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -176,12 +182,30 @@ const chooseAmount = (amount) => {
   box-shadow: 0 22px 54px rgba(18, 29, 27, 0.14);
 }
 
+@media (max-width: 768px) {
+  .donation-section__banner {
+    grid-template-columns: 1fr;
+    min-height: 24rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .donation-section__banner-copy {
   display: grid;
   align-content: center;
   gap: 1rem;
   padding: clamp(2rem, 5vw, 4.5rem);
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .donation-section__banner-copy {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    padding: 2rem;
+    z-index: 1;
+  }
 }
 
 .donation-section__eyebrow {
@@ -204,6 +228,13 @@ const chooseAmount = (amount) => {
   line-height: 0.98;
   letter-spacing: 0;
   font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .donation-section__banner-copy h2 {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    max-width: 100%;
+  }
 }
 
 .donation-section__banner-copy p:last-child {
@@ -272,6 +303,13 @@ const chooseAmount = (amount) => {
   gap: 1.15rem;
 }
 
+@media (max-width: 768px) {
+  .donation-section__content {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
 .donation-section__panel,
 .donation-section__impact {
   background: #fff;
@@ -299,6 +337,19 @@ const chooseAmount = (amount) => {
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.85rem;
   margin-top: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+  .donation-section__amounts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .donation-section__amounts {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
 }
 
 .donation-section__amount {
