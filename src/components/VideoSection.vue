@@ -130,6 +130,12 @@ const closeVideoModal = () => {
   background: linear-gradient(135deg, #ffffff 0%, #f8f3ff 100%);
 }
 
+@media (max-width: 768px) {
+  .video-section {
+    padding: 3rem 1rem;
+  }
+}
+
 .video-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -140,11 +146,23 @@ const closeVideoModal = () => {
   margin-bottom: 3.5rem;
 }
 
+@media (max-width: 768px) {
+  .video-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
 .video-title {
   font-size: 2.5rem;
   font-weight: 800;
   color: #1f2428;
   margin: 0 0 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .video-title {
+    font-size: clamp(1.75rem, 5vw, 2rem);
+  }
 }
 
 .video-subtitle {
@@ -161,6 +179,20 @@ const closeVideoModal = () => {
   gap: 2.5rem;
 }
 
+@media (max-width: 1024px) {
+  .video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+}
+
 .video-card {
   cursor: pointer;
   border-radius: 12px;
@@ -169,6 +201,12 @@ const closeVideoModal = () => {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .video-card {
+    border-radius: 10px;
+  }
 }
 
 .video-card:hover {
@@ -243,12 +281,24 @@ const closeVideoModal = () => {
   padding: 1.5rem;
 }
 
+@media (max-width: 768px) {
+  .video-card__content {
+    padding: 1.2rem;
+  }
+}
+
 .video-card__title {
   font-size: 1.2rem;
   font-weight: 700;
   color: #1f2428;
   margin: 0 0 0.5rem 0;
   line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .video-card__title {
+    font-size: 1.05rem;
+  }
 }
 
 .video-card__description {

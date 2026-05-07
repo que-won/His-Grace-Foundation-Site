@@ -39,6 +39,13 @@
   scroll-margin-top: 6rem;
 }
 
+@media (max-width: 768px) {
+  .about-section {
+    padding: clamp(2rem, 4vw, 3rem) 1rem;
+    scroll-margin-top: 5rem;
+  }
+}
+
 .about-section__inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -59,9 +66,22 @@
   gap: 2.5rem;
 }
 
+@media (max-width: 768px) {
+  .about-card {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
 .about-card__media {
   position: relative;
   min-height: 24rem;
+}
+
+@media (max-width: 768px) {
+  .about-card__media {
+    min-height: 18rem;
+  }
 }
 
 .about-card__media img {
@@ -109,6 +129,13 @@
   font-size: clamp(2rem, 3vw, 2.8rem);
   line-height: 1.05;
   letter-spacing: 0;
+}
+
+@media (max-width: 768px) {
+  .about-card__content h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+    max-width: 100%;
+  }
 }
 
 .about-card__list {

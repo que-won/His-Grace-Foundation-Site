@@ -115,6 +115,12 @@
   background: #fff;
 }
 
+@media (max-width: 768px) {
+  .help-section {
+    padding: clamp(2rem, 4vw, 3rem) 1rem 0;
+  }
+}
+
 .help-section__inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -134,6 +140,14 @@
   gap: 2rem;
   padding: 2rem 2rem 1.7rem;
   background: #8e0ac6;
+}
+
+@media (max-width: 768px) {
+  .help-hero {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
 }
 
 .help-hero__content {
@@ -169,6 +183,13 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 0.75rem;
   margin-top: 1.4rem;
+}
+
+@media (max-width: 768px) {
+  .help-actions {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.6rem;
+  }
 }
 
 .help-action {
@@ -244,6 +265,18 @@
   gap: 1rem;
 }
 
+@media (max-width: 1024px) {
+  .recent-updates__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .recent-updates__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .update-card {
   border: 1px solid #e8ebef;
   background: #fff;
@@ -283,6 +316,14 @@
   background: #8e0ac6;
 }
 
+@media (max-width: 768px) {
+  .newsletter {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 1.5rem;
+  }
+}
+
 .newsletter__brand {
   display: flex;
   align-items: center;
@@ -320,6 +361,13 @@
   gap: 0.75rem;
 }
 
+@media (max-width: 768px) {
+  .newsletter__fields {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
 .newsletter__fields input {
   min-width: 0;
   border: 1px solid rgba(0, 0, 0, 0.16);
@@ -342,6 +390,13 @@
   align-items: center;
   justify-content: center;
   white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .newsletter__fields button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+  }
 }
 
 .newsletter__fields button:hover {
