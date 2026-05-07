@@ -473,6 +473,111 @@
   }
 
   .hero-description {
+    padding-left: 0;
+    font-size: 0.95rem;
+  }
+
+  .hero-actions {
+    padding-left: 0;
+    gap: 0.75rem;
+  }
+
+  .hero-btn {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-card {
+    justify-self: start;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, 1fr);
+    margin: -1.5rem 2rem 0;
+    border-radius: 12px;
+  }
+
+  .hero-stat {
+    border-right: 0;
+    border-bottom: 1px solid #e8ece8;
+  }
+
+  .hero-stat:nth-child(2n) {
+    border-right: 1px solid #e8ece8;
+  }
+
+  .hero-mission {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Tablet (portrait) */
+@media (max-width: 768px) {
+  .hero-stage {
+    padding: 2.5rem 1.5rem 3.5rem;
+    background-position: center;
+  }
+
+  .hero-copy__title {
+    font-size: clamp(1.75rem, 6vw, 2.8rem);
+    line-height: 1.1;
+  }
+
+  .hero-description {
+    font-size: 0.9rem;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    gap: 0.75rem;
+  }
+
+  .hero-btn {
+    padding: 0.85rem 1.5rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-card {
+    padding: 1.25rem;
+    border-radius: 10px;
+  }
+
+  .hero-card h2 {
+    font-size: 1.4rem;
+    margin: 0.75rem 0 0.5rem;
+  }
+
+  .hero-card p {
+    font-size: 0.88rem;
+  }
+
+  .hero-stats {
+    grid-template-columns: 1fr;
+    margin: -1.25rem 1.5rem 0;
+    border-radius: 10px;
+  }
+
+  .hero-stat {
+    border-right: 0;
+    border-bottom: 1px solid #e8ece8;
+    padding: 1rem 1.15rem;
+  }
+
+  .hero-stat:last-child {
+    border-bottom: 0;
+  }
+
+  .hero-stat strong {
+    font-size: 1.75rem;
+  }
+
+  .hero-stat span {
+    font-size: 0.8rem;
+  }
+}
+
 /* Mobile (large) */
 @media (max-width: 640px) {
   .hero-section {
@@ -670,102 +775,12 @@
   }
 
   .hero-mission p {
-    font-size: 0.9rem
-@media (max-width: 768px) {
-  .hero-stage {
-    padding: 2.5rem 1.5rem 3.5rem;
-    background-position: center;
-  }
-
-  .hero-copy__title {
-    font-size: clamp(1.75rem, 6vw, 2.8rem);
-    line-height: 1.1;
-  }
-
-  .hero-description {
     font-size: 0.9rem;
-    max-width: 100%;
   }
 
-  .hero-actions {
-    gap: 0.75rem;
-  }
-
-  .hero-btn {
-    padding: 0.85rem 1.5rem;
-    font-size: 0.95rem;
-  }
-
-  .hero-card {
-    padding: 1.25rem;
-    border-radius: 10px;
-  }
-
-  .hero-card h2 {
-    font-size: 1.4rem;
-    margin: 0.75rem 0 0.5rem;
-  }
-
-  .hero-card p {
-    font-size: 0.88rem;
-  }
-
-  .hero-stats {
-    grid-template-columns: 1fr;
-    margin: -1.25rem 1.5rem 0;
-    border-radius: 10px;
-  }
-
-  .hero-stat {
-    border-right: 0;
-    border-bottom: 1px solid #e8ece8;
-    padding: 1rem 1.15rem;
-  }
-
-  .hero-stat:last-child {
-    border-bottom: 0;
-  }
-
-  .hero-stat strong {
-    font-size: 1.75rem;
-  }
-
-  .hero-stat span {
+  .hero-mission__btn {
+    padding: 0.55rem 0.95rem;
     font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .hero-stage {
-    padding: 2.75rem 1rem 3.25rem;
-  }
-
-  .hero-copy h1 {
-    max-width: 100%;
-    font-size: 2.35rem;
-  }
-
-  .hero-actions {
-    flex-wrap: wrap;
-  }
-
-  .hero-card {
-    width: 100%;
-    padding: 1.2rem;
-  }
-
-  .hero-card h2 {
-    font-size: 1.3rem;
-  }
-
-  .hero-stats {
-    grid-template-columns: 1fr;
-    margin: -1rem 1rem 0;
-  }
-
-  .hero-stat {
-    border-right: 0;
-    border-bottom: 1px solid #e8ece8;
   }
 }
 </style>
