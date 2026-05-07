@@ -581,22 +581,22 @@
 /* Mobile (large) */
 @media (max-width: 640px) {
   .hero-section {
-    padding: 0 0 1.5rem;
+    padding: 0 0 2rem;
   }
 
   .hero-stage {
-    padding: 2rem 1rem 2.75rem;
+    padding: 1.5rem 1rem 3.5rem;
     min-height: auto;
     background-position: 60% center;
     gap: 1.5rem;
   }
 
   .hero-stage::after {
-    opacity: 0.5;
+    opacity: 0.4;
   }
 
   .hero-copy__title {
-    padding-top: 1rem;
+    padding-top: 0.75rem;
     padding-left: 0;
     font-size: clamp(1.5rem, 7vw, 2.2rem);
     line-height: 1.15;
@@ -613,44 +613,46 @@
   .hero-actions {
     padding-left: 0;
     flex-direction: column;
-    gap: 0.7rem;
+    gap: 0.75rem;
     margin-top: 1.2rem;
   }
 
   .hero-btn {
     width: 100%;
-    padding: 0.9rem 1.25rem;
+    padding: 1rem 1.25rem;
     border-radius: 8px;
     font-size: 0.9rem;
     min-width: auto;
+    min-height: 2.8rem;
   }
 
   .hero-card {
     width: 100%;
     max-width: 100%;
-    padding: 1.1rem 1rem;
+    padding: 1.2rem 1.1rem;
     border-radius: 10px;
     box-shadow: 0 12px 28px rgba(15, 29, 27, 0.2);
+    margin-top: 0.5rem;
   }
 
   .hero-card__tag {
     font-size: 0.7rem;
-    padding: 0.35rem 0.7rem;
+    padding: 0.4rem 0.8rem;
   }
 
   .hero-card h2 {
-    font-size: 1.25rem;
-    margin: 0.65rem 0 0.45rem;
+    font-size: 1.3rem;
+    margin: 0.75rem 0 0.5rem;
     line-height: 1.2;
   }
 
   .hero-card p {
-    font-size: 0.85rem;
+    font-size: 0.86rem;
     line-height: 1.5;
   }
 
   .hero-progress {
-    margin-top: 0.9rem;
+    margin-top: 1rem;
   }
 
   .hero-progress__head {
@@ -659,59 +661,72 @@
   }
 
   .hero-progress__track {
-    height: 0.6rem;
+    height: 0.65rem;
+    border-radius: 999px;
   }
 
   .hero-payment {
-    gap: 0.6rem;
-    margin-top: 0.9rem;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    grid-template-columns: 1fr 1fr;
   }
 
   .hero-payment__btn {
-    padding: 0.75rem 0.8rem;
-    font-size: 0.85rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.86rem;
     border-radius: 8px;
+    min-height: 2.6rem;
   }
 
   .hero-stats {
-    grid-template-columns: 1fr;
-    margin: -1rem 1rem 0;
+    grid-template-columns: 1fr 1fr;
+    margin: -1.2rem 1rem 0;
     border-radius: 10px;
     box-shadow: 0 12px 32px rgba(15, 31, 29, 0.15);
+    padding: 0;
+    gap: 0;
   }
 
   .hero-stat {
-    padding: 0.95rem 1rem;
-    border-right: 0;
+    padding: 1rem;
+    border-right: 1px solid #e8ece8;
     border-bottom: 1px solid #e8ece8;
   }
 
-  .hero-stat:last-child {
+  .hero-stat:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .hero-stat:nth-last-child(1),
+  .hero-stat:nth-last-child(2) {
     border-bottom: 0;
   }
 
   .hero-stat strong {
-    font-size: 1.65rem;
+    font-size: 1.6rem;
     margin-bottom: 0.3rem;
   }
 
   .hero-stat span {
-    font-size: 0.78rem;
+    font-size: 0.76rem;
   }
 
   .hero-mission {
-    padding: 1rem;
-    gap: 0.5rem;
+    grid-column: 1 / -1;
+    padding: 1.2rem;
+    gap: 0.6rem;
+    border-radius: 0 0 10px 10px;
   }
 
   .hero-mission p {
-    font-size: 0.95rem;
+    font-size: 0.98rem;
   }
 
   .hero-mission__btn {
-    padding: 0.6rem 1rem;
+    padding: 0.65rem 1.1rem;
     font-size: 0.85rem;
     border-radius: 6px;
+    min-height: 2.4rem;
   }
 }
 
