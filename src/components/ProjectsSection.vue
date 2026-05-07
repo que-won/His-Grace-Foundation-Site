@@ -417,6 +417,12 @@ const nextPage = () => {
     linear-gradient(180deg, #fff 0%, #fff8ef 100%);
 }
 
+@media (max-width: 768px) {
+  .projects-section {
+    padding: 0 1rem 3rem;
+  }
+}
+
 .projects-section__inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -430,6 +436,14 @@ const nextPage = () => {
   background: #1f1f1f;
   border-radius: 0 0 0.5rem 0.5rem;
   box-shadow: 0 24px 56px rgba(18, 29, 27, 0.14);
+}
+
+@media (max-width: 768px) {
+  .projects-section__banner {
+    height: clamp(12rem, 60vw, 18rem);
+    margin-bottom: 2rem;
+    border-radius: 8px;
+  }
 }
 
 .projects-section__banner-media {
@@ -469,6 +483,15 @@ const nextPage = () => {
   box-shadow: 0 18px 34px rgba(18, 29, 27, 0.2);
 }
 
+@media (max-width: 768px) {
+  .projects-section__banner-stat {
+    right: 0.85rem;
+    bottom: 0.85rem;
+    min-width: 7.5rem;
+    padding: 0.8rem;
+  }
+}
+
 .projects-section__banner-stat strong {
   font-size: 2.35rem;
   line-height: 1;
@@ -491,6 +514,15 @@ const nextPage = () => {
   margin-bottom: 2rem;
 }
 
+@media (max-width: 768px) {
+  .projects-section__header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: start;
+    margin-bottom: 1.5rem;
+  }
+}
+
 .projects-section__eyebrow {
   margin: 0 0 0.65rem;
   color: #ff5d23;
@@ -507,6 +539,12 @@ const nextPage = () => {
   line-height: 1.02;
   letter-spacing: 0;
   font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .projects-section__header h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
 }
 
 .projects-section__header-link {
@@ -576,6 +614,14 @@ const nextPage = () => {
   margin-bottom: 1.5rem;
 }
 
+@media (max-width: 768px) {
+  .projects-section__intro {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+  }
+}
+
 .projects-section__intro-copy {
   padding: 1.5rem;
   background: #fff;
@@ -608,6 +654,19 @@ const nextPage = () => {
   gap: 1rem;
 }
 
+@media (max-width: 1024px) {
+  .projects-section__stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section__stats {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
 .projects-section__stat-card {
   display: grid;
   align-content: space-between;
@@ -617,6 +676,13 @@ const nextPage = () => {
   color: #fff;
   border-radius: 0.45rem;
   box-shadow: 0 16px 34px rgba(18, 29, 27, 0.1);
+}
+
+@media (max-width: 768px) {
+  .projects-section__stat-card {
+    min-height: 10rem;
+    padding: 1rem;
+  }
 }
 
 .projects-section__stat-card:nth-child(2) {
@@ -648,6 +714,13 @@ const nextPage = () => {
   margin: 0 0 1.5rem;
 }
 
+@media (max-width: 768px) {
+  .projects-section__filters {
+    gap: 0.5rem;
+    margin: 0 0 1.2rem;
+  }
+}
+
 .projects-section__filter {
   min-height: 2.65rem;
   padding: 0.65rem 1rem;
@@ -664,6 +737,14 @@ const nextPage = () => {
     background 180ms ease,
     border-color 180ms ease,
     color 180ms ease;
+}
+
+@media (max-width: 768px) {
+  .projects-section__filter {
+    min-height: 2.4rem;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.8rem;
+  }
 }
 
 .projects-section__filter:hover,
@@ -701,6 +782,22 @@ const nextPage = () => {
   min-height: 35rem;
 }
 
+@media (max-width: 1024px) {
+  .projects-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .projects-section__grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    min-height: auto;
+  }
+}
+
 .project-card {
   display: grid;
   grid-template-rows: 15.5rem 1fr;
@@ -713,6 +810,12 @@ const nextPage = () => {
     transform 220ms ease,
     box-shadow 220ms ease,
     border-color 220ms ease;
+}
+
+@media (max-width: 768px) {
+  .project-card {
+    grid-template-rows: 12rem 1fr;
+  }
 }
 
 .project-card:hover {
@@ -769,6 +872,13 @@ const nextPage = () => {
   color: #202020;
 }
 
+@media (max-width: 768px) {
+  .project-card__copy {
+    gap: 1rem;
+    padding: 1rem;
+  }
+}
+
 .project-card__eyebrow {
   margin: 0 0 0.55rem;
   color: #ff5d23;
@@ -784,6 +894,12 @@ const nextPage = () => {
   line-height: 1.12;
   letter-spacing: 0;
   font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .project-card__copy h3 {
+    font-size: 1.25rem;
+  }
 }
 
 .project-card__description {
@@ -842,6 +958,16 @@ const nextPage = () => {
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .project-card__link {
+    min-height: 2.5rem;
+    padding: 0.65rem 1.2rem;
+    font-size: 0.85rem;
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 .project-card__link::before {
   content: '';
   position: absolute;
@@ -879,6 +1005,13 @@ const nextPage = () => {
   justify-content: center;
   gap: 0.7rem;
   margin-top: 1.8rem;
+}
+
+@media (max-width: 768px) {
+  .projects-section__pagination {
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+  }
 }
 
 .projects-section__arrow,

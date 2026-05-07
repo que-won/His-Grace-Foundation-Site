@@ -156,6 +156,12 @@ const activities = [
   background: #fff;
 }
 
+@media (max-width: 768px) {
+  .activities-section {
+    padding: clamp(2rem, 4vw, 3rem) 1rem;
+  }
+}
+
 .activities-section__inner {
   max-width: 1160px;
   margin: 0 auto;
@@ -167,6 +173,15 @@ const activities = [
   gap: 2rem;
   align-items: end;
   margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .activities-section__header {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    align-items: start;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .activities-section__eyebrow {
@@ -187,6 +202,12 @@ const activities = [
   font-weight: 900;
 }
 
+@media (max-width: 768px) {
+  .activities-section__header h2 {
+    font-size: clamp(1.5rem, 5vw, 2rem);
+  }
+}
+
 .activities-section__header p {
   margin: 0;
   color: #626262;
@@ -201,6 +222,14 @@ const activities = [
   margin-bottom: 1.15rem;
 }
 
+@media (max-width: 768px) {
+  .activities-section__feature {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
 .activities-section__feature-media {
   position: relative;
   min-height: 24rem;
@@ -208,6 +237,12 @@ const activities = [
   background: #1f1f1f;
   border-radius: 0.45rem;
   box-shadow: 0 18px 42px rgba(18, 29, 27, 0.12);
+}
+
+@media (max-width: 768px) {
+  .activities-section__feature-media {
+    min-height: 16rem;
+  }
 }
 
 .activities-section__feature-media::after {
@@ -338,6 +373,20 @@ const activities = [
   gap: 1.15rem;
 }
 
+@media (max-width: 1024px) {
+  .activities-section__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .activities-section__grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+}
+
 .activity-card {
   overflow: hidden;
   background: #fff;
@@ -378,6 +427,13 @@ const activities = [
   display: grid;
   gap: 0.75rem;
   padding: 1.15rem;
+}
+
+@media (max-width: 768px) {
+  .activity-card__copy {
+    padding: 1rem;
+    gap: 0.65rem;
+  }
 }
 
 .activity-card__icon {

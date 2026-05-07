@@ -145,6 +145,12 @@ const loadMoreItems = () => {
   overflow: hidden;
 }
 
+@media (max-width: 768px) {
+  .gallery-section {
+    padding: 3rem 1rem;
+  }
+}
+
 .gallery-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -155,11 +161,23 @@ const loadMoreItems = () => {
   margin-bottom: 3.5rem;
 }
 
+@media (max-width: 768px) {
+  .gallery-header {
+    margin-bottom: 2.5rem;
+  }
+}
+
 .gallery-title {
   font-size: 2.5rem;
   font-weight: 800;
   color: #1f2428;
   margin: 0 0 1rem 0;
+}
+
+@media (max-width: 768px) {
+  .gallery-title {
+    font-size: clamp(1.75rem, 5vw, 2rem);
+  }
 }
 
 .gallery-subtitle {
@@ -170,11 +188,32 @@ const loadMoreItems = () => {
   margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+  .gallery-subtitle {
+    font-size: 0.95rem;
+  }
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: 3rem;
+}
+
+@media (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
 }
 
 .gallery-card {
