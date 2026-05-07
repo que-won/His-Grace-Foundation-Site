@@ -780,37 +780,3 @@ const activities = [
   }
 }
 </style>
-
-  .activity-card {
-    border-radius: 0.35rem;
-  }
-
-  .activity-card__media {
-    height: 9rem;
-  }
-
-  .activity-card__icon {
-    width: 2.4rem;
-    height: 2.4rem;
-    margin-top: -2.1rem;
-  }
-
-  .activity-card__icon svg {
-    width: 1.1rem;
-    height: 1.1rem;
-  }
-
-  .activity-card h3 {
-    font-size: 1rem;
-  }
-
-  .activity-card p {
-    font-size: 0.85rem;
-  }
-
-  .activity-card__copy {
-    padding: 0.9rem;
-    gap: 0.65rem;
-  }
-}
-</style>
