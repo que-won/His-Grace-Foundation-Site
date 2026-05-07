@@ -257,6 +257,7 @@ const activities = [
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 480ms ease;
 }
 
@@ -357,6 +358,12 @@ const activities = [
   transform: translateY(0);
 }
 
+.activities-section__feature-copy a span,
+.activities-section__feature-copy a svg {
+  position: relative;
+  z-index: 2;
+}
+
 .activities-section__feature-copy a:focus-visible {
   outline: 2px solid #ff5d23;
   outline-offset: 2px;
@@ -416,6 +423,7 @@ const activities = [
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center;
   transition: transform 420ms ease;
 }
 
@@ -496,52 +504,77 @@ const activities = [
 
 @media (max-width: 768px) {
   .activities-section {
-    padding: 2.5rem 1.25rem;
+    padding: clamp(2.5rem, 8vw, 3.5rem) 1.25rem;
+    background: #fbfaf7;
+  }
+
+  .activities-section__inner {
+    max-width: 42rem;
   }
 
   .activities-section__header {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
-    margin-bottom: 1.5rem;
+    gap: 0.95rem;
+    margin-bottom: 1.35rem;
   }
 
   .activities-section__header h2 {
-    font-size: clamp(1.65rem, 5vw, 2.3rem);
+    max-width: 11ch;
+    font-size: clamp(1.85rem, 7vw, 2.45rem);
+    line-height: 1.08;
   }
 
   .activities-section__header p {
     font-size: 0.93rem;
+    line-height: 1.65;
+  }
+
+  .activities-section__eyebrow {
+    letter-spacing: 0.1em;
   }
 
   .activities-section__feature {
     grid-template-columns: 1fr;
-    gap: 1.2rem;
-    margin-bottom: 1.5rem;
+    gap: 0;
+    margin-bottom: 1.1rem;
+    overflow: hidden;
+    background: #1f1f1f;
+    border-radius: 0.55rem;
+    box-shadow: 0 18px 42px rgba(18, 29, 27, 0.12);
   }
 
   .activities-section__feature-media {
-    min-height: 19rem;
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+    border-radius: 0;
+    box-shadow: none;
   }
 
   .activities-section__feature-badge {
-    right: 1rem;
-    bottom: 1rem;
-    max-width: 11.5rem;
-    padding: 0.9rem;
+    right: 0.9rem;
+    bottom: 0.9rem;
+    left: 0.9rem;
+    max-width: none;
+    padding: 0.85rem 0.95rem;
+    border-left-width: 0.28rem;
+    border-radius: 0.35rem;
   }
 
   .activities-section__feature-copy {
-    padding: 1.5rem;
+    padding: 1.35rem;
+    border-radius: 0;
   }
 
   .activities-section__feature-copy h3 {
-    font-size: clamp(1.45rem, 4vw, 2.1rem);
+    font-size: clamp(1.45rem, 6vw, 2rem);
+    line-height: 1.12;
   }
 
   .activities-section__feature-copy p:last-of-type {
     font-size: 0.93rem;
     margin-top: 0.8rem;
+    line-height: 1.6;
   }
 
   .activities-section__feature-copy a {
@@ -558,6 +591,11 @@ const activities = [
 
   .activity-card {
     border-radius: 8px;
+    box-shadow: 0 12px 26px rgba(18, 29, 27, 0.08);
+  }
+
+  .activity-card:hover {
+    transform: none;
   }
 
   .activity-card__media {
@@ -583,6 +621,7 @@ const activities = [
   .activity-card h3 {
     font-size: 1.08rem;
     margin-top: 0.3rem;
+    line-height: 1.25;
   }
 
   .activity-card p {
@@ -592,7 +631,7 @@ const activities = [
 
 @media (max-width: 640px) {
   .activities-section {
-    padding: 2rem 1rem;
+    padding: 2.25rem 1rem;
   }
 
   .activities-section__eyebrow {
@@ -601,12 +640,13 @@ const activities = [
   }
 
   .activities-section__header {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.1rem;
   }
 
   .activities-section__header h2 {
-    font-size: clamp(1.5rem, 6vw, 2rem);
-    line-height: 1.15;
+    max-width: 12ch;
+    font-size: clamp(1.55rem, 8vw, 2.05rem);
+    line-height: 1.12;
   }
 
   .activities-section__header p {
@@ -615,14 +655,14 @@ const activities = [
   }
 
   .activities-section__feature-media {
-    min-height: 16.5rem;
+    aspect-ratio: 1.08 / 1;
   }
 
   .activities-section__feature-badge {
-    right: 0.8rem;
-    bottom: 0.8rem;
-    max-width: 10.5rem;
-    padding: 0.85rem;
+    right: 0.75rem;
+    bottom: 0.75rem;
+    left: 0.75rem;
+    padding: 0.8rem 0.85rem;
   }
 
   .activities-section__feature-badge strong {
@@ -634,7 +674,7 @@ const activities = [
   }
 
   .activities-section__feature-copy {
-    padding: 1.2rem;
+    padding: 1.15rem;
   }
 
   .activities-section__feature-copy h3 {
@@ -655,31 +695,33 @@ const activities = [
 
   .activities-section__grid {
     grid-template-columns: 1fr;
-    gap: 0.8rem;
+    gap: 0.9rem;
   }
 
   .activity-card {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(7.25rem, 38%) 1fr;
+    min-height: 9.5rem;
     border-radius: 8px;
     box-shadow: 0 10px 24px rgba(18, 29, 27, 0.08);
   }
 
   .activity-card__media {
-    height: 11rem;
-    order: 1;
+    height: 100%;
+    min-height: 9.5rem;
   }
 
   .activity-card__copy {
-    padding: 1rem;
-    order: 2;
+    align-content: start;
+    padding: 0.95rem;
+    gap: 0.45rem;
   }
 
   .activity-card__icon {
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 2.45rem;
+    height: 2.45rem;
     margin-top: 0;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     position: relative;
     z-index: 1;
   }
@@ -692,6 +734,7 @@ const activities = [
   .activity-card h3 {
     font-size: 1.05rem;
     margin-bottom: 0.25rem;
+    margin-top: 0;
   }
 
   .activity-card p {
@@ -702,7 +745,7 @@ const activities = [
 
 @media (max-width: 480px) {
   .activities-section {
-    padding: 1.75rem 0.85rem;
+    padding: 2rem 0.85rem;
   }
 
   .activities-section__eyebrow {
@@ -710,7 +753,7 @@ const activities = [
   }
 
   .activities-section__header h2 {
-    font-size: clamp(1.35rem, 7vw, 1.75rem);
+    font-size: clamp(1.4rem, 8vw, 1.85rem);
   }
 
   .activities-section__header p {
@@ -718,14 +761,14 @@ const activities = [
   }
 
   .activities-section__feature-media {
-    min-height: 14rem;
+    aspect-ratio: 1 / 1;
   }
 
   .activities-section__feature-badge {
-    right: 0.75rem;
-    bottom: 0.75rem;
-    max-width: 9.5rem;
-    padding: 0.8rem;
+    right: 0.65rem;
+    bottom: 0.65rem;
+    left: 0.65rem;
+    padding: 0.75rem 0.8rem;
   }
 
   .activities-section__feature-copy {
@@ -749,11 +792,14 @@ const activities = [
   }
 
   .activity-card {
+    grid-template-columns: 1fr;
     border-radius: 6px;
   }
 
   .activity-card__media {
-    height: 9.5rem;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 9;
   }
 
   .activity-card__copy {
@@ -777,6 +823,23 @@ const activities = [
 
   .activity-card p {
     font-size: 0.82rem;
+  }
+}
+
+@media (hover: none) {
+  .activities-section__feature:hover .activities-section__feature-media img,
+  .activity-card:hover .activity-card__media img {
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .activities-section__feature-media img,
+  .activities-section__feature-copy a,
+  .activities-section__feature-copy a::before,
+  .activity-card,
+  .activity-card__media img {
+    transition: none;
   }
 }
 </style>

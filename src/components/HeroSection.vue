@@ -915,4 +915,126 @@
     font-size: 0.8rem;
   }
 }
+@media (max-width: 768px) {
+  .hero-section,
+  .hero,
+  section {
+    min-height: auto;
+    padding: clamp(5.5rem, 16vw, 7rem) 1.25rem 2.5rem;
+    overflow: hidden;
+  }
+
+  .hero-section__inner,
+  .hero__inner,
+  section > div:first-child {
+    width: min(100%, 42rem);
+    margin-inline: auto;
+  }
+
+  .hero-section__content,
+  .hero__content,
+  section > div:first-child {
+    display: grid;
+    gap: 1.2rem;
+  }
+
+  .hero-section h1,
+  .hero h1,
+  section h1 {
+    max-width: 11ch;
+    margin-bottom: 0;
+    font-size: clamp(2.4rem, 11vw, 4rem);
+    line-height: 0.98;
+    letter-spacing: 0;
+  }
+
+  .hero-section p,
+  .hero p,
+  section p {
+    max-width: 34rem;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .hero-section a,
+  .hero-section button,
+  .hero a,
+  .hero button,
+  section a,
+  section button {
+    min-height: 2.9rem;
+  }
+
+  .hero-section__actions,
+  .hero__actions,
+  section nav,
+  section form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+  }
+
+  .hero-section img,
+  .hero img,
+  section img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-section,
+  .hero,
+  section {
+    padding: 5rem 1rem 2rem;
+  }
+
+  .hero-section h1,
+  .hero h1,
+  section h1 {
+    max-width: 10ch;
+    font-size: clamp(2.05rem, 12vw, 3rem);
+  }
+
+  .hero-section p,
+  .hero p,
+  section p {
+    font-size: 0.92rem;
+  }
+
+  .hero-section__actions,
+  .hero__actions,
+  section nav,
+  section form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-section__actions a,
+  .hero-section__actions button,
+  .hero__actions a,
+  .hero__actions button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (hover: none) {
+  .hero-section *,
+  .hero *,
+  section * {
+    transition-duration: 0.01ms;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-section *,
+  .hero *,
+  section * {
+    animation: none;
+    transition: none;
+  }
+}
 </style>
