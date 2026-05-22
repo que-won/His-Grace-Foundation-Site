@@ -1,5 +1,19 @@
 <script setup>
-import { computed } from "vue";
+import { computed, watch } from "vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+
+const props = defineProps({
+  slug: {
+    type: String,
+    required: true,
+  },
+});
+
+watch(() => props.slug, () => {
+  // Component will reactively update due to computed properties
+}, { immediate: true });
 
 const projects = {
   "clean-water": {
@@ -119,12 +133,8 @@ const projects = {
 };
 
 const fallbackSlug = "clean-water";
-const slug = computed(() => {
-  const path = window.location.pathname.split("/").filter(Boolean);
-  return path[path.length - 1] || fallbackSlug;
-});
 
-const project = computed(() => projects[slug.value] || projects[fallbackSlug]);
+const project = computed(() => projects[props.slug] || projects[fallbackSlug]);
 
 const detailStats = computed(() => [
   { label: "Raised", value: project.value.raised },
@@ -135,7 +145,7 @@ const detailStats = computed(() => [
 
 const relatedProjects = computed(() =>
   Object.entries(projects)
-    .filter(([key]) => key !== slug.value)
+    .filter(([key]) => key !== props.slug)
     .slice(0, 3)
     .map(([key, value]) => ({ slug: key, ...value })),
 );
@@ -145,12 +155,12 @@ const relatedProjects = computed(() =>
   <main class="project-detail">
     <section class="project-detail__hero" aria-labelledby="project-detail-title">
       <div class="project-detail__hero-copy">
-        <a class="project-detail__back" href="/projects">Back to projects</a>
+        <router-link class="project-detail__back" to="/projects">Back to projects</router-link>
         <p class="project-detail__eyebrow">{{ project.category }}</p>
         <h1 id="project-detail-title">{{ project.title }}</h1>
         <p>{{ project.summary }}</p>
         <div class="project-detail__actions">
-          <a href="/donations">
+          <router-link to="/donations">
             <span>Support this project</span>
             <svg
               aria-hidden="true"
@@ -164,8 +174,8 @@ const relatedProjects = computed(() =>
               <path d="M5 12h14" />
               <path d="m13 6 6 6-6 6" />
             </svg>
-          </a>
-          <a href="/contact">Ask a question</a>
+          </router-link>
+          <router-link to="/contact">Ask a question</router-link>
         </div>
       </div>
 
@@ -249,7 +259,7 @@ const relatedProjects = computed(() =>
           <div>
             <p>{{ item.category }}</p>
             <h3>{{ item.title }}</h3>
-            <a :href="`/projects/${item.slug}`">View details</a>
+            <router-link :to="`/projects/${item.slug}`">View details</router-link>
           </div>
         </article>
       </div>

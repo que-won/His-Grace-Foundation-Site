@@ -3,7 +3,7 @@
     <div class="site-header__inner">
       <RouterLink class="site-header__brand" to="/" aria-label="His Grace Foundation home">
         <span class="site-header__logo" aria-hidden="true"><img src="/images/logo.jpeg" alt="His Grace Foundation Logo"></span>
-        <span class="site-header__name">GRACE</span>
+        <span class="site-header__name">His <br>Grace <br> Foundation</span>
       </RouterLink>
 
       <nav class="site-header__nav" :class="{ 'is-open': mobileMenuOpen }" aria-label="Primary navigation">
@@ -177,7 +177,7 @@ const toggleDropdown = (dropdown: string) => {
 }
 
 .site-header__name {
-  font-size: 1.1rem;
+  font-size: 1rem;
   white-space: nowrap;
 }
 

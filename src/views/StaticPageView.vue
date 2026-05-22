@@ -4,8 +4,10 @@ import MissionSection from '../components/MissionSection.vue'
 import ProjectsSection from '../components/ProjectsSection.vue'
 import HelpSection from '../components/HelpSection.vue'
 import WhyChooseUsSection from '../components/WhyChooseUsSection.vue'
+import ActivitiesSection from '../components/ActivitiesSection.vue'
+import ValuesSection from '../components/ValuesSection.vue'
 
-type PageKind = 'about' | 'projects' | 'help' | 'volunteer' | 'give-away' | 'contact'
+type PageKind = 'about' | 'projects' | 'help' | 'volunteer' | 'give-away' | 'contact' | 'activities' | 'values' | 'partnerships'
 
 const props = defineProps<{
   title: string
@@ -23,6 +25,10 @@ const sectionComponent = computed(() => {
       return HelpSection
     case 'volunteer':
       return WhyChooseUsSection
+    case 'activities':
+      return ActivitiesSection
+    case 'values':
+      return ValuesSection
     default:
       return null
   }
@@ -129,6 +135,51 @@ const sectionComponent = computed(() => {
             <h3>Visit Us</h3>
             <p>Reach out for partnership opportunities, volunteering inquiries, or donation details.</p>
             <router-link to="/" class="page__contact-action">Back to Home</router-link>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partnerships Section -->
+    <section v-else-if="kind === 'partnerships'" class="page__custom page__partnerships-section">
+      <div class="page__custom-inner">
+        <div class="page__section-header">
+          <h2>Build Partnerships That Matter</h2>
+          <p>Together, we can create sustainable impact and reach more families</p>
+        </div>
+        <div class="page__cards">
+          <article class="page__card page__card--1">
+            <div class="page__card-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>Corporate Partners</h3>
+            <p>Collaborate with us to create meaningful corporate social responsibility programs that make a real difference in communities.</p>
+            <router-link to="/contact" class="page__card-link">Start Partnership →</router-link>
+          </article>
+          <article class="page__card page__card--2">
+            <div class="page__card-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+              </svg>
+            </div>
+            <h3>NGO & Community Groups</h3>
+            <p>Join forces with fellow organizations to amplify our collective impact and strengthen the communities we serve.</p>
+            <router-link to="/contact" class="page__card-link">Explore Collaboration →</router-link>
+          </article>
+          <article class="page__card page__card--3">
+            <div class="page__card-icon">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+              </svg>
+            </div>
+            <h3>Educational Institutions</h3>
+            <p>Work with schools and universities to create volunteer opportunities and awareness programs for our mission.</p>
+            <router-link to="/contact" class="page__card-link">Get Involved →</router-link>
           </article>
         </div>
       </div>

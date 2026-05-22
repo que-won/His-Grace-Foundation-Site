@@ -4,7 +4,8 @@
       <div class="cta-content">
         <h2 class="cta-title">Make a Difference Today</h2>
         <p class="cta-description">
-          Your contribution, no matter how small, creates lasting change in the lives of vulnerable communities. Join us in building a better future.
+          Your contribution, no matter how small, creates lasting change in the lives of 
+          vulnerable communities. Join us in building a better future.
         </p>
 
         <div class="cta-actions">

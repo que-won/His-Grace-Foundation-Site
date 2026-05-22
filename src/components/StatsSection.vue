@@ -733,4 +733,267 @@ const trustPoints = [
     padding-top: 3.5rem;
   }
 }
+@media (max-width: 1024px) {
+  .stats-section__grid,
+  .stats-grid,
+  [class*="stats-grid"],
+  [class*="StatsGrid"],
+  section > div:last-child {
+    gap: 0.75rem;
+  }
+
+  .stat-card,
+  .stats-card,
+  .stats-section__card,
+  [class*="stat-card"],
+  [class*="StatCard"],
+  article {
+    min-height: auto;
+    padding: 1rem;
+    border-radius: 0.55rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-section,
+  section {
+    padding-block: 2rem;
+  }
+
+  .stats-section {
+    padding-inline: 0.85rem;
+  }
+
+  .stats-section__grid,
+  .stats-section__cards,
+  .stats-section__list,
+  .stats-grid,
+  .stats-cards,
+  .impact-grid,
+  .impact-cards,
+  [class*="stats-grid"],
+  [class*="stats-card"],
+  [class*="stats-list"],
+  [class*="StatsGrid"],
+  [class*="impact-grid"],
+  [class*="impact-card"],
+  section > div:last-child {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .stats-section__grid > *,
+  .stats-section__cards > *,
+  .stats-section__list > *,
+  .stats-grid > *,
+  .stats-cards > *,
+  .impact-grid > *,
+  .impact-cards > *,
+  [class*="stats-grid"] > *,
+  [class*="stats-card"] > *,
+  [class*="stats-list"] > *,
+  [class*="impact-grid"] > *,
+  [class*="impact-card"] > *,
+  section > div:last-child > *,
+  .stat-card,
+  .stats-card,
+  .stats-section__card,
+  [class*="stat-card"],
+  [class*="StatCard"],
+  [class*="stat-item"],
+  [class*="StatItem"],
+  [class*="impact-card"],
+  [class*="ImpactCard"],
+  article {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    column-gap: 0.8rem;
+    min-height: 0;
+    height: auto;
+    padding: 0.8rem 0.9rem;
+    border-radius: 0.45rem;
+  }
+
+  .stats-section__grid > * :is(strong, span:first-child),
+  .stats-section__cards > * :is(strong, span:first-child),
+  .stats-section__list > * :is(strong, span:first-child),
+  .stats-grid > * :is(strong, span:first-child),
+  .stats-cards > * :is(strong, span:first-child),
+  .impact-grid > * :is(strong, span:first-child),
+  .impact-cards > * :is(strong, span:first-child),
+  [class*="stats-grid"] > * :is(strong, span:first-child),
+  [class*="impact-grid"] > * :is(strong, span:first-child),
+  .stat-card h2,
+  .stat-card h3,
+  .stat-card strong,
+  .stats-card h2,
+  .stats-card h3,
+  .stats-card strong,
+  .stats-section__card h2,
+  .stats-section__card h3,
+  .stats-section__card strong,
+  [class*="stat-card"] h2,
+  [class*="stat-card"] h3,
+  [class*="stat-card"] strong,
+  [class*="StatCard"] h2,
+  [class*="StatCard"] h3,
+  [class*="StatCard"] strong,
+  [class*="impact-card"] h2,
+  [class*="impact-card"] h3,
+  [class*="impact-card"] strong,
+  article h2,
+  article h3,
+  article strong {
+    margin: 0;
+    font-size: clamp(1.35rem, 6vw, 1.9rem);
+    line-height: 1;
+  }
+
+  .stats-section__grid > * :is(p, small, span:last-child),
+  .stats-section__cards > * :is(p, small, span:last-child),
+  .stats-section__list > * :is(p, small, span:last-child),
+  .stats-grid > * :is(p, small, span:last-child),
+  .stats-cards > * :is(p, small, span:last-child),
+  .impact-grid > * :is(p, small, span:last-child),
+  .impact-cards > * :is(p, small, span:last-child),
+  [class*="stats-grid"] > * :is(p, small, span:last-child),
+  [class*="impact-grid"] > * :is(p, small, span:last-child),
+  .stat-card p,
+  .stat-card small,
+  .stats-card p,
+  .stats-card small,
+  .stats-section__card p,
+  .stats-section__card small,
+  [class*="stat-card"] p,
+  [class*="stat-card"] small,
+  [class*="StatCard"] p,
+  [class*="StatCard"] small,
+  [class*="impact-card"] p,
+  [class*="impact-card"] small,
+  article p,
+  article small {
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.35;
+  }
+}
+
+@media (max-width: 480px) {
+  .stat-card,
+  .stats-card,
+  .stats-section__card,
+  [class*="stat-card"],
+  [class*="StatCard"],
+  article {
+    min-height: 4.25rem;
+    padding: 0.7rem 0.8rem;
+    column-gap: 0.65rem;
+  }
+
+  .stat-card h2,
+  .stat-card h3,
+  .stats-card h2,
+  .stats-card h3,
+  .stats-section__card h2,
+  .stats-section__card h3,
+  [class*="stat-card"] h2,
+  [class*="stat-card"] h3,
+  [class*="StatCard"] h2,
+  [class*="StatCard"] h3,
+  article h2,
+  article h3 {
+    font-size: clamp(1.2rem, 6vw, 1.65rem);
+  }
+
+  .stat-card p,
+  .stats-card p,
+  .stats-section__card p,
+  [class*="stat-card"] p,
+  [class*="StatCard"] p,
+  article p {
+    font-size: 0.72rem;
+  }
+}
+
+@media (max-width: 768px) {
+  :deep(.stat-card),
+  :deep(.stats-card),
+  :deep(.impact-card),
+  :deep([class*="stat-card"]),
+  :deep([class*="StatCard"]),
+  :deep([class*="impact-card"]),
+  :deep([class*="ImpactCard"]) {
+    display: grid !important;
+    grid-template-columns: auto 1fr !important;
+    align-items: center !important;
+    gap: 0.65rem !important;
+    min-height: 0 !important;
+    height: auto !important;
+    max-height: none !important;
+    padding: 0.75rem 0.85rem !important;
+    border-radius: 0.45rem !important;
+  }
+
+  :deep(.stat-card > *),
+  :deep(.stats-card > *),
+  :deep(.impact-card > *),
+  :deep([class*="stat-card"] > *),
+  :deep([class*="StatCard"] > *),
+  :deep([class*="impact-card"] > *),
+  :deep([class*="ImpactCard"] > *) {
+    margin: 0 !important;
+  }
+
+  :deep(.stat-card h2),
+  :deep(.stat-card h3),
+  :deep(.stat-card strong),
+  :deep(.stats-card h2),
+  :deep(.stats-card h3),
+  :deep(.stats-card strong),
+  :deep(.impact-card h2),
+  :deep(.impact-card h3),
+  :deep(.impact-card strong),
+  :deep([class*="stat-card"] h2),
+  :deep([class*="stat-card"] h3),
+  :deep([class*="stat-card"] strong),
+  :deep([class*="StatCard"] h2),
+  :deep([class*="StatCard"] h3),
+  :deep([class*="StatCard"] strong),
+  :deep([class*="impact-card"] h2),
+  :deep([class*="impact-card"] h3),
+  :deep([class*="impact-card"] strong),
+  :deep([class*="ImpactCard"] h2),
+  :deep([class*="ImpactCard"] h3),
+  :deep([class*="ImpactCard"] strong) {
+    font-size: clamp(1.25rem, 6vw, 1.65rem) !important;
+    line-height: 1 !important;
+  }
+
+  :deep(.stat-card p),
+  :deep(.stat-card small),
+  :deep(.stat-card span),
+  :deep(.stats-card p),
+  :deep(.stats-card small),
+  :deep(.stats-card span),
+  :deep(.impact-card p),
+  :deep(.impact-card small),
+  :deep(.impact-card span),
+  :deep([class*="stat-card"] p),
+  :deep([class*="stat-card"] small),
+  :deep([class*="stat-card"] span),
+  :deep([class*="StatCard"] p),
+  :deep([class*="StatCard"] small),
+  :deep([class*="StatCard"] span),
+  :deep([class*="impact-card"] p),
+  :deep([class*="impact-card"] small),
+  :deep([class*="impact-card"] span),
+  :deep([class*="ImpactCard"] p),
+  :deep([class*="ImpactCard"] small),
+  :deep([class*="ImpactCard"] span) {
+    font-size: 0.72rem !important;
+    line-height: 1.25 !important;
+  }
+}
 </style>

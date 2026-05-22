@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import StaticPageView from '../views/StaticPageView.vue'
+import ProjectDetailPage from '../components/ProjectDetailPage.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -17,6 +18,12 @@ const router = createRouter({
         description: 'See the programs and impact areas we focus on across education, health, and support.',
         kind: 'projects',
       },
+    },
+    {
+      path: '/projects/:slug',
+      name: 'project-detail',
+      component: ProjectDetailPage,
+      props: true,
     },
     {
       path: '/donations',
@@ -67,6 +74,36 @@ const router = createRouter({
         title: 'Contact',
         description: 'Reach out to the team with a question, partnership idea, or support request.',
         kind: 'contact',
+      },
+    },
+    {
+      path: '/activities',
+      name: 'activities',
+      component: StaticPageView,
+      props: {
+        title: 'Our Activities',
+        description: 'Explore the core initiatives that drive our mission across Africa.',
+        kind: 'activities',
+      },
+    },
+    {
+      path: '/values',
+      name: 'values',
+      component: StaticPageView,
+      props: {
+        title: 'Our Values',
+        description: 'Six core principles that guide everything we do.',
+        kind: 'values',
+      },
+    },
+    {
+      path: '/partnerships',
+      name: 'partnerships',
+      component: StaticPageView,
+      props: {
+        title: 'Partnerships',
+        description: 'Work with us to strengthen communities and create lasting impact.',
+        kind: 'partnerships',
       },
     },
     { path: '/:pathMatch(.*)*', redirect: '/' },

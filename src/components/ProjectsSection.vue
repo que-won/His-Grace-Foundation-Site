@@ -1,5 +1,6 @@
 <script setup>
 import { computed, ref } from "vue";
+import { useRouter } from "vue-router";
 
 const projects = [
   {
@@ -195,7 +196,7 @@ const nextPage = () => {
         <div>
           <p class="projects-section__eyebrow">Our projects</p>
           <h2 id="projects-title">Practical support that reaches real families</h2>
-          <a class="projects-section__header-link" href="/donations" aria-label="Support His Grace Foundation projects">
+          <router-link class="projects-section__header-link" to="/donations" aria-label="Support His Grace Foundation projects">
             <span>Support a project</span>
             <svg
               aria-hidden="true"
@@ -209,7 +210,7 @@ const nextPage = () => {
               <path d="M5 12h14" />
               <path d="m13 6 6 6-6 6" />
             </svg>
-          </a>
+          </router-link>
         </div>
         <p>
           Each project is built around daily needs: clean water, school access,
@@ -291,7 +292,7 @@ const nextPage = () => {
               </span>
             </div>
 
-            <a class="project-card__link" :href="`/projects/${project.slug}`" :aria-label="`Read more about ${project.title}`">
+            <router-link class="project-card__link" :to="`/projects/${project.slug}`" :aria-label="`Read more about ${project.title}`">
               <span>View details</span>
               <svg
                 aria-hidden="true"
@@ -305,7 +306,7 @@ const nextPage = () => {
                 <path d="M5 12h14" />
                 <path d="m13 6 6 6-6 6" />
               </svg>
-            </a>
+            </router-link>
           </div>
         </article>
       </TransitionGroup>
@@ -944,13 +945,13 @@ const nextPage = () => {
   justify-content: center;
   gap: 0.5rem;
   width: fit-content;
-  min-height: 2.75rem;
-  padding: 0.78rem 1.5rem;
+  min-height: 2.35rem;
+  padding: 0.55rem 1.15rem;
   background: #1f1f1f;
   color: #fff;
   border-radius: 8px;
   border: 2px solid transparent;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   font-weight: 900;
   text-decoration: none;
   transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -960,9 +961,9 @@ const nextPage = () => {
 
 @media (max-width: 768px) {
   .project-card__link {
-    min-height: 2.5rem;
-    padding: 0.65rem 1.2rem;
-    font-size: 0.85rem;
+    min-height: 2.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.78rem;
     width: 100%;
     justify-content: center;
   }
@@ -1643,6 +1644,23 @@ const nextPage = () => {
   .project-card__link {
     padding: 0.6rem 1rem;
     font-size: 0.8rem;
+  }
+}
+@media (max-width: 768px) {
+  :deep(.project-card a),
+  :deep(.project-card button),
+  :deep([class*="project-card"] a),
+  :deep([class*="ProjectCard"] a),
+  :deep([class*="project-card"] button),
+  :deep([class*="ProjectCard"] button) {
+    width: fit-content !important;
+    min-width: 0 !important;
+    min-height: 2.45rem !important;
+    margin-inline: auto !important;
+    padding: 0.65rem 1.05rem !important;
+    border-radius: 0.45rem !important;
+    font-size: 0.82rem !important;
+    line-height: 1 !important;
   }
 }
 </style>

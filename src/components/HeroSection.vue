@@ -2,10 +2,10 @@
   <section id="home" class="hero-section">
     <div class="hero-stage">
       <div class="hero-copy">
-        <h1 class="hero-copy__title">Only by Helping Each Other We Can Make World Better</h1>
+        <h1 class="hero-copy__title">Helping Lives. Restoring Hope. Inspiring Change</h1>
         <p class="hero-description">
-          Sed ullamcorper nibh in nunc eleifend, non semper magna egestas purus
-          viverra. Curabitur congue dolor sit amet id interdum et.
+          At His Grace Foundation, we believe that compassion, education, and community support can transform lives. Through humanitarian outreach, 
+          empowerment programs, and community-driven initiatives, we are committed to giving vulnerable individuals and families a brighter future and a reason to smile again.
         </p>
 
         <div class="hero-actions">
@@ -19,17 +19,17 @@
       </div>
 
       <aside class="hero-card" aria-label="Donation summary">
-        <span class="hero-card__tag">Education</span>
-        <h2>Help Children Get out of Poverty &amp; have a Future</h2>
+        <span class="hero-card__tag">Impact Progress</span>
+        <h2>Helping Communities Build a Brighter Future</h2>
         <p>
-          We provide support, schooling, and safe spaces for children and
-          families who need help building a stronger tomorrow.
+         We provide education support, empowerment programs, humanitarian assistance, and community outreach initiatives that help 
+         vulnerable children, youth, and families create a better tomorrow filled with hope and opportunity.
         </p>
 
         <div class="hero-progress">
           <div class="hero-progress__head">
-            <span>65% Funded</span>
-            <span>$30,000 raised</span>
+            <span>Mission Progress Achieved</span>
+            <span>-</span>
           </div>
           <div class="hero-progress__track" aria-hidden="true">
             <div class="hero-progress__fill"></div>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="hero-payment">
-          <router-link class="hero-payment__btn" to="/donations" aria-label="Donate to education support">Donate</router-link>
+          <router-link class="hero-payment__btn" to="/volunteer" aria-label="Become a volunteer">Become a Volunteer</router-link>
           <router-link class="hero-payment__btn" to="/donations" aria-label="Make a custom donation">Contribute</router-link>
         </div>
       </aside>
@@ -45,19 +45,19 @@
 
     <div class="hero-stats">
       <div class="hero-stat">
-        <strong>20M</strong>
-        <span>Number of Supporters</span>
+        <strong>100+</strong>
+        <span>People Impacted Through Our Programs</span>
       </div>
       <div class="hero-stat">
-        <strong>15K+</strong>
-        <span>Volunteers Worldwide</span>
+        <strong>25+</strong>
+        <span>Dedicated Volunteers & Supporters</span>
       </div>
       <div class="hero-stat">
-        <strong>98%</strong>
-        <span>Completed Projects</span>
+        <strong>30</strong>
+        <span>Community Outreach Projects Successfully Completed</span>
       </div>
       <div class="hero-mission">
-        <p>Our Goal is to Help Poor People</p>
+        <p>Our Goal is to Restore Hope and Transform Lives</p>
         <router-link class="hero-mission__btn" to="/volunteer" aria-label="Become a volunteer with His Grace Foundation">Become Volunteer</router-link>
       </div>
     </div>
@@ -112,7 +112,7 @@
 }
 
 .hero-copy {
-  max-width: 38rem;
+  max-width: 4rem;
   animation: slideInLeft 0.8s ease-out;
 }
 
@@ -132,7 +132,7 @@
   padding-top: 2.5rem;
   padding-left: 2.25rem;
   max-width: 111ch;
-  font-size: clamp(2.7rem, 4.8vw, 4.35rem);
+  font-size: clamp(2rem, 4vw, 4rem);
   line-height: 0.96;
   letter-spacing: 0;
   font-weight: 800;
@@ -144,12 +144,12 @@
   .hero-copy__title {
     padding-top: 1rem;
     padding-left: 0;
-    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    font-size: clamp(1.5rem, 2vw, 2rem);
   }
 }
 
 .hero-description {
-  max-width: 42ch;
+  max-width: 59ch;
   margin: 1rem 0 0;
   padding-left: 2.25rem;
   font-size: 0.96rem;
@@ -352,7 +352,7 @@
 }
 
 .hero-progress__fill {
-  width: 65%;
+  width: 15%;
   height: 100%;
   border-radius: inherit;
   background: linear-gradient(90deg, #8e0ac7, #7d2be0);
@@ -920,7 +920,7 @@
   .hero,
   section {
     min-height: auto;
-    padding: clamp(5.5rem, 16vw, 7rem) 1.25rem 2.5rem;
+    padding: 0 1.25rem 2.25rem;
     overflow: hidden;
   }
 
@@ -962,7 +962,9 @@
   .hero button,
   section a,
   section button {
-    min-height: 2.9rem;
+    min-height: 2.55rem;
+    padding: 0.65rem 0.95rem;
+    font-size: 0.88rem;
   }
 
   .hero-section__actions,
@@ -970,8 +972,10 @@
   section nav,
   section form {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.7rem;
+    flex-wrap: nowrap;
+    gap: 0.55rem;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-section img,
@@ -988,7 +992,7 @@
   .hero-section,
   .hero,
   section {
-    padding: 5rem 1rem 2rem;
+    padding: 0 1rem 2rem;
   }
 
   .hero-section h1,
@@ -1008,16 +1012,120 @@
   .hero__actions,
   section nav,
   section form {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 
   .hero-section__actions a,
   .hero-section__actions button,
   .hero__actions a,
   .hero__actions button {
-    width: 100%;
+    width: auto;
     justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section :is(a, button),
+  .hero :is(a, button),
+  section :is(a, button) {
+    width: auto;
+    max-width: 13.5rem;
+    min-height: 2.65rem;
+    padding: 0.7rem 1.15rem;
+    border-radius: 0.55rem;
+    font-size: 0.9rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .hero-section :is(a, button):has(+ a),
+  .hero :is(a, button):has(+ a),
+  section :is(a, button):has(+ a) {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .hero-section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]),
+  .hero :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]),
+  section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) {
+    max-width: min(100%, 24rem);
+    margin-inline: auto;
+    padding: 1rem;
+    border-radius: 0.65rem;
+  }
+
+  .hero-section :is([class*="stats"], [class*="Stats"], [class*="metrics"], [class*="Metrics"]),
+  .hero :is([class*="stats"], [class*="Stats"], [class*="metrics"], [class*="Metrics"]),
+  section :is([class*="stats"], [class*="Stats"], [class*="metrics"], [class*="Metrics"]) {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+    max-width: min(100%, 24rem);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero-section :is(a, button),
+  .hero :is(a, button),
+  section :is(a, button) {
+    width: fit-content;
+    max-width: calc(50% - 0.35rem);
+    min-height: 2.5rem;
+    padding: 0.65rem 0.8rem;
+    font-size: 0.82rem;
+  }
+
+  .hero-section :is(a, button):nth-of-type(2),
+  .hero :is(a, button):nth-of-type(2),
+  section :is(a, button):nth-of-type(2) {
+    background-color: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]),
+  .hero :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]),
+  section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) {
+    width: min(100%, 19rem);
+    max-width: 19rem;
+    margin-inline: auto;
+    padding: 0.85rem;
+    border-radius: 0.55rem;
+    box-shadow: 0 12px 26px rgba(18, 29, 27, 0.13);
+  }
+
+  .hero-section :is([class*="stats"], [class*="Stats"], [class*="metrics"], [class*="Metrics"]),
+  .hero :is([class*="stats"], [class*="Stats"], [class*="metrics"], [class*="Metrics"]),
+  section :is([class*="stats"], [class*="Stats"], [class*="metrics"], [class*="Metrics"]) {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0;
+    width: min(100%, 19rem);
+    max-width: 19rem;
+    margin-inline: auto;
+    overflow: hidden;
+  }
+
+  .hero-section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) h2,
+  .hero-section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) h3,
+  .hero :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) h2,
+  .hero :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) h3,
+  section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) h2,
+  section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) h3 {
+    font-size: clamp(1rem, 5vw, 1.45rem);
+    line-height: 1.15;
+  }
+
+  .hero-section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) p,
+  .hero :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) p,
+  section :is(article, aside, [class*="card"], [class*="Card"], [class*="stat"], [class*="Stat"]) p {
+    font-size: 0.72rem;
+    line-height: 1.45;
   }
 }
 
