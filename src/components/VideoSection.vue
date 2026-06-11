@@ -128,6 +128,8 @@ const videos: Video[] = [
 const videoModalOpen = ref(false);
 const activeVideoIndex = ref(0);
 
+const activeVideo = computed(() => videos[activeVideoIndex.value]);
+
 const activeVideoUrl = computed(() => {
   const videoId = videos[activeVideoIndex.value].youtubeId;
   return `https://www.youtube.com/embed/${videoId}?autoplay=1`;

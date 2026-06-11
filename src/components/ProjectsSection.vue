@@ -112,6 +112,7 @@ const foundationGoals = [
     number: "01",
     title: "Empower Through Education",
     goal: "Increase access to educational resources and opportunities for underserved youth.",
+    image: "/images/real1.jpeg",
     objectives: [
       "Provide scholarships and grants to students from low-income families.",
       "Develop and implement skill-building workshops and training programs.",
@@ -121,6 +122,7 @@ const foundationGoals = [
     number: "02",
     title: "Enhance Community Health and Well-being",
     goal: "Improve the overall health and wellness of the communities served.",
+    image: "/images/real1.jpeg",
     objectives: [
       "Organize regular health fairs that provide free screenings and health education.",
       "Partner with healthcare providers to offer mental health resources and support.",
@@ -130,6 +132,7 @@ const foundationGoals = [
     number: "03",
     title: "Promote Economic Development",
     goal: "Foster economic stability and self-sufficiency among individuals and families.",
+    image: "/images/real1.jpeg",
     objectives: [
       "Create job training and placement programs that connect participants with local employers.",
       "Support small business development through mentorship and micro-financing initiatives.",
@@ -139,6 +142,7 @@ const foundationGoals = [
     number: "04",
     title: "Encourage Community Engagement",
     goal: "Strengthen community bonds and encourage volunteerism.",
+    image: "/images/real1.jpeg",
     objectives: [
       "Organize community service projects that address local needs and challenges.",
       "Develop a volunteer program that mobilizes community members to contribute their skills and time.",
@@ -394,48 +398,54 @@ const nextPage = () => {
         </div>
       </div>
 
-      <!-- Goals Grid -->
-      <div data-aos="fade-up" data-aos-delay="400" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12" aria-label="Foundation goals">
+      <!-- Goals Alternating Layout -->
+      <div data-aos="fade-up" data-aos-delay="400" class="space-y-0 mb-8 md:mb-12" aria-label="Foundation goals">
         <article v-for="(goal, idx) in foundationGoals" :key="goal.number"
-          :data-aos="`fade-${idx % 2 === 0 ? 'up' : 'up'}`"
+          :data-aos="`fade-${idx % 2 === 0 ? 'left' : 'right'}`"
           :data-aos-delay="`${500 + idx * 100}`"
-          class="grid gap-6 p-6 md:p-8 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all overflow-hidden"
+          class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center"
+          :class="idx % 2 === 1 && 'md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1'"
         >
-          <!-- Number Badge -->
-          <div class="flex items-center gap-4">
-            <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-orange-600 to-orange-500 text-white text-2xl font-black flex-shrink-0 shadow-lg">
-              {{ goal.number }}
-            </div>
-            <div class="flex-1">
+          <!-- Image Section -->
+          <div 
+            class="h-64 md:h-80 rounded-lg overflow-hidden shadow-lg"
+            :style="{ backgroundImage: `url('${goal.image}')`, backgroundSize: 'cover', backgroundPosition: 'center' }"
+          ></div>
+
+          <!-- Content Section -->
+          <div class="bg-white p-6 md:p-8 rounded-lg border border-gray-100 shadow-md hover:shadow-lg transition-shadow">
+            <!-- Number Badge and Title -->
+            <div class="flex items-center gap-4 mb-5">
+              <div class="flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-xl bg-gradient-to-br from-orange-600 to-orange-500 text-white text-2xl md:text-3xl font-black shadow-md flex-shrink-0">
+                {{ goal.number.toString().padStart(2, '0') }}
+              </div>
               <h3 class="text-xl md:text-2xl font-black text-neutral-900 leading-tight">{{ goal.title }}</h3>
             </div>
-          </div>
 
-          <!-- Goal Section -->
-          <div class="grid gap-2">
-            <p class="text-xs font-black text-neutral-600 uppercase tracking-widest">Goal:</p>
-            <p class="text-sm md:text-base text-neutral-700 leading-relaxed font-medium">{{ goal.goal }}</p>
-          </div>
+            <!-- Goal Section -->
+            <div class="mb-5 pb-5 border-b border-gray-200">
+              <p class="text-xs font-black text-neutral-600 uppercase tracking-widest mb-2">Goal:</p>
+              <p class="text-sm md:text-base text-neutral-700 leading-relaxed font-medium">{{ goal.goal }}</p>
+            </div>
 
-          <!-- Objectives Section -->
-          <div class="grid gap-3 pt-2">
-            <p class="text-xs font-black text-orange-600 uppercase tracking-widest">Objectives:</p>
-            <ul class="space-y-2.5">
-              <li v-for="(objective, i) in goal.objectives" :key="i" class="flex gap-3 items-start">
-                <span class="flex-shrink-0 text-orange-600 font-black text-lg mt-0.5">✓</span>
-                <span class="text-sm text-neutral-700 leading-relaxed">{{ objective }}</span>
-              </li>
-            </ul>
-          </div>
+            <!-- Objectives Section -->
+            <div class="mb-6">
+              <p class="text-xs font-black text-orange-600 uppercase tracking-widest mb-3">Objectives:</p>
+              <ul class="space-y-2.5">
+                <li v-for="(objective, i) in goal.objectives" :key="i" class="flex gap-3 items-start">
+                  <span class="flex-shrink-0 text-orange-600 font-black text-lg mt-0.5">✓</span>
+                  <span class="text-sm text-neutral-700 leading-relaxed">{{ objective }}</span>
+                </li>
+              </ul>
+            </div>
 
-          <!-- Learn More Link -->
-          <div class="pt-3 mt-auto">
+            <!-- Learn More Link -->
             <router-link
               to="/projects"
-              class="inline-flex items-center gap-2 text-orange-600 font-black text-sm hover:text-orange-700 transition-colors group"
+              class="inline-flex items-center gap-2 px-4 md:px-5 py-2 md:py-2.5 bg-orange-600 text-white font-black text-xs md:text-sm rounded hover:bg-orange-700 transition-colors"
             >
-              <span>Learn more</span>
-              <ArrowRight :size="16" :stroke-width="2.5" class="group-hover:translate-x-1 transition-transform" />
+              <span>View More</span>
+              <ArrowRight :size="16" :stroke-width="2.5" />
             </router-link>
           </div>
         </article>
