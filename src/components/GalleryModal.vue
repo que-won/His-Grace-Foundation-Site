@@ -1,55 +1,98 @@
 <template>
   <Teleport to="body">
-    <transition name="modal-fade">
-      <div v-if="isOpen" class="gallery-modal-overlay" @click="closeModal">
-        <div class="gallery-modal" @click.stop>
-          <button class="gallery-modal__close" @click="closeModal" aria-label="Close modal">
-            <span>&times;</span>
+    <transition
+      enter-active-class="transition-opacity duration-300 ease-out"
+      leave-active-class="transition-opacity duration-300 ease-in"
+      enter-from-class="opacity-0"
+      leave-to-class="opacity-0"
+    >
+      <div 
+        v-if="isOpen" 
+        class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+        @click="closeModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="gallery-modal-title"
+      >
+        <div 
+          class="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col"
+          @click.stop
+        >
+          <!-- Close Button -->
+          <button 
+            class="absolute top-4 right-4 z-10 min-h-11 min-w-11 bg-white/95 rounded-lg flex items-center justify-center text-gray-700 hover:bg-white hover:shadow-lg hover:scale-110 focus-visible:outline-2 focus-visible:outline-purple-600 focus-visible:outline-offset-2 transition-all duration-300"
+            @click="closeModal" 
+            aria-label="Close gallery modal"
+          >
+            <X :size="24" />
           </button>
 
-          <div class="gallery-modal__content">
+          <h2 id="gallery-modal-title" class="sr-only">Image Gallery</h2>
+
+          <!-- Image and Info Section -->
+          <div class="relative flex-1 overflow-auto flex flex-col">
             <img 
               :src="currentImage.src" 
               :alt="currentImage.alt"
-              class="gallery-modal__image"
+              class="w-full h-auto object-contain transition-all duration-300"
             />
             
-            <div class="gallery-modal__info">
-              <h3>{{ currentImage.title }}</h3>
-              <p>{{ currentImage.description }}</p>
+            <div class="border-t border-gray-200 bg-gray-50 px-4 sm:px-6 py-3 sm:py-4">
+              <h3 class="text-base sm:text-lg font-semibold text-purple-600 mb-1">
+                {{ currentImage.title }}
+              </h3>
+              <p class="text-sm sm:text-base text-gray-600 line-clamp-2">
+                {{ currentImage.description }}
+              </p>
             </div>
           </div>
 
-          <div class="gallery-modal__nav">
+          <!-- Navigation Controls -->
+          <div class="border-t border-gray-200 flex items-center justify-center gap-3 sm:gap-4 px-4 py-3 sm:py-4">
             <button 
-              class="gallery-modal__prev" 
+              class="min-h-11 min-w-11 bg-purple-600 text-white rounded-lg flex items-center justify-center hover:bg-purple-700 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-purple-600 focus-visible:outline-offset-2 transition-all duration-300"
               @click="prevImage"
               aria-label="Previous image"
             >
-              ‹
+              <ChevronLeft :size="20" />
             </button>
-            <div class="gallery-modal__counter">
+            <div 
+              class="text-sm text-gray-600 min-w-[50px] text-center"
+              aria-live="polite" 
+              aria-atomic="true"
+            >
               {{ currentIndex + 1 }} / {{ images.length }}
             </div>
             <button 
-              class="gallery-modal__next" 
+              class="min-h-11 min-w-11 bg-purple-600 text-white rounded-lg flex items-center justify-center hover:bg-purple-700 hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-purple-600 focus-visible:outline-offset-2 transition-all duration-300"
               @click="nextImage"
               aria-label="Next image"
             >
-              ›
+              <ChevronRight :size="20" />
             </button>
           </div>
 
-          <div class="gallery-modal__thumbnails">
+          <!-- Thumbnails -->
+          <div 
+            class="border-t border-gray-200 flex gap-2 sm:gap-3 px-3 sm:px-4 py-3 overflow-x-auto"
+            role="tablist" 
+            aria-label="Image thumbnails"
+          >
             <button
               v-for="(img, idx) in images"
               :key="idx"
-              class="gallery-modal__thumbnail"
-              :class="{ 'is-active': idx === currentIndex }"
+              class="flex-shrink-0 w-14 h-14 sm:w-16 sm:h-16 border-2 rounded-lg overflow-hidden hover:border-purple-600 hover:-translate-y-0.5 hover:shadow-md focus-visible:outline-2 focus-visible:outline-purple-600 focus-visible:outline-offset-2 transition-all duration-300"
+              :class="idx === currentIndex ? 'border-purple-600 shadow-md' : 'border-gray-300'"
               @click="currentIndex = idx"
-              :aria-label="`View image ${idx + 1}`"
+              :aria-label="`View image ${idx + 1}: ${img.title}`"
+              :aria-selected="idx === currentIndex"
+              role="tab"
             >
-              <img :src="img.src" :alt="img.alt" />
+              <img 
+                :src="img.src" 
+                :alt="`${img.title} thumbnail`"
+                class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+              />
             </button>
           </div>
         </div>
@@ -60,6 +103,7 @@
 
 <script setup lang="ts">
 import { ref, computed, watch } from 'vue';
+import { X, ChevronLeft, ChevronRight } from 'lucide-vue-next';
 
 interface GalleryImage {
   src: string;
@@ -107,276 +151,3 @@ watch(() => props.isOpen, (newVal) => {
   }
 });
 </script>
-
-<style scoped>
-.gallery-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-  backdrop-filter: blur(4px);
-  animation: fadeIn 0.3s ease;
-}
-
-.gallery-modal {
-  background: #fff;
-  border-radius: 16px;
-  max-width: 90%;
-  width: 900px;
-  max-height: 90vh;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.gallery-modal__close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid transparent;
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  font-size: 28px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  color: #333;
-}
-
-.gallery-modal__close:hover,
-.gallery-modal__close:focus-visible {
-  background: #fff;
-  transform: rotate(90deg) scale(1.1);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.gallery-modal__close:focus-visible {
-  outline: 2px solid #7d2be0;
-  outline-offset: 2px;
-}
-
-.gallery-modal__content {
-  position: relative;
-  flex: 1;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.gallery-modal__image {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  animation: zoomIn 0.4s ease;
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.gallery-modal__info {
-  padding: 1.5rem;
-  border-top: 1px solid #eee;
-  background: #f9f9f9;
-}
-
-.gallery-modal__info h3 {
-  margin: 0 0 0.5rem 0;
-  color: #7d2be0;
-  font-size: 1.1rem;
-}
-
-.gallery-modal__info p {
-  margin: 0;
-  color: #666;
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
-
-.gallery-modal__nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  padding: 1rem;
-  border-top: 1px solid #eee;
-}
-
-.gallery-modal__prev,
-.gallery-modal__next {
-  background: #7d2be0;
-  color: #fff;
-  border: 2px solid transparent;
-  width: 44px;
-  height: 44px;
-  border-radius: 8px;
-  font-size: 20px;
-  cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  position: relative;
-  overflow: hidden;
-}
-
-.gallery-modal__prev::before,
-.gallery-modal__next::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.15);
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 0;
-}
-
-.gallery-modal__prev:hover,
-.gallery-modal__next:hover,
-.gallery-modal__prev:focus-visible,
-.gallery-modal__next:focus-visible {
-  background: #6a1fb8;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(125, 43, 224, 0.3);
-}
-
-.gallery-modal__prev:hover::before,
-.gallery-modal__next:hover::before {
-  transform: scaleX(1);
-}
-
-.gallery-modal__prev:focus-visible,
-.gallery-modal__next:focus-visible {
-  outline: 2px solid #7d2be0;
-  outline-offset: 2px;
-}
-
-.gallery-modal__counter {
-  color: #666;
-  font-size: 0.9rem;
-  min-width: 50px;
-  text-align: center;
-}
-
-.gallery-modal__thumbnails {
-  display: flex;
-  gap: 0.5rem;
-  padding: 1rem;
-  border-top: 1px solid #eee;
-  overflow-x: auto;
-}
-
-.gallery-modal__thumbnail {
-  flex-shrink: 0;
-  width: 60px;
-  height: 60px;
-  border: 2px solid #e0e0e0;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  background: none;
-  padding: 0;
-  position: relative;
-}
-
-.gallery-modal__thumbnail img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.gallery-modal__thumbnail:hover,
-.gallery-modal__thumbnail:focus-visible {
-  border-color: #7d2be0;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(125, 43, 224, 0.2);
-}
-
-.gallery-modal__thumbnail:hover img {
-  transform: scale(1.1);
-}
-
-.gallery-modal__thumbnail:focus-visible {
-  outline: 2px solid #7d2be0;
-  outline-offset: 2px;
-}
-
-.gallery-modal__thumbnail.is-active {
-  border-color: #7d2be0;
-  box-shadow: 0 4px 12px rgba(125, 43, 224, 0.3), inset 0 0 0 2px #fff;
-}
-
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-
-.modal-fade-enter-from,
-.modal-fade-leave-to {
-  opacity: 0;
-}
-
-@media (max-width: 768px) {
-  .gallery-modal {
-    max-width: 95%;
-    width: 100%;
-    max-height: 85vh;
-    border-radius: 12px;
-  }
-
-  .gallery-modal__info {
-    padding: 1rem;
-  }
-
-  .gallery-modal__thumbnails {
-    padding: 0.75rem;
-    gap: 0.4rem;
-  }
-
-  .gallery-modal__thumbnail {
-    width: 50px;
-    height: 50px;
-  }
-}
-</style>

@@ -2,65 +2,65 @@
 const helpOptions = [
   {
     icon: "media",
-    title: "Media",
-    text: "Share stories, campaign updates, and community needs so more people can see the work and join the mission.",
+    title: "Education Advancement",
+    text: "Support scholarships, grants, and skill-building workshops that increase access to educational resources and opportunities for underserved youth.",
     href: "/help",
-    action: "Share a story",
+    action: "Support education",
   },
   {
     icon: "mobilization",
-    title: "Mobilization",
-    text: "Help organize local giving drives, volunteer teams, outreach visits, and community response efforts.",
+    title: "Health & Wellness",
+    text: "Help organize health fairs, mental health resources, and partnerships with healthcare providers to improve community wellness.",
     href: "/volunteer",
-    action: "Join volunteers",
+    action: "Support health",
   },
   {
     icon: "projection",
-    title: "Projection",
-    text: "Support planning for future programs so donations reach the right people with better timing and accountability.",
+    title: "Economic Development",
+    text: "Enable job training programs and small business mentorship that foster economic stability and self-sufficiency.",
     href: "/projects",
-    action: "View projects",
+    action: "Support economy",
   },
   {
     icon: "support",
-    title: "Support",
-    text: "Give financially, donate useful items, or connect us with partners who can help families receive practical care.",
+    title: "Community Engagement",
+    text: "Strengthen community bonds by supporting volunteer programs and service projects that drive lasting change.",
     href: "#donation-impact",
-    action: "Choose gift",
+    action: "Get involved",
   },
 ];
 
 const donationTiers = [
   {
     amount: "$25",
-    title: "School basics",
-    text: "Provides learning materials for children who need support to stay in class.",
+    title: "Educational Support",
+    text: "Provides school supplies and learning materials for underserved students.",
     href: "/contact",
   },
   {
     amount: "$50",
-    title: "Family food care",
-    text: "Helps provide nutritious food support for a household facing hardship.",
+    title: "Health & Wellness",
+    text: "Supports community health fairs and wellness screening programs.",
     href: "/contact",
   },
   {
     amount: "$100",
-    title: "Health outreach",
-    text: "Supports basic wellness checks, referrals, and care follow-up.",
+    title: "Skill Building",
+    text: "Funds workshops and training programs for economic empowerment and skill development.",
     href: "/contact",
   },
   {
     amount: "$250",
-    title: "Community response",
-    text: "Moves a larger outreach project forward with water, education, or relief support.",
+    title: "Community Engagement",
+    text: "Supports volunteer programs and community service initiatives for lasting impact.",
     href: "/contact",
   },
 ];
 
 const trustPoints = [
-  "Donations are directed toward active community needs.",
-  "Support is organized with dignity, respect, and follow-up care.",
-  "Every gift helps us respond faster and plan more responsibly.",
+  "Donations advance our four strategic goals for community empowerment.",
+  "Support is organized with transparency, dignity, and accountability.",
+  "Every gift fosters dignity, resilience, and hope in underprivileged communities.",
 ];
 </script>
 
@@ -69,10 +69,9 @@ const trustPoints = [
     <section class="donations-hero" aria-labelledby="donations-title">
       <div class="donations-hero__inner">
         <p class="donations-page__eyebrow">His Grace Foundation</p>
-        <h1 id="donations-title">Donations</h1>
+        <h1 id="donations-title">Support Our Mission</h1>
         <p>
-          Support the work with gifts that help us respond to urgent needs and
-          long-term care.
+          Your donations empower underprivileged communities through our four strategic goals: education, health, economic development, and community engagement.
         </p>
         <div class="donations-hero__actions">
           <a href="#donation-impact">
@@ -97,7 +96,7 @@ const trustPoints = [
 
     <section id="donation-help" class="donations-help" aria-labelledby="help-title">
       <div class="donations-help__copy">
-        <p class="donations-page__eyebrow">Help for cause</p>
+        <p class="donations-page__eyebrow">Four Ways to Make an Impact</p>
         <h2 id="help-title">How Can You Help?</h2>
         <p>
           Your support helps us move faster, reach further, and serve more

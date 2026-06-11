@@ -1,42 +1,48 @@
 <template>
-  <section class="gallery-section">
-    <div class="gallery-container">
-      <div class="gallery-header">
-        <h2 class="gallery-title">Our Impact in Pictures</h2>
-        <p class="gallery-subtitle">See the real stories and moments of change from our community</p>
+  <section class="py-12 sm:py-16 md:py-20 lg:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-50 to-purple-50 overflow-hidden">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10 sm:mb-12 md:mb-14 lg:mb-16" data-aos="fade-up">
+        <h2 class="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">Transforming Lives Through Our Four Goals</h2>
+        <p class="text-base sm:text-lg md:text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">Visual stories of empowerment, health, economic development, and community engagement</p>
       </div>
 
-      <div class="gallery-grid">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8 sm:mb-10 md:mb-12">
         <div 
           v-for="(item, idx) in galleryItems" 
           :key="idx"
-          class="gallery-card"
+          :data-aos="`fade-${idx % 2 === 0 ? 'left' : 'right'}`"
+          :data-aos-delay="`${idx * 100}`"
+          class="cursor-pointer bg-white rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border border-gray-100"
           @click="openGallery(idx)"
         >
-          <div class="gallery-card__image-wrapper">
+          <div class="relative w-full overflow-hidden bg-gray-100 aspect-video">
             <img 
               :src="item.src" 
               :alt="item.alt"
-              class="gallery-card__image"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 hover:scale-110"
             />
-            <div class="gallery-card__overlay">
-              <button class="gallery-card__icon" aria-label="View image">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="7 10 12 15 17 10"></polyline>
-                  <line x1="12" y1="15" x2="12" y2="3"></line>
-                </svg>
+            <div class="absolute inset-0 bg-purple-900/80 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+              <button 
+                class="flex items-center justify-center w-16 h-16 sm:w-14 sm:h-14 bg-white rounded-full text-purple-700 hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-2xl min-h-11" 
+                aria-label="View image gallery"
+              >
+                <Download :size="32" />
               </button>
             </div>
           </div>
-          <div class="gallery-card__content">
-            <div class="gallery-card__tag">{{ item.category }}</div>
-            <h3 class="gallery-card__title">{{ item.title }}</h3>
+          <div class="p-5 md:p-6">
+            <div class="inline-block bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1.5 rounded-full mb-3 uppercase">{{ item.category }}</div>
+            <h3 class="font-bold text-gray-900 text-base md:text-lg leading-snug">{{ item.title }}</h3>
           </div>
         </div>
       </div>
 
-      <button class="gallery-btn-load-more" @click="loadMoreItems" v-if="hasMore">
+      <button 
+        v-if="hasMore"
+        @click="loadMoreItems"
+        data-aos="fade-up"
+        class="block mx-auto px-6 sm:px-8 py-2.5 sm:py-3 bg-gradient-to-r from-purple-700 to-purple-800 hover:from-purple-800 hover:to-purple-900 text-white font-bold rounded-lg transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl min-h-11 text-base sm:text-base"
+      >
         Load More
       </button>
     </div>
@@ -51,6 +57,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { Download } from 'lucide-vue-next';
 import GalleryModal from './GalleryModal.vue';
 
 interface GalleryItem {
@@ -64,38 +71,38 @@ interface GalleryItem {
 const allGalleryItems: GalleryItem[] = [
   {
     src: '/images/real1.jpeg',
-    alt: 'Children receiving education materials',
-    title: 'Education Support Program',
+    alt: 'Students in scholarship program',
+    title: 'Educational Empowerment',
     category: 'Education',
-    description: 'Children from our community receiving educational materials and mentorship.',
+    description: 'Students receiving scholarships and skill-building workshops to increase access to educational opportunities.',
   },
   {
     src: '/images/real1.jpeg',
-    alt: 'Clean water project',
-    title: 'Clean Water Initiative',
-    category: 'Clean Water',
-    description: 'Installing clean water systems for rural communities.',
+    alt: 'Community health fair',
+    title: 'Community Health Fair',
+    category: 'Health & Wellness',
+    description: 'Free health screenings and wellness programs improving community health and well-being.',
   },
   {
     src: '/images/real1.jpeg',
-    alt: 'Healthcare outreach',
-    title: 'Medical Camp',
-    category: 'Healthcare',
-    description: 'Free medical checkups and awareness programs.',
+    alt: 'Job training program',
+    title: 'Economic Development Training',
+    category: 'Economic Development',
+    description: 'Job training and small business mentorship fostering economic stability and self-sufficiency.',
   },
   {
     src: '/images/real1.jpeg',
-    alt: 'Food distribution',
-    title: 'Nutrition Program',
-    category: 'Food Security',
-    description: 'Providing nutritious meals to vulnerable families.',
+    alt: 'Community volunteer service',
+    title: 'Community Service Project',
+    category: 'Community Engagement',
+    description: 'Volunteers mobilizing together to address community needs and strengthen local bonds.',
   },
   {
     src: '/images/real1.jpeg',
-    alt: 'Shelter project',
-    title: 'Emergency Shelter',
-    category: 'Shelter',
-    description: 'Emergency relief for families in crisis.',
+    alt: 'Mental health support',
+    title: 'Mental Health Resources',
+    category: 'Health & Wellness',
+    description: 'Partnering with healthcare providers to offer mental health resources and community support.',
   },
   {
     src: '/images/real1.jpeg',
@@ -139,224 +146,9 @@ const loadMoreItems = () => {
 </script>
 
 <style scoped>
-.gallery-section {
-  padding: 5rem 1.5rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #f0e6ff 100%);
-  overflow: hidden;
-}
+/* Tailwind CSS handles all styling via utility classes */
+</style>
 
-@media (max-width: 768px) {
-  .gallery-section {
-    padding: 3rem 1rem;
-  }
-}
-
-.gallery-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.gallery-header {
-  text-align: center;
-  margin-bottom: 3.5rem;
-}
-
-@media (max-width: 768px) {
-  .gallery-header {
-    margin-bottom: 2.5rem;
-  }
-}
-
-.gallery-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #1f2428;
-  margin: 0 0 1rem 0;
-}
-
-@media (max-width: 768px) {
-  .gallery-title {
-    font-size: clamp(1.75rem, 5vw, 2rem);
-  }
-}
-
-.gallery-subtitle {
-  font-size: 1.1rem;
-  color: #666;
-  margin: 0;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  .gallery-subtitle {
-    font-size: 0.95rem;
-  }
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-
-@media (max-width: 1024px) {
-  .gallery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-}
-
-.gallery-card {
-  cursor: pointer;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform: translateY(0);
-}
-
-.gallery-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(125, 43, 224, 0.15);
-}
-
-.gallery-card__image-wrapper {
-  position: relative;
-  width: 100%;
-  padding-bottom: 75%;
-  overflow: hidden;
-  background: #f0f0f0;
-}
-
-.gallery-card__image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.gallery-card:hover .gallery-card__image {
-  transform: scale(1.1);
-}
-
-.gallery-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(125, 43, 224, 0.8);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.gallery-card:hover .gallery-card__overlay {
-  opacity: 1;
-}
-
-.gallery-card__icon {
-  background: #fff;
-  border: 2px solid transparent;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #7d2be0;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-
-.gallery-card__icon:hover {
-  transform: scale(1.18);
-  background: linear-gradient(135deg, #8e0ac7 0%, #7d2be0 100%);
-  color: #fff;
-  box-shadow: 0 8px 24px rgba(125, 43, 224, 0.4);
-}
-
-.gallery-card__content {
-  padding: 1.5rem;
-}
-
-.gallery-card__tag {
-  display: inline-block;
-  background: rgba(125, 43, 224, 0.1);
-  color: #7d2be0;
-  font-size: 0.75rem;
-  font-weight: 700;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-}
-
-.gallery-card__title {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #1f2428;
-  margin: 0;
-  line-height: 1.4;
-}
-
-.gallery-btn-load-more {
-  display: block;
-  margin: 0 auto;
-  padding: 0.9rem 2.5rem;
-  background: linear-gradient(135deg, #8e0ac7 0%, #7d2be0 100%);
-  color: #fff;
-  border: 2px solid transparent;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 6px 16px rgba(125, 43, 224, 0.35);
-}
-
-.gallery-btn-load-more:hover {
-  background: linear-gradient(135deg, #7d2be0 0%, #6a1fb8 100%);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(125, 43, 224, 0.45);
-}
-
-@media (max-width: 768px) {
-  .gallery-section {
-    padding: 3rem 1rem;
-  }
-
-  .gallery-title {
-    font-size: 2rem;
-  }
-
-  .gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .gallery-title {
-    font-size: 1.5rem;
-  }
-
-  .gallery-grid {
-    grid-template-columns: 1fr;
-  }
-}
+<style scoped>
+/* Tailwind CSS handles all styling via utility classes */
 </style>

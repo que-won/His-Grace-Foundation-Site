@@ -1,49 +1,50 @@
 <template>
-  <section class="testimonials-section">
-    <div class="testimonials-container">
-      <div class="testimonials-header">
-        <h2 class="testimonials-title">Stories of Change</h2>
-        <p class="testimonials-subtitle">Real impact from the people we serve</p>
+  <section class="py-20 md:py-32 px-4 md:px-6 bg-gradient-to-r from-slate-50 to-blue-50" aria-labelledby="testimonials-title">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-10 md:mb-14" data-aos="fade-up" data-aos-delay="0">
+        <h2 class="text-3xl md:text-5xl font-bold text-slate-900 mb-4" id="testimonials-title">Transformed Lives, Empowered Communities</h2>
+        <p class="text-lg text-slate-600">Stories of hope and resilience from those we serve</p>
       </div>
 
-      <div class="testimonials-grid">
-        <div 
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-10" aria-label="Testimonials from community members">
+        <article
           v-for="(testimonial, idx) in testimonials"
           :key="idx"
-          class="testimonial-card"
-          :style="{ '--card-index': idx }"
+          class="bg-white rounded-lg p-6 md:p-8 shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-200 hover:border-purple-300"
+          :data-aos="`fade-${idx % 2 === 0 ? 'left' : 'right'}`"
+          :data-aos-delay="`${100 + idx * 100}`"
         >
-          <div class="testimonial-card__header">
-            <div class="testimonial-card__avatar">
-              <img :src="testimonial.avatar" :alt="testimonial.name" />
+          <div class="flex gap-4 mb-6">
+            <div class="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden flex-shrink-0 border-4 border-purple-100">
+              <img :src="testimonial.avatar" :alt="`${testimonial.name}, ${testimonial.role}`" class="w-full h-full object-cover" />
             </div>
-            <div class="testimonial-card__author">
-              <h4 class="testimonial-card__name">{{ testimonial.name }}</h4>
-              <p class="testimonial-card__role">{{ testimonial.role }}</p>
+            <div class="flex-1">
+              <h4 class="text-base md:text-lg font-bold text-slate-900">{{ testimonial.name }}</h4>
+              <p class="text-sm md:text-base text-purple-600 font-semibold mt-1">{{ testimonial.role }}</p>
             </div>
           </div>
 
-          <div class="testimonial-card__quote">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="#7d2be0" opacity="0.3">
-              <path d="M3 21c3 0 7-1 7-8V5c0-1.25-4.50-5-7-5s-4 3.5-4 5c0 3 2 6 5 6.5L7 11 5.8 3c-1 .5-3 2.5-3 5 0 5 2 7 7 7s11 1 11-10" />
-            </svg>
-            <p class="testimonial-card__text">{{ testimonial.message }}</p>
+          <div class="mb-6 relative">
+            <Quote class="w-6 h-6 text-purple-600 opacity-20 absolute -top-2 -left-1" aria-hidden="true" />
+            <p class="text-sm md:text-base text-slate-700 leading-relaxed italic pl-6">{{ testimonial.message }}</p>
           </div>
 
-          <div class="testimonial-card__rating">
-            <span v-for="i in 5" :key="i" class="star" :class="{ 'is-filled': i <= testimonial.rating }">★</span>
+          <div class="flex gap-1" :aria-label="`Rating: ${testimonial.rating} out of 5 stars`">
+            <span v-for="i in 5" :key="i" :class="i <= testimonial.rating ? 'text-amber-400' : 'text-gray-200'" aria-hidden="true">★</span>
           </div>
-        </div>
+        </article>
       </div>
 
-      <div class="testimonials-controls">
+      <div class="flex justify-center gap-2 flex-wrap" role="tablist" aria-label="Testimonials carousel controls">
         <button 
           v-for="(_, idx) in testimonials.slice(0, Math.ceil(testimonials.length / 3))"
           :key="idx"
-          class="testimonials-dot"
-          :class="{ 'is-active': activeTestimonial === idx }"
+          class="min-h-11 min-w-11 rounded-full border-2 border-purple-600 transition-all duration-300 hover:scale-110"
+          :class="activeTestimonial === idx ? 'bg-purple-600' : 'bg-purple-100'"
           @click="activeTestimonial = idx"
-          :aria-label="`Go to testimonial ${idx + 1}`"
+          :aria-label="`Go to testimonial group ${idx + 1}`"
+          :aria-selected="activeTestimonial === idx"
+          role="tab"
         ></button>
       </div>
     </div>
@@ -52,6 +53,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { Quote } from 'lucide-vue-next';
 
 interface Testimonial {
   name: string;
@@ -64,37 +66,37 @@ interface Testimonial {
 const testimonials: Testimonial[] = [
   {
     name: 'Sarah Johnson',
-    role: 'Mother, Education Beneficiary',
+    role: 'Student, Educational Empowerment',
     avatar: '/images/real1.jpeg',
-    message: 'Thanks to this organization, my daughter can now attend school. She has dreams of becoming a teacher, and this foundation is helping make that possible.',
+    message: 'Through His Grace Foundation\'s scholarship, I\'m now in secondary school. My dreams of becoming a teacher are finally becoming real.',
     rating: 5,
   },
   {
     name: 'David Mutua',
     role: 'Community Leader',
     avatar: '/images/real1.jpeg',
-    message: 'The clean water project transformed our village. No more long walks for water, and our children are healthier than ever before.',
+    message: 'The health fair brought vital wellness screening to our village. Now families have access to healthcare and education they never had before.',
     rating: 5,
   },
   {
     name: 'Grace Kipchoge',
-    role: 'Healthcare Worker',
+    role: 'Job Training Graduate',
     avatar: '/images/real1.jpeg',
-    message: 'The medical camps have reached remote areas that never had access to healthcare. The impact has been remarkable and immediate.',
+    message: 'The economic development program taught me business skills. I now run my own small business and provide for my children.',
     rating: 5,
   },
   {
     name: 'Emmanuel Kariuki',
-    role: 'Youth Participant',
+    role: 'Volunteer, Community Engagement',
     avatar: '/images/real1.jpeg',
-    message: 'Through the mentorship program, I gained skills and confidence. Now I am employed and can support my family.',
+    message: 'Serving with His Grace Foundation has empowered me to use my skills for real community change. This mission gives my life purpose.',
     rating: 5,
   },
   {
     name: 'Lucy Kipchoge',
-    role: 'Program Volunteer',
+    role: 'Program Participant',
     avatar: '/images/real1.jpeg',
-    message: 'Being part of this team is fulfilling. Seeing the direct impact of our work on real families makes every moment worthwhile.',
+    message: 'This foundation showed me dignity, resilience, and hope during my hardest times. I\'m now helping others experience the same transformation.',
     rating: 5,
   },
   {
@@ -110,209 +112,5 @@ const activeTestimonial = ref(0);
 </script>
 
 <style scoped>
-.testimonials-section {
-  padding: 5rem 1.5rem;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8f0ff 100%);
-}
-
-@media (max-width: 768px) {
-  .testimonials-section {
-    padding: 3rem 1rem;
-  }
-}
-
-.testimonials-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.testimonials-header {
-  text-align: center;
-  margin-bottom: 3.5rem;
-}
-
-@media (max-width: 768px) {
-  .testimonials-header {
-    margin-bottom: 2.5rem;
-  }
-}
-
-.testimonials-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #1f2428;
-  margin: 0 0 1rem 0;
-}
-
-@media (max-width: 768px) {
-  .testimonials-title {
-    font-size: clamp(1.75rem, 5vw, 2rem);
-  }
-}
-
-.testimonials-subtitle {
-  font-size: 1.1rem;
-  color: #666;
-  margin: 0;
-}
-
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2.5rem;
-}
-
-@media (max-width: 768px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-}
-
-.testimonial-card {
-  background: #fff;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform: translateY(0);
-  border-left: 4px solid transparent;
-  animation: cardIn 0.6s ease backwards;
-  animation-delay: calc(var(--card-index) * 0.1s);
-}
-
-@media (max-width: 768px) {
-  .testimonial-card {
-    padding: 1.5rem;
-    border-radius: 10px;
-  }
-}
-
-@keyframes cardIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.testimonial-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 32px rgba(125, 43, 224, 0.15);
-  border-left-color: #7d2be0;
-}
-
-.testimonial-card__header {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
-}
-
-.testimonial-card__avatar {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  overflow: hidden;
-  flex-shrink: 0;
-  border: 3px solid rgba(125, 43, 224, 0.2);
-}
-
-.testimonial-card__avatar img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.testimonial-card__author {
-  flex: 1;
-}
-
-.testimonial-card__name {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #1f2428;
-  margin: 0;
-}
-
-.testimonial-card__role {
-  font-size: 0.85rem;
-  color: #7d2be0;
-  margin: 0.25rem 0 0 0;
-  font-weight: 600;
-}
-
-.testimonial-card__quote {
-  position: relative;
-  margin-bottom: 1.5rem;
-}
-
-.testimonial-card__text {
-  font-size: 0.95rem;
-  color: #555;
-  line-height: 1.6;
-  margin: 0;
-  font-style: italic;
-}
-
-.testimonial-card__rating {
-  display: flex;
-  gap: 0.4rem;
-}
-
-.star {
-  font-size: 1.2rem;
-  color: #ddd;
-  transition: all 0.3s ease;
-}
-
-.star.is-filled {
-  color: #ffc107;
-  text-shadow: 0 2px 4px rgba(255, 193, 7, 0.3);
-}
-
-.testimonials-controls {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.testimonials-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(125, 43, 224, 0.2);
-  border: 2px solid #7d2be0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  padding: 0;
-}
-
-.testimonials-dot:hover {
-  transform: scale(1.2);
-}
-
-.testimonials-dot.is-active {
-  background: #7d2be0;
-}
-
-@media (max-width: 768px) {
-  .testimonials-section {
-    padding: 3rem 1rem;
-  }
-
-  .testimonials-title {
-    font-size: 2rem;
-  }
-
-  .testimonials-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-}
+/* All styling handled by Tailwind CSS and AOS animations */
 </style>

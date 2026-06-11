@@ -1,5 +1,16 @@
-# Vue 3 + TypeScript + Vite
+# His Grace Foundation Website
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+## Mission
+His Grace Foundation is dedicated to uplifting underprivileged individuals and communities by providing resources, support, and education. We strive to foster dignity, resilience, and hope, empowering those in need to realize their full potential and create a brighter future for themselves and their families.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Vision
+To empower underprivileged children and communities through compassion, education and support, fostering a world where grace and opportunity inspire transformation and uplift lives.
+
+## Strategic Goals
+1. **Empower Through Education** - Increase access to educational resources and opportunities for underserved youth
+2. **Enhance Community Health and Well-being** - Improve the overall health and wellness of the communities served
+3. **Promote Economic Development** - Foster economic stability and self-sufficiency among individuals and families
+4. **Encourage Community Engagement** - Strengthen community bonds and encourage volunteerism
+
+## Technology Stack
+Built with Vue 3 + TypeScript + Vite. This website showcases our impact through various sections including projects, donations, testimonials, and community engagement opportunities.

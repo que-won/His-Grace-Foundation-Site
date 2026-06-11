@@ -37,20 +37,33 @@ const sectionComponent = computed(() => {
 
 <template>
   <main class="page">
-    <!-- Hero Section -->
-    <section class="page__hero">
-      <div class="page__hero-inner">
-        <RouterLink to="/" class="page__breadcrumb" aria-label="Return to home">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M19 12H5M12 19l-7-7 7-7"/>
-          </svg>
-          <span>Home</span>
-        </RouterLink>
-        <p class="page__eyebrow">His Grace Foundation</p>
-        <h1 class="page__title">{{ title }}</h1>
-        <p class="page__subtitle">{{ description }}</p>
+    <!-- Background Banner -->
+    <section 
+      class="relative min-h-96 bg-cover bg-center overflow-hidden py-16 md:py-24 px-6"
+      :style="{ backgroundImage: 'url(/images/real1.jpeg)', backgroundAttachment: 'fixed' }"
+    >
+      <!-- Gradient Overlay -->
+      <div class="absolute inset-0 bg-gradient-to-r from-primary-dark/95 via-primary-dark/75 to-primary-purple/30 pointer-events-none"></div>
+      
+      <!-- Decorative Elements -->
+      <div class="absolute inset-0 pointer-events-none" style="
+        background: 
+          radial-gradient(circle at 18% 33%, rgba(255, 255, 255, 0.08) 0 6%, transparent 6.4%),
+          radial-gradient(circle at 23% 24%, rgba(255, 215, 134, 0.2) 0 2.1%, transparent 2.4%),
+          linear-gradient(110deg, rgba(255, 255, 255, 0.08) 0%, transparent 32%);
+      "></div>
+
+      <!-- Content -->
+      <div class="relative z-10 max-w-6xl mx-auto">
+        <div data-aos="fade-up" data-aos-delay="100">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 leading-tight">
+            {{ title }}
+          </h1>
+          <p class="text-lg md:text-xl text-gray-100 max-w-2xl leading-relaxed">
+            {{ description }}
+          </p>
+        </div>
       </div>
-      <div class="page__hero-decoration"></div>
     </section>
 
     <!-- Dynamic Section Components -->

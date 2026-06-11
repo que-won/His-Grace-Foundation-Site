@@ -1,42 +1,104 @@
-<template>
-  <section class="cta-section">
-    <div class="cta-container">
-      <div class="cta-content">
-        <h2 class="cta-title">Make a Difference Today</h2>
-        <p class="cta-description">
-          Your contribution, no matter how small, creates lasting change in the lives of 
-          vulnerable communities. Join us in building a better future.
-        </p>
+﻿﻿<template>
+  <section 
+    class="relative py-12 lg:py-20 px-6 bg-gradient-to-br from-purple-600 to-purple-800 overflow-hidden"
+    data-aos="fade-up"
+    aria-labelledby="cta-title"
+  >
+    <!-- Decorative pattern background -->
+    <div class="absolute inset-0 opacity-10">
+      <div class="absolute inset-0 opacity-10 bg-repeat"></div>
+    </div>
 
-        <div class="cta-actions">
-          <router-link to="/donations" class="cta-btn cta-btn--primary">
-            Donate Now
-          </router-link>
-          <router-link to="/volunteer" class="cta-btn cta-btn--secondary">
-            Become a Volunteer
-          </router-link>
+    <div class="relative z-10 max-w-6xl mx-auto">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <!-- Content Section -->
+        <div
+          class="text-white"
+          data-aos="fade-left"
+          data-aos-delay="100"
+        >
+          <h2 
+            id="cta-title"
+            class="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 lg:mb-6 leading-tight"
+          >
+            Empower Communities Today
+          </h2>
+          <p class="text-base sm:text-lg leading-relaxed mb-6 lg:mb-10 opacity-95 max-w-xl">
+            Support our four strategic goals: educational empowerment, health and wellness, economic development, and community engagement. Together, we foster dignity, resilience, and hope.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mb-8 lg:mb-12 flex-wrap">
+            <router-link
+              to="/donations"
+              class="inline-flex items-center justify-center min-h-11 px-6 sm:px-8 py-3 sm:py-4 bg-white text-purple-600 font-bold rounded-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-300"
+              aria-label="Donate to His Grace Foundation"
+            >
+              Donate Now
+            </router-link>
+            <router-link
+              to="/volunteer"
+              class="inline-flex items-center justify-center min-h-11 px-6 sm:px-8 py-3 sm:py-4 bg-white bg-opacity-20 text-white font-bold rounded-lg border border-white border-opacity-60 backdrop-blur-sm shadow-lg hover:shadow-xl hover:bg-opacity-30 hover:border-opacity-90 hover:-translate-y-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white focus:ring-opacity-50"
+              aria-label="Become a volunteer at His Grace Foundation"
+            >
+              Become a Volunteer
+            </router-link>
+          </div>
+
+          <!-- Stats Section -->
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6"
+            aria-label="Foundation impact statistics"
+          >
+            <div
+              class="flex flex-col gap-2"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <span class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-none">90+</span>
+              <span class="text-sm lg:text-base opacity-90">Families Supported</span>
+            </div>
+            <div
+              class="flex flex-col gap-2"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
+              <span class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-none">18</span>
+              <span class="text-sm lg:text-base opacity-90">Outreach Activities</span>
+            </div>
+            <div
+              class="flex flex-col gap-2"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
+              <span class="text-2xl sm:text-3xl lg:text-4xl font-bold leading-none">6</span>
+              <span class="text-sm lg:text-base opacity-90">Active Programs</span>
+            </div>
+          </div>
         </div>
 
-        <div class="cta-stats">
-          <div class="cta-stat-item">
-            <span class="cta-stat-number">50,000+</span>
-            <span class="cta-stat-label">Lives Impacted</span>
-          </div>
-          <div class="cta-stat-item">
-            <span class="cta-stat-number">1,200+</span>
-            <span class="cta-stat-label">Active Volunteers</span>
-          </div>
-          <div class="cta-stat-item">
-            <span class="cta-stat-number">25+</span>
-            <span class="cta-stat-label">Projects Running</span>
-          </div>
+        <!-- Visual Section with Animated Circles -->
+        <div
+          class="hidden lg:flex relative h-96 items-center justify-center"
+          data-aos="fade-right"
+          data-aos-delay="100"
+        >
+          <!-- Circle 1 -->
+          <div
+            class="absolute w-48 h-48 rounded-full bg-white bg-opacity-10 border-2 border-white border-opacity-20"
+            style="top: -50px; right: -50px; animation: float 8s ease-in-out infinite;"
+          ></div>
+          <!-- Circle 2 -->
+          <div
+            class="absolute w-72 h-72 rounded-full bg-white bg-opacity-10 border-2 border-white border-opacity-20"
+            style="bottom: -100px; left: -100px; animation: float 10s ease-in-out infinite 0.5s;"
+          ></div>
+          <!-- Circle 3 -->
+          <div
+            class="absolute w-36 h-36 rounded-full bg-white bg-opacity-10 border-2 border-white border-opacity-20"
+            style="top: 50%; right: 20%; animation: float 6s ease-in-out infinite 1s;"
+          ></div>
         </div>
-      </div>
-
-      <div class="cta-visual">
-        <div class="cta-circle cta-circle--1"></div>
-        <div class="cta-circle cta-circle--2"></div>
-        <div class="cta-circle cta-circle--3"></div>
       </div>
     </div>
   </section>
@@ -46,393 +108,12 @@
 </script>
 
 <style scoped>
-.cta-section {
-  padding: clamp(3rem, 5vw, 5rem) 1.5rem;
-  background: linear-gradient(135deg, #7d2be0 0%, #8e0ac7 100%);
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-section::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="rgba(255,255,255,0.05)"><path d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/></g></g></svg>') repeat;
-  opacity: 0.5;
-}
-
-.cta-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-.cta-content {
-  color: #fff;
-  animation: slideInLeft 0.8s ease-out;
-}
-
-.cta-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin: 0 0 1.5rem 0;
-  line-height: 1.2;
-}
-
-.cta-description {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin: 0 0 2.5rem 0;
-  opacity: 0.95;
-  max-width: 500px;
-}
-
-.cta-actions {
-  display: flex;
-  gap: 1.5rem;
-  margin-bottom: 3rem;
-  flex-wrap: wrap;
-}
-
-.cta-btn {
-  padding: 1rem 2.2rem;
-  border-radius: 10px;
-  font-size: 1rem;
-  font-weight: 700;
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  position: relative;
-  overflow: hidden;
-  border: 2px solid transparent;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.cta-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.2);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 0;
-}
-
-.cta-btn:hover::before {
-  transform: scaleX(1);
-}
-
-.cta-btn--primary {
-  background: #fff;
-  color: #7d2be0;
-  box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
-}
-
-.cta-btn--primary:hover {
-  transform: translateY(-4px);
-  background: #f0e6ff;
-  box-shadow: 0 12px 28px rgba(255, 255, 255, 0.4);
-}
-
-.cta-btn--secondary {
-  background: rgba(255, 255, 255, 0.2);
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-.cta-btn--secondary:hover {
-  background: rgba(255, 255, 255, 0.35);
-  border-color: rgba(255, 255, 255, 0.9);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-}
-
-.cta-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-.cta-stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  animation: fadeInUp 0.8s ease-out backwards;
-}
-
-.cta-stat-item:nth-child(1) {
-  animation-delay: 0.2s;
-}
-
-.cta-stat-item:nth-child(2) {
-  animation-delay: 0.3s;
-}
-
-.cta-stat-item:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.cta-stat-number {
-  font-size: 1.8rem;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.cta-stat-label {
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.cta-visual {
-  position: relative;
-  height: 400px;
-  animation: slideInRight 0.8s ease-out;
-}
-
-.cta-circle {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-}
-
-.cta-circle--1 {
-  width: 200px;
-  height: 200px;
-  top: -50px;
-  right: -50px;
-  animation: float 8s ease-in-out infinite;
-}
-
-.cta-circle--2 {
-  width: 300px;
-  height: 300px;
-  bottom: -100px;
-  left: -100px;
-  animation: float 10s ease-in-out infinite 0.5s backwards;
-}
-
-.cta-circle--3 {
-  width: 150px;
-  height: 150px;
-  top: 50%;
-  right: 20%;
-  animation: float 6s ease-in-out infinite 1s backwards;
-}
-
 @keyframes float {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
     transform: translateY(30px);
-  }
-}
-
-@keyframes slideInLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@media (max-width: 1024px) {
-  .cta-container {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .cta-title {
-    font-size: 2.2rem;
-  }
-
-  .cta-description {
-    font-size: 1rem;
-  }
-
-  .cta-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
-  }
-
-  .cta-visual {
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .cta-section {
-    padding: 2.5rem 1.25rem;
-  }
-
-  .cta-container {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .cta-content {
-    text-align: center;
-  }
-
-  .cta-title {
-    font-size: clamp(1.75rem, 4vw, 2.1rem);
-    margin-bottom: 1.2rem;
-  }
-
-  .cta-description {
-    font-size: 0.95rem;
-    margin-bottom: 1.8rem;
-    max-width: 100%;
-  }
-
-  .cta-actions {
-    flex-direction: column;
-    margin-bottom: 2rem;
-    gap: 1rem;
-  }
-
-  .cta-btn {
-    width: 100%;
-    padding: 0.95rem 1.8rem;
-    font-size: 0.95rem;
-  }
-
-  .cta-stats {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-
-  .cta-stat-number {
-    font-size: 1.6rem;
-  }
-
-  .cta-stat-label {
-    font-size: 0.88rem;
-  }
-
-  .cta-visual {
-    display: none;
-  }
-}
-
-@media (max-width: 640px) {
-  .cta-section {
-    padding: 2rem 1rem;
-  }
-
-  .cta-title {
-    font-size: 1.75rem;
-    margin-bottom: 1rem;
-  }
-
-  .cta-description {
-    font-size: 0.9rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .cta-actions {
-    margin-bottom: 1.8rem;
-    gap: 0.9rem;
-  }
-
-  .cta-btn {
-    padding: 0.9rem 1.5rem;
-    font-size: 0.9rem;
-    border-radius: 8px;
-  }
-
-  .cta-stats {
-    gap: 1rem;
-  }
-
-  .cta-stat-item {
-    gap: 0.4rem;
-  }
-
-  .cta-stat-number {
-    font-size: 1.45rem;
-  }
-
-  .cta-stat-label {
-    font-size: 0.85rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .cta-section {
-    padding: 1.75rem 0.9rem;
-  }
-
-  .cta-title {
-    font-size: 1.6rem;
-    margin-bottom: 0.85rem;
-  }
-
-  .cta-description {
-    font-size: 0.85rem;
-    margin-bottom: 1.25rem;
-  }
-
-  .cta-actions {
-    margin-bottom: 1.5rem;
-    gap: 0.8rem;
-  }
-
-  .cta-btn {
-    padding: 0.85rem 1.3rem;
-    font-size: 0.85rem;
-  }
-
-  .cta-stats {
-    gap: 0.9rem;
-  }
-
-  .cta-stat-number {
-    font-size: 1.35rem;
-  }
-
-  .cta-stat-label {
-    font-size: 0.8rem;
   }
 }
 </style>

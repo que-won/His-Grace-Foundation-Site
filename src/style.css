@@ -1,17 +1,53 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
   font-weight: 400;
 
-  --primary: hsla(270, 71%, 52%, 1);
-  --primary-light: hsla(270, 71%, 62%, 1);
-  --accent: hsla(270, 71%, 52%, 1);
-  --accent-light: hsla(270, 71%, 62%, 1);
-  --text-dark: #1f2937;
-  --text-light: #6b7280;
-  --bg-light: #f9fafb;
-  --bg-white: #ffffff;
-  --border: #e5e7eb;
+  /* His Grace Foundation Brand Colors */
+  --primary-purple: #6A1B9A;
+  --primary-purple-light: #7D2BE0;
+  --gold-accent: #FFD700;
+  --white: #FFFFFF;
+  --text-dark: #1A1A1A;
+  --text-light: #6B7280;
+  --bg-light: #F8F9FA;
+  --bg-white: #FFFFFF;
+  --border: #E5E7EB;
+  
+  /* Legacy variables for compatibility */
+  --primary: #6A1B9A;
+  --primary-light: #7D2BE0;
+  --accent: #6A1B9A;
+  --accent-light: #7D2BE0;
+
+  /* Spacing Scale */
+  --space-xs: 0.5rem;
+  --space-sm: 0.75rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 2.5rem;
+  --space-3xl: 3rem;
+  --space-4xl: 4rem;
+
+  /* Responsive padding */
+  --section-padding-mobile: clamp(2rem, 4vw, 3rem);
+  --section-padding-tablet: clamp(3rem, 5vw, 4rem);
+  --section-padding-desktop: clamp(4rem, 5vw, 5rem);
+
+  /* Border radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 14px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 6px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 12px 36px rgba(106, 27, 154, 0.15);
 
   color-scheme: light;
   color: var(--text-dark);

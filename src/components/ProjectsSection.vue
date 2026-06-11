@@ -1,6 +1,12 @@
 <script setup>
 import { computed, ref } from "vue";
 import { useRouter } from "vue-router";
+import { ArrowRight, ArrowLeft } from "lucide-vue-next";
+
+const flippedCards = ref({
+  vision: false,
+  mission: false
+});
 
 const projects = [
   {
@@ -79,16 +85,64 @@ const projects = [
 
 const impactStats = [
   {
-    value: "1,200+",
-    label: "children and family members reached through direct support",
+    value: "90+",
+    label: "Children and families reached through direct support and community programs",
+    image: "/images/real1.jpeg",
+    bgColor: "bg-neutral-800",
+    overlayColor: "from-neutral-900/90 to-neutral-800/80"
   },
   {
     value: "18",
-    label: "community outreach visits organized with local volunteers",
+    label: "Community outreach activities organized alongside volunteers and local partners",
+    image: "/images/real1.jpeg",
+    bgColor: "bg-orange-600",
+    overlayColor: "from-orange-700/90 to-orange-600/80"
   },
   {
     value: "6",
-    label: "active project areas focused on practical daily needs",
+    label: "Active program areas focused on education, empowerment, health, and humanitarian support",
+    image: "/images/real1.jpeg",
+    bgColor: "bg-yellow-500",
+    overlayColor: "from-yellow-700/90 to-yellow-600/80"
+  },
+];
+
+const foundationGoals = [
+  {
+    number: "01",
+    title: "Empower Through Education",
+    goal: "Increase access to educational resources and opportunities for underserved youth.",
+    objectives: [
+      "Provide scholarships and grants to students from low-income families.",
+      "Develop and implement skill-building workshops and training programs.",
+    ],
+  },
+  {
+    number: "02",
+    title: "Enhance Community Health and Well-being",
+    goal: "Improve the overall health and wellness of the communities served.",
+    objectives: [
+      "Organize regular health fairs that provide free screenings and health education.",
+      "Partner with healthcare providers to offer mental health resources and support.",
+    ],
+  },
+  {
+    number: "03",
+    title: "Promote Economic Development",
+    goal: "Foster economic stability and self-sufficiency among individuals and families.",
+    objectives: [
+      "Create job training and placement programs that connect participants with local employers.",
+      "Support small business development through mentorship and micro-financing initiatives.",
+    ],
+  },
+  {
+    number: "04",
+    title: "Encourage Community Engagement",
+    goal: "Strengthen community bonds and encourage volunteerism.",
+    objectives: [
+      "Organize community service projects that address local needs and challenges.",
+      "Develop a volunteer program that mobilizes community members to contribute their skills and time.",
+    ],
   },
 ];
 
@@ -180,76 +234,223 @@ const nextPage = () => {
 </script>
 
 <template>
-  <section id="projects" class="projects-section" aria-labelledby="projects-title">
-    <div class="projects-section__inner">
-      <div class="projects-section__banner">
-        <div class="projects-section__banner-media">
-          <img src="/images/real1.jpeg" alt="Children and families supported by His Grace Foundation" />
-          <div class="projects-section__banner-stat">
-            <strong>6</strong>
-            <span>active care projects</span>
+  <section id="projects" class="px-6 md:px-12 py-20 md:py-28 bg-gradient-to-b from-white to-orange-50" aria-labelledby="projects-title">
+    <div class="max-w-6xl mx-auto">
+      <!-- Banner with Stats Badge -->
+      <div
+        data-aos="fade-up"
+        class="relative w-full h-72 md:h-96 rounded-b-lg overflow-hidden bg-neutral-800 shadow-lg mb-12 md:mb-16"
+      >
+        <div class="absolute inset-0 bg-gradient-to-r from-neutral-800/30 via-transparent to-transparent z-10"></div>
+        <img
+          src="/images/real1.jpeg"
+          alt="Children and families supported by His Grace Foundation"
+          class="w-full h-full object-cover animate-banner-float"
+        />
+        <div class="absolute right-4 md:right-5 bottom-4 md:bottom-5 z-20 bg-white p-4 md:p-5 rounded-sm border-l-4 border-yellow-500 shadow-lg">
+          <div class="text-2xl md:text-3xl font-black text-neutral-900">6</div>
+          <div class="text-xs md:text-sm font-black text-neutral-500 uppercase leading-tight">Active care projects</div>
+        </div>
+      </div>
+
+      <!-- Header with Mission/Vision -->
+      <div data-aos="fade-up" data-aos-delay="100" class="grid md:grid-cols-3 gap-6 md:gap-8 mb-6 md:mb-8">
+        <div class="md:col-span-2">
+          <p class="text-xs font-black text-orange-600 uppercase tracking-wider mb-2">Our Mission & Vision</p>
+          <h2 id="projects-title" class="text-3xl md:text-5xl font-black text-neutral-900 mb-4">
+            Empowering Communities Through Compassion and Education
+          </h2>
+          <router-link
+            to="/donations"
+            class="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-orange-600 text-white font-black rounded-lg hover:bg-orange-700 hover:-translate-y-1 transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+            aria-label="Support His Grace Foundation projects"
+          >
+            <span>Support a project</span>
+            <ArrowRight :size="18" :stroke-width="2.5" />
+          </router-link>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 md:gap-4">
+          <!-- Vision Card -->
+          <div 
+            class="perspective h-48 cursor-pointer"
+            @click="flippedCards.vision = !flippedCards.vision"
+          >
+            <div 
+              class="relative w-full h-full transition-transform duration-500 transform-gpu"
+              :style="{ 
+                transformStyle: 'preserve-3d',
+                transform: flippedCards.vision ? 'rotateY(180deg)' : 'rotateY(0deg)'
+              }"
+            >
+              <!-- Front -->
+              <div 
+                class="absolute w-full h-full bg-orange-50 p-4 rounded-lg border border-orange-200 shadow-sm flex flex-col items-center justify-center text-center"
+                :style="{ backfaceVisibility: 'hidden' }"
+              >
+                <p class="text-xs font-black text-orange-600 uppercase tracking-wider mb-2">Vision</p>
+                <p class="text-xs md:text-sm text-neutral-900 leading-relaxed">
+                  <em>"To empower underprivileged children and communities through compassion, education and support."</em>
+                </p>
+              </div>
+              
+              <!-- Back -->
+              <div 
+                class="absolute w-full h-full bg-gradient-to-br from-orange-600 to-orange-700 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center"
+                :style="{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }"
+              >
+                <p class="text-white font-black text-sm mb-3">Learn More</p>
+                <router-link
+                  to="/projects"
+                  class="inline-flex items-center gap-1 px-3 py-2 bg-white text-orange-600 font-bold text-xs rounded transition-all hover:shadow-lg"
+                >
+                  Read More
+                  <ArrowRight :size="14" :stroke-width="2.5" />
+                </router-link>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mission Card -->
+          <div 
+            class="perspective h-48 cursor-pointer"
+            @click="flippedCards.mission = !flippedCards.mission"
+          >
+            <div 
+              class="relative w-full h-full transition-transform duration-500 transform-gpu"
+              :style="{ 
+                transformStyle: 'preserve-3d',
+                transform: flippedCards.mission ? 'rotateY(180deg)' : 'rotateY(0deg)'
+              }"
+            >
+              <!-- Front -->
+              <div 
+                class="absolute w-full h-full bg-orange-50 p-4 rounded-lg border border-orange-200 shadow-sm flex flex-col items-center justify-center text-center"
+                :style="{ backfaceVisibility: 'hidden' }"
+              >
+                <p class="text-xs font-black text-orange-600 uppercase tracking-wider mb-2">Mission</p>
+                <p class="text-xs md:text-sm text-neutral-900 leading-relaxed">
+                  <em>"Dedicated to uplifting communities by providing resources, support, and education."</em>
+                </p>
+              </div>
+              
+              <!-- Back -->
+              <div 
+                class="absolute w-full h-full bg-gradient-to-br from-orange-600 to-orange-700 p-4 rounded-lg shadow-sm flex flex-col items-center justify-center text-center"
+                :style="{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }"
+              >
+                <p class="text-white font-black text-sm mb-3">Learn More</p>
+                <router-link
+                  to="/projects"
+                  class="inline-flex items-center gap-1 px-3 py-2 bg-white text-orange-600 font-bold text-xs rounded transition-all hover:shadow-lg"
+                >
+                  Read More
+                  <ArrowRight :size="14" :stroke-width="2.5" />
+                </router-link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <div class="projects-section__header">
-        <div>
-          <p class="projects-section__eyebrow">Our projects</p>
-          <h2 id="projects-title">Practical support that reaches real families</h2>
-          <router-link class="projects-section__header-link" to="/donations" aria-label="Support His Grace Foundation projects">
-            <span>Support a project</span>
-            <svg
-              aria-hidden="true"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2.4"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path d="M5 12h14" />
-              <path d="m13 6 6 6-6 6" />
-            </svg>
-          </router-link>
-        </div>
-        <p>
-          Each project is built around daily needs: clean water, school access,
-          healthy meals, basic care, and steady guidance for children and
-          families.
-        </p>
-      </div>
-
-      <div class="projects-section__intro">
-        <div class="projects-section__intro-copy">
-          <p class="projects-section__eyebrow">Project impact</p>
-          <h3>Every project is designed to answer a clear community need.</h3>
-          <p>
-            His Grace Foundation focuses on work that can be seen, measured,
-            and followed up with care. From a child returning to school to a
-            family receiving food support, each activity is connected to a
-            larger goal of restoring dignity and opportunity.
+      <!-- Foundation Goals Section -->
+      <div data-aos="fade-up" data-aos-delay="200" class="mb-8 md:mb-12">
+        <div class="bg-white p-6 md:p-8 rounded-lg border border-neutral-200 shadow-sm mb-6">
+          <p class="text-xs font-black text-orange-600 uppercase tracking-wider mb-3">Foundation Goals</p>
+          <h3 class="text-2xl md:text-3xl font-black text-neutral-900 mb-4">Our Strategic Direction for Impact</h3>
+          <p class="text-neutral-600 leading-relaxed">
+            His Grace Foundation works toward four interconnected goals: empowering communities through education,
+            enhancing health and well-being, promoting economic development, and fostering community engagement.
+            Each goal is grounded in real community needs and supported by concrete objectives that drive measurable change.
           </p>
         </div>
 
-        <div class="projects-section__stats" aria-label="Project impact highlights">
-          <article
-            v-for="stat in impactStats"
-            :key="stat.value"
-            class="projects-section__stat-card"
+        <!-- Impact Stats -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+          <article v-for="(stat, idx) in impactStats" :key="stat.value" 
+            :data-aos="`fade-${idx % 2 === 0 ? 'left' : 'right'}`"
+            :data-aos-delay="`${300 + idx * 100}`"
+            class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow"
           >
-            <strong>{{ stat.value }}</strong>
-            <span>{{ stat.label }}</span>
+            <!-- Image Section -->
+            <div 
+              class="h-40 md:h-48 bg-cover bg-center"
+              :style="{ backgroundImage: `url('${stat.image}')` }"
+            ></div>
+            
+            <!-- Content Section -->
+            <div :class="`${stat.bgColor} p-5 md:p-6 flex flex-col gap-3`">
+              <div class="text-2xl md:text-3xl font-black text-white">{{ stat.value }}</div>
+              <p class="text-xs md:text-sm font-semibold text-white leading-snug">{{ stat.label }}</p>
+              <router-link 
+                to="/projects"
+                class="inline-flex items-center gap-2 text-white font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-opacity mt-1"
+              >
+                Read More
+                <ArrowRight :size="14" :stroke-width="2.5" />
+              </router-link>
+            </div>
           </article>
         </div>
       </div>
 
-      <div class="projects-section__filters" aria-label="Filter projects">
+      <!-- Goals Grid -->
+      <div data-aos="fade-up" data-aos-delay="400" class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-12" aria-label="Foundation goals">
+        <article v-for="(goal, idx) in foundationGoals" :key="goal.number"
+          :data-aos="`fade-${idx % 2 === 0 ? 'up' : 'up'}`"
+          :data-aos-delay="`${500 + idx * 100}`"
+          class="grid gap-6 p-6 md:p-8 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg hover:-translate-y-1 transition-all overflow-hidden"
+        >
+          <!-- Number Badge -->
+          <div class="flex items-center gap-4">
+            <div class="flex items-center justify-center w-16 h-16 rounded-xl bg-gradient-to-br from-orange-600 to-orange-500 text-white text-2xl font-black flex-shrink-0 shadow-lg">
+              {{ goal.number }}
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl md:text-2xl font-black text-neutral-900 leading-tight">{{ goal.title }}</h3>
+            </div>
+          </div>
+
+          <!-- Goal Section -->
+          <div class="grid gap-2">
+            <p class="text-xs font-black text-neutral-600 uppercase tracking-widest">Goal:</p>
+            <p class="text-sm md:text-base text-neutral-700 leading-relaxed font-medium">{{ goal.goal }}</p>
+          </div>
+
+          <!-- Objectives Section -->
+          <div class="grid gap-3 pt-2">
+            <p class="text-xs font-black text-orange-600 uppercase tracking-widest">Objectives:</p>
+            <ul class="space-y-2.5">
+              <li v-for="(objective, i) in goal.objectives" :key="i" class="flex gap-3 items-start">
+                <span class="flex-shrink-0 text-orange-600 font-black text-lg mt-0.5">✓</span>
+                <span class="text-sm text-neutral-700 leading-relaxed">{{ objective }}</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Learn More Link -->
+          <div class="pt-3 mt-auto">
+            <router-link
+              to="/projects"
+              class="inline-flex items-center gap-2 text-orange-600 font-black text-sm hover:text-orange-700 transition-colors group"
+            >
+              <span>Learn more</span>
+              <ArrowRight :size="16" :stroke-width="2.5" class="group-hover:translate-x-1 transition-transform" />
+            </router-link>
+          </div>
+        </article>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div data-aos="fade-up" data-aos-delay="500" class="flex flex-wrap gap-3 md:gap-4 mb-6 md:mb-8 md:overflow-visible overflow-x-auto" aria-label="Filter projects">
         <button
           v-for="filter in filters"
           :key="filter"
           type="button"
-          class="projects-section__filter"
-          :class="{ 'projects-section__filter--active': selectedCategory === filter }"
+          class="flex-shrink-0 px-5 md:px-6 py-2 md:py-3 rounded-full font-black text-xs md:text-sm border transition-all focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+          :class="selectedCategory === filter
+            ? 'bg-orange-600 text-white border-orange-600 shadow-md'
+            : 'bg-white text-neutral-600 border-neutral-200 hover:border-orange-600 hover:text-orange-600 hover:-translate-y-1 shadow-sm hover:shadow-md'"
           :aria-pressed="selectedCategory === filter"
           @click="chooseFilter(filter)"
         >
@@ -257,152 +458,184 @@ const nextPage = () => {
         </button>
       </div>
 
-      <TransitionGroup
-        name="project-card"
-        tag="div"
-        class="projects-section__grid"
-      >
-        <article
-          v-for="project in visibleProjects"
-          :key="project.title"
-          class="project-card"
+      <!-- Projects Grid -->
+      <!-- Projects Alternating Layout -->
+      <div class="space-y-6 md:space-y-8 mb-12 md:mb-16">
+        <article 
+          v-for="(project, idx) in visibleProjects" 
+          :key="project.slug"
+          :data-aos="`fade-${idx % 2 === 0 ? 'right' : 'left'}`"
+          :data-aos-delay="`${600 + idx * 100}`"
+          class="grid md:grid-cols-2 gap-6 md:gap-8 items-center"
+          :class="idx % 2 === 1 && 'md:[&>*:first-child]:order-2 md:[&>*:last-child]:order-1'"
         >
-          <div class="project-card__media">
-            <img :src="project.image" :alt="project.alt" />
-            <span class="project-card__badge">{{ project.category }}</span>
-          </div>
-
-          <div class="project-card__copy">
-            <div>
-              <p class="project-card__eyebrow">{{ project.location }}</p>
-              <h3>{{ project.title }}</h3>
-              <p class="project-card__description">{{ project.description }}</p>
-            </div>
-
-            <div class="project-card__progress" aria-label="Project progress">
-              <div class="project-card__progress-meta">
-                <span>{{ project.progress }}% funded</span>
-                <span>Goal {{ project.goal }}</span>
-              </div>
-              <span class="project-card__track">
-                <span
-                  class="project-card__bar"
-                  :style="{ width: `${project.progress}%` }"
-                ></span>
+          <!-- Content -->
+          <div class="grid gap-4">
+            <!-- Category Badge -->
+            <div class="inline-flex w-fit">
+              <span class="px-3 py-1 md:px-4 md:py-1.5 bg-orange-100 text-orange-600 rounded-full text-xs md:text-sm font-black uppercase">
+                {{ project.category }}
               </span>
             </div>
 
-            <router-link class="project-card__link" :to="`/projects/${project.slug}`" :aria-label="`Read more about ${project.title}`">
-              <span>View details</span>
-              <svg
-                aria-hidden="true"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2.4"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+            <!-- Title -->
+            <h3 class="text-2xl md:text-3xl lg:text-4xl font-black text-neutral-900 leading-tight">
+              {{ project.title }}
+            </h3>
+
+            <!-- Description -->
+            <p class="text-base md:text-lg text-neutral-700 leading-relaxed">
+              {{ project.description }}
+            </p>
+
+            <!-- Stats -->
+            <div class="grid gap-3 pt-2">
+              <div class="flex items-center gap-3">
+                <span class="text-sm font-black text-neutral-600 uppercase tracking-wider">Location:</span>
+                <span class="text-sm md:text-base text-orange-600 font-bold italic">{{ project.location }}</span>
+              </div>
+
+              <!-- Progress Bar -->
+              <div class="grid gap-2">
+                <div class="flex justify-between gap-4 text-xs font-black text-neutral-600">
+                  <span>{{ project.progress }}% funded</span>
+                  <span>Goal: {{ project.goal }}</span>
+                </div>
+                <div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+                  <div
+                    class="h-full bg-gradient-to-r from-orange-600 to-yellow-500 rounded-full"
+                    :style="{ width: `${project.progress}%` }"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Learn More Button -->
+            <div class="pt-2">
+              <router-link
+                :to="`/projects/${project.slug}`"
+                class="inline-flex items-center gap-2 px-6 py-3 bg-orange-600 text-white font-black text-sm rounded-lg hover:bg-orange-700 hover:-translate-y-1 transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600"
+                :aria-label="`Read more about ${project.title}`"
               >
-                <path d="M5 12h14" />
-                <path d="m13 6 6 6-6 6" />
-              </svg>
-            </router-link>
+                <span>Learn more</span>
+                <ArrowRight :size="18" :stroke-width="2.5" />
+              </router-link>
+            </div>
+          </div>
+
+          <!-- Image -->
+          <div class="relative overflow-hidden rounded-lg shadow-lg h-80 md:h-96">
+            <img 
+              :src="project.image" 
+              :alt="project.alt" 
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            />
           </div>
         </article>
-      </TransitionGroup>
+      </div>
 
-      <div class="projects-section__pagination" aria-label="Projects pagination">
-        <button type="button" class="projects-section__arrow" @click="previousPage" aria-label="Previous projects">
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M19 12H5" />
-            <path d="m11 18-6-6 6-6" />
-          </svg>
+      <!-- Pagination -->
+      <div data-aos="fade-up" data-aos-delay="700" class="flex items-center justify-center gap-3 md:gap-4 mb-12 md:mb-16" aria-label="Projects pagination">
+        <button
+          type="button"
+          class="flex items-center justify-center w-11 h-11 md:w-12 md:h-12 bg-neutral-900 text-white rounded-lg hover:bg-orange-600 hover:-translate-y-1 transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 font-black"
+          @click="previousPage"
+          aria-label="Previous projects"
+        >
+          <ArrowLeft :size="20" :stroke-width="2.3" />
         </button>
+
+        <div class="flex items-center gap-2">
+          <button
+            v-for="page in pageCount"
+            :key="page"
+            type="button"
+            class="transition-all duration-300"
+            :class="currentPage === page - 1
+              ? 'w-8 h-3 bg-orange-600 rounded-full shadow-md'
+              : 'w-2 h-2 bg-neutral-300 rounded-full hover:bg-orange-600 hover:scale-125'"
+            :aria-label="`Show project page ${page}`"
+            :aria-current="currentPage === page - 1 ? 'page' : undefined"
+            @click="goToPage(page - 1)"
+          ></button>
+        </div>
 
         <button
-          v-for="page in pageCount"
-          :key="page"
           type="button"
-          class="projects-section__dot"
-          :class="{ 'projects-section__dot--active': currentPage === page - 1 }"
-          :aria-label="`Show project page ${page}`"
-          :aria-current="currentPage === page - 1 ? 'page' : undefined"
-          @click="goToPage(page - 1)"
-        ></button>
-
-        <button type="button" class="projects-section__arrow" @click="nextPage" aria-label="Next projects">
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.3"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <path d="M5 12h14" />
-            <path d="m13 6 6 6-6 6" />
-          </svg>
+          class="flex items-center justify-center w-11 h-11 md:w-12 md:h-12 bg-neutral-900 text-white rounded-lg hover:bg-orange-600 hover:-translate-y-1 transition-all shadow-md hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-600 font-black"
+          @click="nextPage"
+          aria-label="Next projects"
+        >
+          <ArrowRight :size="20" :stroke-width="2.3" />
         </button>
       </div>
 
-      <div class="projects-section__process">
-        <div class="projects-section__process-feature">
-          <div class="projects-section__process-copy">
-            <p class="projects-section__eyebrow">How we work</p>
-            <h3>Simple, accountable, and rooted in the community.</h3>
-            <p>
-              Projects are planned with care so donations are connected to real
-              needs and families receive support with respect. We keep the work
-              practical, transparent, and focused on long-term hope.
-            </p>
-          </div>
-
-          <div class="projects-section__process-image">
-            <img src="/images/real1.jpeg" alt="His Grace Foundation volunteers working with families" />
-            <span>Care with follow-up</span>
-          </div>
+      <!-- Process Section -->
+      <div data-aos="fade-up" data-aos-delay="800" class="grid md:grid-cols-3 gap-6 md:gap-8 border-t border-neutral-200 pt-12 md:pt-16 mb-12 md:mb-16">
+        <!-- Process Copy -->
+        <div class="md:col-span-1">
+          <p class="text-xs font-black text-orange-600 uppercase tracking-wider mb-3">How we work</p>
+          <h3 class="text-2xl md:text-3xl font-black text-neutral-900 mb-4">Simple, accountable, and rooted in the community.</h3>
+          <p class="text-neutral-600 leading-relaxed">
+            Projects are planned with care so donations are connected to real
+            needs and families receive support with respect. We keep the work
+            practical, transparent, and focused on long-term hope.
+          </p>
         </div>
 
-        <div class="projects-section__principles">
-          <article
-            v-for="principle in projectPrinciples"
-            :key="principle.number"
-            class="projects-section__principle"
-          >
-            <span>{{ principle.number }}</span>
-            <div>
-              <h4>{{ principle.title }}</h4>
-              <p>{{ principle.text }}</p>
-            </div>
-          </article>
+        <!-- Process Image -->
+        <div class="md:col-span-2 relative min-h-64 md:min-h-80 overflow-hidden rounded-lg shadow-lg">
+          <img src="/images/real1.jpeg" alt="His Grace Foundation volunteers working with families" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300" />
+          <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/60 to-transparent"></div>
+          <span class="absolute left-4 bottom-4 px-4 py-2 bg-yellow-500 text-neutral-900 rounded-full text-xs md:text-sm font-black uppercase">
+            Care with follow-up
+          </span>
         </div>
       </div>
 
-      <div class="projects-section__gallery" aria-label="Project photos">
-        <div class="projects-section__gallery-header">
-          <p class="projects-section__eyebrow">In pictures</p>
-          <h3>Moments from the work we continue to build.</h3>
+      <!-- Principles -->
+      <div data-aos="fade-up" data-aos-delay="900" class="grid md:grid-cols-3 gap-4 md:gap-6 mb-12 md:mb-16">
+        <article
+          v-for="(principle, idx) in projectPrinciples"
+          :key="principle.number"
+          :data-aos="`fade-${idx % 2 === 0 ? 'left' : 'right'}`"
+          :data-aos-delay="`${1000 + idx * 100}`"
+          class="grid grid-cols-[3rem_1fr] gap-4 p-5 md:p-6 bg-white border border-neutral-200 rounded-lg shadow-sm hover:border-orange-300 hover:shadow-md hover:-translate-y-1 transition-all"
+        >
+          <div class="flex items-center justify-center w-12 h-12 rounded-full bg-orange-50 text-orange-600 font-black flex-shrink-0">
+            {{ principle.number }}
+          </div>
+          <div>
+            <h4 class="text-lg font-black text-neutral-900">{{ principle.title }}</h4>
+            <p class="mt-2 text-sm text-neutral-600 leading-relaxed">{{ principle.text }}</p>
+          </div>
+        </article>
+      </div>
+
+      <!-- Gallery Section -->
+      <div data-aos="fade-up" data-aos-delay="1100" class="mb-8 md:mb-12">
+        <div class="mb-6 md:mb-8">
+          <p class="text-xs font-black text-orange-600 uppercase tracking-wider mb-3">In pictures</p>
+          <h3 class="text-2xl md:text-3xl font-black text-neutral-900">Moments from the work we continue to build.</h3>
         </div>
 
-        <div class="projects-section__gallery-grid">
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 auto-rows-48 md:auto-rows-64">
           <article
-            v-for="item in galleryImages"
+            v-for="(item, idx) in galleryImages"
             :key="item.title"
-            class="projects-section__gallery-card"
+            :data-aos="`fade-${idx % 2 === 0 ? 'up' : 'down'}`"
+            :data-aos-delay="`${1200 + idx * 100}`"
+            :class="[
+              'relative overflow-hidden rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition-all group',
+              idx === 0 ? 'md:col-span-2 md:row-span-2' : ''
+            ]"
           >
-            <img :src="item.image" :alt="item.alt" />
-            <div>
-              <h4>{{ item.title }}</h4>
-              <p>{{ item.text }}</p>
+            <img :src="item.image" :alt="item.alt" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+            <div class="absolute inset-0 bg-gradient-to-t from-neutral-900/80 via-neutral-900/30 to-transparent"></div>
+            <div class="absolute inset-x-4 bottom-4 z-10">
+              <h4 class="text-base md:text-lg font-black text-white leading-tight">{{ item.title }}</h4>
+              <p class="text-xs md:text-sm text-white/80 leading-relaxed mt-1">{{ item.text }}</p>
             </div>
           </article>
         </div>
@@ -412,886 +645,23 @@ const nextPage = () => {
 </template>
 
 <style scoped>
-.projects-section {
-  padding: 0 1.5rem 5rem;
-  background:
-    linear-gradient(180deg, #fff 0%, #fff8ef 100%);
-}
-
-@media (max-width: 768px) {
-  .projects-section {
-    padding: 0 1rem 3rem;
+@keyframes banner-float {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
   }
 }
 
-.projects-section__inner {
-  max-width: 1160px;
-  margin: 0 auto;
+.animate-banner-float {
+  animation: banner-float 9s ease-in-out infinite alternate;
 }
 
-.projects-section__banner {
-  display: block;
-  height: clamp(18rem, 42vw, 31rem);
-  overflow: hidden;
-  margin-bottom: 4rem;
-  background: #1f1f1f;
-  border-radius: 0 0 0.5rem 0.5rem;
-  box-shadow: 0 24px 56px rgba(18, 29, 27, 0.14);
-}
-
-@media (max-width: 768px) {
-  .projects-section__banner {
-    height: clamp(12rem, 60vw, 18rem);
-    margin-bottom: 2rem;
-    border-radius: 8px;
-  }
-}
-
-.projects-section__banner-media {
-  position: relative;
-  height: 100%;
-  overflow: hidden;
-}
-
-.projects-section__banner-media::before {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  content: "";
-  background: linear-gradient(90deg, rgba(31, 31, 31, 0.28), rgba(31, 31, 31, 0));
-}
-
-.projects-section__banner-media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  animation: bannerFloat 9s ease-in-out infinite alternate;
-}
-
-.projects-section__banner-stat {
-  position: absolute;
-  right: 1.25rem;
-  bottom: 1.25rem;
-  z-index: 2;
-  display: grid;
-  gap: 0.1rem;
-  min-width: 8.5rem;
-  padding: 1rem;
-  background: #fff;
-  color: #202020;
-  border-left: 0.35rem solid #f0b62a;
-  box-shadow: 0 18px 34px rgba(18, 29, 27, 0.2);
-}
-
-@media (max-width: 768px) {
-  .projects-section__banner-stat {
-    right: 0.85rem;
-    bottom: 0.85rem;
-    min-width: 7.5rem;
-    padding: 0.8rem;
-  }
-}
-
-.projects-section__banner-stat strong {
-  font-size: 2.35rem;
-  line-height: 1;
-  font-weight: 900;
-}
-
-.projects-section__banner-stat span {
-  color: #626262;
-  font-size: 0.78rem;
-  font-weight: 900;
-  line-height: 1.25;
-  text-transform: uppercase;
-}
-
-.projects-section__header {
-  display: grid;
-  grid-template-columns: minmax(0, 0.95fr) minmax(280px, 0.75fr);
-  gap: 2rem;
-  align-items: end;
-  margin-bottom: 2rem;
-}
-
-@media (max-width: 768px) {
-  .projects-section__header {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    align-items: start;
-    margin-bottom: 1.5rem;
-  }
-}
-
-.projects-section__eyebrow {
-  margin: 0 0 0.65rem;
-  color: #ff5d23;
-  font-size: 0.78rem;
-  font-weight: 900;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.projects-section__header h2 {
-  margin: 0;
-  color: #202020;
-  font-size: clamp(2rem, 4vw, 3.35rem);
-  line-height: 1.02;
-  letter-spacing: 0;
-  font-weight: 900;
-}
-
-@media (max-width: 768px) {
-  .projects-section__header h2 {
-    font-size: clamp(1.5rem, 5vw, 2rem);
-  }
-}
-
-.projects-section__header-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.55rem;
-  width: fit-content;
-  min-height: 3rem;
-  margin-top: 1.15rem;
-  padding: 0.85rem 2rem;
-  background: #ff5d23;
-  color: #fff;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  font-size: 0.94rem;
-  font-weight: 900;
-  text-decoration: none;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-.projects-section__header-link::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255, 255, 255, 0.2);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 0;
-}
-
-.projects-section__header-link:hover {
-  transform: translateY(-3px);
-  background: #d84315;
-  box-shadow: 0 8px 20px rgba(255, 93, 35, 0.3);
-}
-
-.projects-section__header-link:hover::before {
-  transform: scaleX(1);
-}
-
-.projects-section__header-link:focus-visible {
-  outline: 2px solid #ff5d23;
-  outline-offset: 2px;
-}
-
-.projects-section__header-link svg {
-  width: 1rem;
-  height: 1rem;
-}
-
-.projects-section__header p:last-child {
-  margin: 0;
-  color: #626262;
-  font-size: 1rem;
-  line-height: 1.75;
-}
-
-.projects-section__intro {
-  display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
-  gap: 1.15rem;
-  align-items: stretch;
-  margin-bottom: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .projects-section__intro {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 1.2rem;
-  }
-}
-
-.projects-section__intro-copy {
-  padding: 1.5rem;
-  background: #fff;
-  border: 1px solid rgba(31, 31, 31, 0.08);
-  border-radius: 0.45rem;
-  box-shadow: 0 14px 30px rgba(18, 29, 27, 0.06);
-}
-
-.projects-section__intro-copy h3,
-.projects-section__process-copy h3 {
-  margin: 0;
-  color: #202020;
-  font-size: clamp(1.55rem, 3vw, 2.25rem);
-  line-height: 1.1;
-  letter-spacing: 0;
-  font-weight: 900;
-}
-
-.projects-section__intro-copy p:last-child,
-.projects-section__process-copy p:last-child {
-  margin: 0.85rem 0 0;
-  color: #626262;
-  font-size: 0.98rem;
-  line-height: 1.75;
-}
-
-.projects-section__stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-@media (max-width: 1024px) {
-  .projects-section__stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-section__stats {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-  }
-}
-
-.projects-section__stat-card {
-  display: grid;
-  align-content: space-between;
-  min-height: 12rem;
-  padding: 1.25rem;
-  background: #1f1f1f;
-  color: #fff;
-  border-radius: 0.45rem;
-  box-shadow: 0 16px 34px rgba(18, 29, 27, 0.1);
-}
-
-@media (max-width: 768px) {
-  .projects-section__stat-card {
-    min-height: 10rem;
-    padding: 1rem;
-  }
-}
-
-.projects-section__stat-card:nth-child(2) {
-  background: #ff5d23;
-}
-
-.projects-section__stat-card:nth-child(3) {
-  background: #f0b62a;
-  color: #202020;
-}
-
-.projects-section__stat-card strong {
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1;
-  font-weight: 900;
-}
-
-.projects-section__stat-card span {
-  color: currentColor;
-  font-size: 0.88rem;
-  font-weight: 800;
-  line-height: 1.45;
-}
-
-.projects-section__filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin: 0 0 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .projects-section__filters {
-    gap: 0.5rem;
-    margin: 0 0 1.2rem;
-  }
-}
-
-.projects-section__filter {
-  min-height: 2.65rem;
-  padding: 0.65rem 1rem;
-  border: 1px solid rgba(31, 31, 31, 0.1);
-  background: #fff;
-  color: #4d4d4d;
-  border-radius: 999px;
-  cursor: pointer;
-  font: inherit;
-  font-size: 0.88rem;
-  font-weight: 900;
-  transition:
-    transform 180ms ease,
-    background 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease;
-}
-
-@media (max-width: 768px) {
-  .projects-section__filter {
-    min-height: 2.4rem;
-    padding: 0.55rem 0.9rem;
-    font-size: 0.8rem;
-  }
-}
-
-.projects-section__filter:hover,
-.projects-section__filter:focus-visible {
-  transform: translateY(-2px);
-  border-color: #ff5d23;
-  color: #ff5d23;
-  background: rgba(255, 93, 35, 0.05);
-  box-shadow: 0 4px 12px rgba(255, 93, 35, 0.15);
-}
-
-.projects-section__filter:focus-visible {
-  outline: 2px solid #ff5d23;
-  outline-offset: 2px;
-}
-
-.projects-section__filter--active {
-  background: #ff5d23;
-  color: #fff;
-  border-color: #ff5d23;
-  box-shadow: 0 4px 12px rgba(255, 93, 35, 0.25);
-}
-
-.projects-section__filter--active {
-  background: #ff5d23;
-  border-color: #ff5d23;
-  color: #fff;
-  box-shadow: 0 12px 24px rgba(255, 93, 35, 0.2);
-}
-
-.projects-section__grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.15rem;
-  min-height: 35rem;
-}
-
-@media (max-width: 1024px) {
-  .projects-section__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    min-height: auto;
-  }
-}
-
-@media (max-width: 768px) {
-  .projects-section__grid {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-    min-height: auto;
-  }
-}
-
-.project-card {
-  display: grid;
-  grid-template-rows: 15.5rem 1fr;
-  overflow: hidden;
-  background: #fff;
-  border: 1px solid rgba(31, 31, 31, 0.08);
-  border-radius: 0.45rem;
-  box-shadow: 0 18px 40px rgba(18, 29, 27, 0.1);
-  transition:
-    transform 220ms ease,
-    box-shadow 220ms ease,
-    border-color 220ms ease;
-}
-
-@media (max-width: 768px) {
-  .project-card {
-    grid-template-rows: 12rem 1fr;
-  }
-}
-
-.project-card:hover {
-  transform: translateY(-0.35rem);
-  border-color: rgba(255, 93, 35, 0.28);
-  box-shadow: 0 24px 54px rgba(18, 29, 27, 0.15);
-}
-
-.project-card__media {
-  position: relative;
-  overflow: hidden;
-  min-height: 15.5rem;
-  background: #1f1f1f;
-}
-
-.project-card__media::after {
-  position: absolute;
-  inset: auto 0 0;
-  height: 45%;
-  content: "";
-  background: linear-gradient(180deg, rgba(31, 31, 31, 0), rgba(31, 31, 31, 0.58));
-}
-
-.project-card__media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 420ms ease;
-}
-
-.project-card:hover .project-card__media img {
-  transform: scale(1.06);
-}
-
-.project-card__badge {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 1;
-  padding: 0.48rem 0.72rem;
-  background: #f0b62a;
-  color: #202020;
-  border-radius: 999px;
-  font-size: 0.76rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.project-card__copy {
-  display: grid;
-  gap: 1.3rem;
-  padding: 1.35rem;
-  color: #202020;
-}
-
-@media (max-width: 768px) {
-  .project-card__copy {
-    gap: 1rem;
-    padding: 1rem;
-  }
-}
-
-.project-card__eyebrow {
-  margin: 0 0 0.55rem;
-  color: #ff5d23;
-  font-size: 0.92rem;
-  font-style: italic;
-  font-weight: 800;
-}
-
-.project-card__copy h3 {
-  margin: 0;
-  color: #1f1f1f;
-  font-size: 1.55rem;
-  line-height: 1.12;
-  letter-spacing: 0;
-  font-weight: 900;
-}
-
-@media (max-width: 768px) {
-  .project-card__copy h3 {
-    font-size: 1.25rem;
-  }
-}
-
-.project-card__description {
-  margin: 0.8rem 0 0;
-  color: #626262;
-  font-size: 0.96rem;
-  line-height: 1.65;
-}
-
-.project-card__progress {
-  display: grid;
-  gap: 0.58rem;
-}
-
-.project-card__progress-meta {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  color: #4d4d4d;
-  font-size: 0.82rem;
-  font-weight: 800;
-}
-
-.project-card__track {
-  display: block;
-  height: 0.58rem;
-  overflow: hidden;
-  background: #f0ece5;
-  border-radius: 999px;
-}
-
-.project-card__bar {
-  display: block;
-  height: 100%;
-  background: linear-gradient(90deg, #ff5d23, #f0b62a);
-  border-radius: inherit;
-}
-
-.project-card__link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: fit-content;
-  min-height: 2.35rem;
-  padding: 0.55rem 1.15rem;
-  background: #1f1f1f;
-  color: #fff;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  font-size: 0.82rem;
-  font-weight: 900;
-  text-decoration: none;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-  overflow: hidden;
-}
-
-@media (max-width: 768px) {
-  .project-card__link {
-    min-height: 2.25rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.78rem;
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-.project-card__link::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: #ff5d23;
-  transform: translateX(-100%);
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: -1;
-}
-
-.project-card__link svg {
-  width: 1rem;
-  height: 1rem;
-  position: relative;
-  z-index: 1;
-}
-
-.project-card__link:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(31, 31, 31, 0.25);
-}
-
-.project-card__link:hover::before {
-  transform: translateX(0);
-}
-
-.project-card__link:focus-visible {
-  outline: 2px solid #ff5d23;
-  outline-offset: 2px;
-}
-
-.projects-section__pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.7rem;
-  margin-top: 1.8rem;
-}
-
-@media (max-width: 768px) {
-  .projects-section__pagination {
-    gap: 0.5rem;
-    margin-top: 1.2rem;
-  }
-}
-
-.projects-section__arrow,
-.projects-section__dot {
-  display: inline-grid;
-  place-items: center;
-  border: 0;
-  cursor: pointer;
-  transition:
-    transform 180ms ease,
-    background 180ms ease,
-    color 180ms ease;
-}
-
-.projects-section__arrow {
-  width: 2.75rem;
-  height: 2.75rem;
-  background: #1f1f1f;
-  color: #fff;
-  border-radius: 8px;
-  border: 2px solid transparent;
-  font: inherit;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.projects-section__arrow svg {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-
-.projects-section__arrow:hover,
-.projects-section__arrow:focus-visible {
-  transform: translateY(-2px);
-  background: #ff5d23;
-  box-shadow: 0 8px 20px rgba(255, 93, 35, 0.25);
-}
-
-.projects-section__arrow:focus-visible {
-  outline: 2px solid #ff5d23;
-  outline-offset: 2px;
-}
-
-.projects-section__dot {
-  width: 0.75rem;
-  height: 0.75rem;
-  padding: 0;
-  background: #d7cec1;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.projects-section__dot:hover,
-.projects-section__dot:focus-visible {
-  transform: scale(1.2);
-  background: #ff5d23;
-  border-color: #ff5d23;
-  box-shadow: 0 4px 12px rgba(255, 93, 35, 0.2);
-}
-
-.projects-section__dot:focus-visible {
-  outline: 2px solid #ff5d23;
-  outline-offset: 2px;
-}
-
-.projects-section__dot--active {
-  width: 2rem;
-  background: #ff5d23;
-  border-radius: 999px;
-  box-shadow: 0 4px 12px rgba(255, 93, 35, 0.3);
-}
-
-.projects-section__process {
-  display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(360px, 1fr);
-  gap: 1.15rem;
-  align-items: stretch;
-  margin-top: 3rem;
-  padding-top: 3rem;
-  border-top: 1px solid rgba(31, 31, 31, 0.08);
-}
-
-.projects-section__process-feature {
-  display: grid;
-  gap: 1rem;
-}
-
-.projects-section__process-copy {
-  padding: 0 1.5rem 0 0;
-}
-
-.projects-section__process-image {
-  position: relative;
-  min-height: 17rem;
-  overflow: hidden;
-  border-radius: 0.45rem;
-  box-shadow: 0 18px 38px rgba(18, 29, 27, 0.12);
-}
-
-.projects-section__process-image::after {
-  position: absolute;
-  inset: 0;
-  content: "";
-  background: linear-gradient(180deg, rgba(31, 31, 31, 0), rgba(31, 31, 31, 0.62));
-}
-
-.projects-section__process-image img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 420ms ease;
-}
-
-.projects-section__process-image:hover img {
-  transform: scale(1.05);
-}
-
-.projects-section__process-image span {
-  position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  z-index: 1;
-  padding: 0.5rem 0.75rem;
-  background: #f0b62a;
-  color: #202020;
-  border-radius: 999px;
-  font-size: 0.78rem;
-  font-weight: 900;
-  text-transform: uppercase;
-}
-
-.projects-section__principles {
-  display: grid;
-  gap: 0.85rem;
-}
-
-.projects-section__principle {
-  display: grid;
-  grid-template-columns: 4rem minmax(0, 1fr);
-  gap: 1rem;
-  align-items: start;
-  padding: 1.2rem;
-  background: #fff;
-  border: 1px solid rgba(31, 31, 31, 0.08);
-  border-radius: 0.45rem;
-  box-shadow: 0 12px 24px rgba(18, 29, 27, 0.06);
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    box-shadow 180ms ease;
-}
-
-.projects-section__principle:hover {
-  transform: translateY(-0.18rem);
-  border-color: rgba(255, 93, 35, 0.28);
-  box-shadow: 0 18px 34px rgba(18, 29, 27, 0.1);
-}
-
-.projects-section__principle > span {
-  display: grid;
-  place-items: center;
-  width: 3.25rem;
-  height: 3.25rem;
-  background: #fff8ef;
-  color: #ff5d23;
-  border-radius: 50%;
-  font-size: 0.82rem;
-  font-weight: 900;
-}
-
-.projects-section__principle h4 {
-  margin: 0;
-  color: #202020;
-  font-size: 1.08rem;
-  line-height: 1.25;
-  font-weight: 900;
-}
-
-.projects-section__principle p {
-  margin: 0.45rem 0 0;
-  color: #626262;
-  font-size: 0.94rem;
-  line-height: 1.65;
-}
-
-.projects-section__gallery {
-  margin-top: 3rem;
-}
-
-.projects-section__gallery-header {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-bottom: 1.25rem;
-}
-
-.projects-section__gallery-header h3 {
-  max-width: 24rem;
-  margin: 0;
-  color: #202020;
-  font-size: clamp(1.55rem, 3vw, 2.25rem);
-  line-height: 1.1;
-  letter-spacing: 0;
-  font-weight: 900;
-}
-
-.projects-section__gallery-grid {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr 0.9fr;
-  grid-auto-rows: 16rem;
-  gap: 1rem;
-}
-
-.projects-section__gallery-card {
-  position: relative;
-  overflow: hidden;
-  min-height: 16rem;
-  background: #1f1f1f;
-  border-radius: 0.45rem;
-  box-shadow: 0 16px 34px rgba(18, 29, 27, 0.1);
-}
-
-.projects-section__gallery-card:first-child {
-  grid-row: span 2;
-}
-
-.projects-section__gallery-card img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.92;
-  transition:
-    transform 420ms ease,
-    opacity 180ms ease;
-}
-
-.projects-section__gallery-card:hover img {
-  transform: scale(1.06);
-  opacity: 1;
-}
-
-.projects-section__gallery-card::after {
-  position: absolute;
-  inset: 0;
-  content: "";
-  background: linear-gradient(180deg, rgba(31, 31, 31, 0.05), rgba(31, 31, 31, 0.72));
-}
-
-.projects-section__gallery-card div {
-  position: absolute;
-  right: 1rem;
-  bottom: 1rem;
-  left: 1rem;
-  z-index: 1;
-  color: #fff;
-}
-
-.projects-section__gallery-card h4 {
-  margin: 0;
-  font-size: 1.15rem;
-  line-height: 1.2;
-  font-weight: 900;
-}
-
-.projects-section__gallery-card p {
-  margin: 0.45rem 0 0;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 0.9rem;
-  line-height: 1.5;
-}
 
 .project-card-enter-active,
 .project-card-leave-active {
-  transition:
-    opacity 180ms ease,
-    transform 180ms ease;
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
 .project-card-enter-from,
@@ -1300,367 +670,20 @@ const nextPage = () => {
   transform: translateY(0.75rem);
 }
 
-@keyframes bannerFloat {
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(1.06);
-  }
+/* 3D Flip Card Styles */
+.perspective {
+  perspective: 1000px;
 }
 
-@media (max-width: 1024px) {
-  .projects-section__header,
-  .projects-section__intro,
-  .projects-section__process {
-    grid-template-columns: 1fr;
-  }
-
-  .projects-section__stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.85rem;
-  }
-
-  .projects-section__process-copy {
-    padding: 0;
-  }
-
-  .projects-section__gallery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 14rem;
-  }
-
-  .projects-section__gallery-card:first-child {
-    grid-row: span 1;
-  }
-
-  .projects-section__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    min-height: auto;
-    gap: 1rem;
-  }
-
-  .project-card {
-    grid-template-columns: 1fr;
-    grid-template-rows: 14rem 1fr;
-    min-height: auto;
-  }
-
-  .project-card__media {
-    min-height: 14rem;
-  }
-
-  .project-card__copy {
-    padding: 1.2rem;
-  }
-
-  .project-card__copy h3 {
-    font-size: 1.45rem;
-  }
+.perspective > div {
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
 }
 
-@media (max-width: 768px) {
-  .projects-section {
-    padding: 0 1.2rem 3rem;
-  }
-
-  .projects-section__header h2 {
-    font-size: clamp(1.75rem, 5vw, 2.25rem);
-  }
-
-  .projects-section__banner {
-    height: 18rem;
-    margin-bottom: 2.5rem;
-  }
-
-  .projects-section__stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .projects-section__grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-card {
-    grid-template-columns: 1fr;
-    grid-template-rows: 13rem 1fr;
-  }
-
-  .project-card__media {
-    min-height: 13rem;
-  }
-
-  .project-card__copy h3 {
-    font-size: 1.35rem;
-  }
-
-  .projects-section__gallery-grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 13rem;
-  }
-}
-
-@media (max-width: 640px) {
-  .projects-section {
-    padding: 0 1rem 3.5rem;
-  }
-
-  .projects-section__banner {
-    height: 15rem;
-    margin-bottom: 2rem;
-  }
-
-  .projects-section__banner-stat {
-    right: 0.9rem;
-    bottom: 0.9rem;
-    min-width: 6.5rem;
-  }
-
-  .projects-section__header {
-    gap: 1rem;
-    margin-bottom: 1.35rem;
-  }
-
-  .projects-section__header h2 {
-    font-size: clamp(1.5rem, 6vw, 2rem);
-  }
-
-  .projects-section__header p:last-child {
-    font-size: 0.9rem;
-  }
-
-  .projects-section__intro {
-    margin-bottom: 1.25rem;
-    gap: 0.9rem;
-  }
-
-  .projects-section__intro-copy {
-    padding: 1.2rem;
-  }
-
-  .projects-section__intro-copy h3 {
-    font-size: 1.35rem;
-  }
-
-  .projects-section__stats {
-    grid-template-columns: 1fr;
-    gap: 0.75rem;
-  }
-
-  .projects-section__stat-card {
-    min-height: 7.5rem;
-    padding: 1rem;
-  }
-
-  .projects-section__stat-card strong {
-    font-size: clamp(1.75rem, 6vw, 2.5rem);
-  }
-
-  .projects-section__stat-card span {
-    font-size: 0.8rem;
-  }
-
-  .projects-section__filters {
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    gap: 0.6rem;
-    padding-bottom: 0.5rem;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  .projects-section__filters::-webkit-scrollbar {
-    display: none;
-  }
-
-  .projects-section__filter {
-    flex: 0 0 auto;
-    padding: 0.6rem 0.95rem;
-    font-size: 0.85rem;
-    min-height: 2.5rem;
-  }
-
-  .projects-section__grid {
-    grid-template-columns: 1fr;
-    gap: 0.9rem;
-  }
-
-  .projects-section__grid {
-    min-height: auto;
-  }
-
-  .project-card {
-    grid-template-columns: 1fr;
-    grid-template-rows: 12rem 1fr;
-  }
-
-  .project-card__media {
-    min-height: 12rem;
-  }
-
-  .project-card__copy {
-    padding: 1rem;
-    gap: 1.1rem;
-  }
-
-  .project-card__copy h3 {
-    font-size: 1.2rem;
-    line-height: 1.15;
-  }
-
-  .project-card__description {
-    font-size: 0.88rem;
-    margin-top: 0.5rem;
-  }
-
-  .project-card__link {
-    padding: 0.7rem 1.25rem;
-    font-size: 0.85rem;
-    min-height: 2.5rem;
-  }
-
-  .project-card__progress-meta {
-    flex-direction: column;
-    gap: 0.35rem;
-    font-size: 0.78rem;
-  }
-
-  .projects-section__process {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    gap: 1.5rem;
-  }
-
-  .projects-section__process-copy h3 {
-    font-size: 1.35rem;
-  }
-
-  .projects-section__process-image {
-    min-height: 12rem;
-  }
-
-  .projects-section__principle {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-    padding: 1rem;
-  }
-
-  .projects-section__principle > span {
-    width: 2.75rem;
-    height: 2.75rem;
-    font-size: 0.8rem;
-  }
-
-  .projects-section__principle h4 {
-    font-size: 1rem;
-  }
-
-  .projects-section__principle p {
-    font-size: 0.88rem;
-  }
-
-  .projects-section__gallery {
-    margin-top: 2rem;
-  }
-
-  .projects-section__gallery-header {
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  .projects-section__gallery-header h3 {
-    font-size: clamp(1.35rem, 5vw, 1.75rem);
-  }
-
-  .projects-section__gallery-grid {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 12rem;
-    gap: 0.8rem;
-  }
-
-  .projects-section__pagination {
-    gap: 0.6rem;
-    margin-top: 1.5rem;
-  }
-
-  .projects-section__arrow {
-    width: 2.4rem;
-    height: 2.4rem;
-    font-size: 0.9rem;
-  }
-
-  .projects-section__dot {
-    width: 0.65rem;
-    height: 0.65rem;
-  }
-
-  .projects-section__dot--active {
-    width: 1.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .projects-section {
-    padding: 0 0.8rem 3rem;
-  }
-
-  .projects-section__banner {
-    height: 13rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .projects-section__header h2 {
-    font-size: clamp(1.35rem, 7vw, 1.75rem);
-  }
-
-  .projects-section__intro-copy h3 {
-    font-size: 1.2rem;
-  }
-
-  .projects-section__filter {
-    padding: 0.55rem 0.85rem;
-    font-size: 0.8rem;
-  }
-
-  .project-card__media {
-    min-height: 10.5rem;
-  }
-
-  .project-card__copy {
-    padding: 0.9rem;
-  }
-
-  .project-card__copy h3 {
-    font-size: 1.1rem;
-    margin-bottom: 0.4rem;
-  }
-
-  .project-card__description {
-    font-size: 0.82rem;
-  }
-
-  .project-card__link {
-    padding: 0.6rem 1rem;
-    font-size: 0.8rem;
-  }
-}
-@media (max-width: 768px) {
-  :deep(.project-card a),
-  :deep(.project-card button),
-  :deep([class*="project-card"] a),
-  :deep([class*="ProjectCard"] a),
-  :deep([class*="project-card"] button),
-  :deep([class*="ProjectCard"] button) {
-    width: fit-content !important;
-    min-width: 0 !important;
-    min-height: 2.45rem !important;
-    margin-inline: auto !important;
-    padding: 0.65rem 1.05rem !important;
-    border-radius: 0.45rem !important;
-    font-size: 0.82rem !important;
-    line-height: 1 !important;
-  }
+.perspective > div > div {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 </style>

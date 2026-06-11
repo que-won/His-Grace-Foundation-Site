@@ -1,34 +1,40 @@
 <template>
-  <section class="video-section">
-    <div class="video-container">
-      <div class="video-header">
-        <h2 class="video-title">See Our Impact in Action</h2>
-        <p class="video-subtitle">Watch real stories from the communities we serve</p>
+  <section class="py-20 lg:py-28 px-4 lg:px-6 bg-gradient-to-br from-white to-purple-50" aria-labelledby="video-title">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12 lg:mb-14" data-aos="fade-up" data-aos-delay="100">
+        <h2 class="text-4xl lg:text-5xl font-black text-gray-900 mb-4" id="video-title" data-aos="fade-up" data-aos-delay="100">Our Mission in Motion</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="200">Witness transformation through education, health, economic development, and community engagement</p>
       </div>
 
-      <div class="video-grid">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10" aria-label="Video cards">
         <div 
           v-for="(video, idx) in videos" 
           :key="idx"
-          class="video-card"
+          class="group rounded-xl overflow-hidden bg-white shadow-lg hover:shadow-2xl hover:-translate-y-3 transition-all duration-500 cursor-pointer"
+          role="article"
           @click="playVideo(idx)"
+          @keydown.enter="playVideo(idx)"
+          @keydown.space="playVideo(idx)"
+          tabindex="0"
+          :data-aos="`fade-up`"
+          :data-aos-delay="`${300 + idx * 100}`"
         >
-          <div class="video-card__thumbnail">
-            <img :src="video.thumbnail" :alt="video.title" />
-            <div class="video-card__play">
-              <button class="video-play-btn" aria-label="Play video">
-                <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
-                  <circle cx="30" cy="30" r="30" fill="#7d2be0" opacity="0.9"/>
-                  <polygon points="24,15 24,45 40,30" fill="white"/>
-                </svg>
+          <div class="relative w-full aspect-video overflow-hidden bg-black">
+            <img :src="video.thumbnail" :alt="video.title" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div class="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-colors">
+              <button 
+                class="bg-none border-none cursor-pointer flex items-center justify-center group-hover:scale-125 transition-transform duration-300 min-h-11 min-w-11" 
+                :aria-label="`Play: ${video.title}`"
+              >
+                <Play :size="60" class="text-white" />
               </button>
             </div>
-            <div class="video-card__duration">{{ video.duration }}</div>
+            <div class="absolute bottom-4 right-4 bg-black/80 text-white text-sm font-bold px-3 py-2 rounded">{{ video.duration }}</div>
           </div>
-          <div class="video-card__content">
-            <h3 class="video-card__title">{{ video.title }}</h3>
-            <p class="video-card__description">{{ video.description }}</p>
-            <div class="video-card__meta">{{ video.category }}</div>
+          <div class="p-6 lg:p-8">
+            <h3 class="text-xl font-bold text-gray-900 mb-2 line-clamp-2">{{ video.title }}</h3>
+            <p class="text-gray-600 mb-4 line-clamp-3">{{ video.description }}</p>
+            <span class="inline-block bg-purple-100 text-purple-700 text-xs font-bold px-3 py-1.5 rounded-full uppercase">{{ video.category }}</span>
           </div>
         </div>
       </div>
@@ -38,16 +44,28 @@
   <!-- Video Modal -->
   <Teleport to="body">
     <transition name="video-modal-fade">
-      <div v-if="videoModalOpen" class="video-modal-overlay" @click="closeVideoModal">
-        <div class="video-modal" @click.stop>
-          <button class="video-modal__close" @click="closeVideoModal">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
+      <div 
+        v-if="videoModalOpen" 
+        class="fixed inset-0 bg-black/85 flex items-center justify-center z-50 backdrop-blur-sm" 
+        @click="closeVideoModal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="video-modal-title"
+        data-aos="fade-in"
+        data-aos-delay="100"
+      >
+        <div class="relative w-full max-w-5xl aspect-video rounded-xl overflow-hidden shadow-2xl" @click.stop data-aos="zoom-up" data-aos-delay="200">
+          <button 
+            class="absolute top-4 right-4 bg-white/90 hover:bg-white rounded-full w-10 h-10 flex items-center justify-center z-10 hover:rotate-90 transition-all duration-200 min-h-11 min-w-11" 
+            @click="closeVideoModal"
+            :aria-label="`Close ${activeVideo?.title || 'video'} modal`"
+          >
+            <X :size="24" class="text-gray-900" />
           </button>
           
-          <div class="video-modal__player">
+          <h2 v-if="activeVideo" id="video-modal-title" class="sr-only">{{ activeVideo.title }}</h2>
+          
+          <div class="w-full h-full">
             <iframe
               width="100%"
               height="100%"
@@ -65,6 +83,7 @@
 
 <script setup lang="ts">
 import { ref, computed } from 'vue';
+import { Play, X } from 'lucide-vue-next';
 
 interface Video {
   id: string;
@@ -125,272 +144,6 @@ const closeVideoModal = () => {
 </script>
 
 <style scoped>
-.video-section {
-  padding: 5rem 1.5rem;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f3ff 100%);
-}
-
-@media (max-width: 768px) {
-  .video-section {
-    padding: 3rem 1rem;
-  }
-}
-
-.video-container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.video-header {
-  text-align: center;
-  margin-bottom: 3.5rem;
-}
-
-@media (max-width: 768px) {
-  .video-header {
-    margin-bottom: 2.5rem;
-  }
-}
-
-.video-title {
-  font-size: 2.5rem;
-  font-weight: 800;
-  color: #1f2428;
-  margin: 0 0 1rem 0;
-}
-
-@media (max-width: 768px) {
-  .video-title {
-    font-size: clamp(1.75rem, 5vw, 2rem);
-  }
-}
-
-.video-subtitle {
-  font-size: 1.1rem;
-  color: #666;
-  margin: 0;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2.5rem;
-}
-
-@media (max-width: 1024px) {
-  .video-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1.8rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .video-grid {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-  }
-}
-
-.video-card {
-  cursor: pointer;
-  border-radius: 12px;
-  overflow: hidden;
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform: translateY(0);
-}
-
-@media (max-width: 768px) {
-  .video-card {
-    border-radius: 10px;
-  }
-}
-
-.video-card:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 16px 40px rgba(125, 43, 224, 0.15);
-}
-
-.video-card__thumbnail {
-  position: relative;
-  width: 100%;
-  padding-bottom: 56.25%;
-  overflow: hidden;
-  background: #000;
-}
-
-.video-card__thumbnail img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.video-card:hover .video-card__thumbnail img {
-  transform: scale(1.08);
-}
-
-.video-card__play {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.3);
-  transition: all 0.3s ease;
-}
-
-.video-card:hover .video-card__play {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.video-play-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-  padding: 0;
-}
-
-.video-card:hover .video-play-btn {
-  transform: scale(1.15);
-}
-
-.video-card__duration {
-  position: absolute;
-  bottom: 1rem;
-  right: 1rem;
-  background: rgba(0, 0, 0, 0.8);
-  color: #fff;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 600;
-}
-
-.video-card__content {
-  padding: 1.5rem;
-}
-
-@media (max-width: 768px) {
-  .video-card__content {
-    padding: 1.2rem;
-  }
-}
-
-.video-card__title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #1f2428;
-  margin: 0 0 0.5rem 0;
-  line-height: 1.4;
-}
-
-@media (max-width: 768px) {
-  .video-card__title {
-    font-size: 1.05rem;
-  }
-}
-
-.video-card__description {
-  font-size: 0.95rem;
-  color: #666;
-  margin: 0 0 1rem 0;
-  line-height: 1.5;
-}
-
-.video-card__meta {
-  display: inline-block;
-  background: rgba(125, 43, 224, 0.1);
-  color: #7d2be0;
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.4rem 0.8rem;
-  border-radius: 20px;
-  text-transform: uppercase;
-}
-
-/* Video Modal */
-.video-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1001;
-  backdrop-filter: blur(4px);
-  animation: fadeIn 0.3s ease;
-}
-
-.video-modal {
-  position: relative;
-  width: 90%;
-  max-width: 900px;
-  aspect-ratio: 16 / 9;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.video-modal__close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  color: #333;
-  transition: all 0.2s ease;
-}
-
-.video-modal__close:hover {
-  background: #fff;
-  transform: rotate(90deg);
-}
-
-.video-modal__player {
-  width: 100%;
-  height: 100%;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 .video-modal-fade-enter-active,
 .video-modal-fade-leave-active {
   transition: opacity 0.3s ease;
@@ -399,27 +152,5 @@ const closeVideoModal = () => {
 .video-modal-fade-enter-from,
 .video-modal-fade-leave-to {
   opacity: 0;
-}
-
-@media (max-width: 768px) {
-  .video-section {
-    padding: 3rem 1rem;
-  }
-
-  .video-title {
-    font-size: 2rem;
-  }
-
-  .video-grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  .video-modal {
-    width: 95%;
-    aspect-ratio: auto;
-    height: auto;
-    max-height: 80vh;
-  }
 }
 </style>

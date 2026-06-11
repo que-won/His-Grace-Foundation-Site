@@ -3,6 +3,10 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import StaticPageView from '../views/StaticPageView.vue'
 import ProjectDetailPage from '../components/ProjectDetailPage.vue'
+import BlogView from '../views/BlogView.vue'
+import VolunteerView from '../views/VolunteerView.vue'
+import ProgramsView from '../views/ProgramsView.vue'
+import ContactView from '../views/ContactView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -105,6 +109,32 @@ const router = createRouter({
         description: 'Work with us to strengthen communities and create lasting impact.',
         kind: 'partnerships',
       },
+    },
+    {
+      path: '/programs',
+      name: 'programs',
+      component: ProgramsView,
+    },
+    {
+      path: '/blog',
+      name: 'blog',
+      component: BlogView,
+    },
+    {
+      path: '/blog/:slug',
+      name: 'blog-post',
+      component: BlogView,
+      props: true,
+    },
+    {
+      path: '/volunteer-signup',
+      name: 'volunteer-signup',
+      component: VolunteerView,
+    },
+    {
+      path: '/contact-us',
+      name: 'contact-us',
+      component: ContactView,
     },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
